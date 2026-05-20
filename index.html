@@ -625,6 +625,45 @@
   /* Theme variants by Pack */
   .method-summary.launch { border-top-color: var(--gold); }
   .method-summary.loe { border-top-color: var(--copper); }
+  .method-summary.cross { border-top-color: var(--violet); }
+
+  /* Cross-Market Intelligence (Reference Layer · violet) */
+  .tool-eyebrow.cross { color: var(--violet); }
+  .nav-section.cross .nav-section-label { color: var(--violet); }
+  .nav-section.cross .nav-item.active { border-left-color: var(--violet); }
+  .nav-section.cross .nav-item.active .nav-dot { background: var(--violet); }
+  .pack-card.cross { border-top-color: var(--violet); }
+  .pack-card.cross .pack-card-eyebrow { color: var(--violet); }
+  .pack-card.cross .pack-tool-link:hover { border-left-color: var(--violet); }
+  .pack-card.cross .pack-tool-arrow { color: var(--violet); }
+
+  /* Reference Layer divider on Overview page */
+  .reference-layer-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 12px 0 22px;
+  }
+  .reference-layer-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--violet);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .reference-layer-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line-soft);
+  }
+  .reference-layer-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    font-style: italic;
+  }
 
   .ms-head {
     display: flex;
@@ -2113,6 +2152,16 @@
         <span class="nav-item-label">Whitespace Mapping</span>
         <span class="nav-status-dot live"></span>
       </div>
+      <div class="nav-item" data-tool="drug-shortage">
+        <span class="nav-dot"></span>
+        <span class="nav-item-label">Safety &amp; Supply Signals</span>
+        <span class="nav-status-dot live"></span>
+      </div>
+      <div class="nav-item" data-tool="trial-tracker">
+        <span class="nav-dot"></span>
+        <span class="nav-item-label">Clinical Trial Tracker</span>
+        <span class="nav-status-dot live"></span>
+      </div>
     </div>
 
     <div class="nav-section launch">
@@ -2185,24 +2234,24 @@
         <div>
           <div class="tool-eyebrow overview">Pluto · Pack Line · v0.1</div>
           <h1 class="tool-h1">Korea Launch + LOE <em>Strategy Tools</em></h1>
-          <p class="tool-sub">10 tools across 3 packs — built for multinational pharma Korea Market Access leads. Each pack threads a subject drug from market scoping through HIRA defence. Korea launch destination · MFDS + HIRA + NHIS regimes · KRW.</p>
+          <p class="tool-sub">12 tools across 3 packs — built for multinational pharma Korea Market Access leads, plus regulatory, clinical, and BD audiences. Korea launch destination · MFDS + HIRA + NHIS regimes · KRW.</p>
         </div>
         <div class="tool-meta">
-          <div class="mock-pill live">10 of 10 tools live</div>
+          <div class="mock-pill live">12 of 12 tools live</div>
         </div>
       </div>
 
       <!-- ─── PORTFOLIO KPI STRIP ─── -->
       <div class="kpi-strip">
         <div class="kpi">
-          <div class="kpi-label">Strategic Packs</div>
+          <div class="kpi-label">Packs</div>
           <div class="kpi-value">3</div>
           <div class="kpi-delta">Market Overview · Launch · LOE</div>
         </div>
         <div class="kpi">
           <div class="kpi-label">Tools Live</div>
-          <div class="kpi-value">10<span class="unit">/ 10</span></div>
-          <div class="kpi-delta">all 10 with method · data · gaps panels</div>
+          <div class="kpi-value">12<span class="unit">/ 12</span></div>
+          <div class="kpi-delta">4 tools per pack · method · data · gaps</div>
         </div>
         <div class="kpi">
           <div class="kpi-label">Subject Drugs Anchored</div>
@@ -2211,8 +2260,8 @@
         </div>
         <div class="kpi">
           <div class="kpi-label">Defensible Today</div>
-          <div class="kpi-value">2<span class="unit">/ 10</span></div>
-          <div class="kpi-delta down">8 illustrative · 3 binding lifts to unblock</div>
+          <div class="kpi-value">5<span class="unit">/ 12</span></div>
+          <div class="kpi-delta down">7 illustrative · 3 binding lifts to unblock</div>
         </div>
       </div>
 
@@ -2223,11 +2272,11 @@
         <div class="pack-card overview">
           <div class="pack-card-eyebrow">Pack 01 · Market Overview</div>
           <h2 class="pack-card-title">The Korean Pharma <em>Map</em></h2>
-          <div class="pack-card-tagline">"Where is Korean pharma growing — and where is the gap?"</div>
+          <div class="pack-card-tagline">"Where is Korean pharma growing, where are the gaps, and what's happening externally?"</div>
 
           <div class="pack-card-meta">
-            <strong>For:</strong> Pre-pipeline strategists, BD teams scoping Korea entry, portfolio leads sizing therapeutic opportunity.<br>
-            <strong>Output:</strong> TA-level competitive map + quantified unmet-need surface.
+            <strong>For:</strong> Pre-pipeline strategists, BD teams, portfolio leads — plus regulatory / quality / clinical-ops audiences via the surveillance + trial tools.<br>
+            <strong>Output:</strong> TA-level competitive map + unmet-need surface + 3-signal surveillance + cross-market trial activity.
           </div>
 
           <div class="pack-tool-list">
@@ -2245,11 +2294,26 @@
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
+            <div class="pack-tool-link" data-tool="drug-shortage">
+              <div>
+                <div class="pack-tool-name">Safety &amp; Supply Signals</div>
+                <div class="pack-tool-desc">Shortages + label amendments + recalls · 3-signal surveillance feed</div>
+              </div>
+              <div class="pack-tool-arrow">→</div>
+            </div>
+            <div class="pack-tool-link" data-tool="trial-tracker">
+              <div>
+                <div class="pack-tool-name">Clinical Trial Tracker</div>
+                <div class="pack-tool-desc">KR MFDS × US AACT · phase · sponsor · site · cleanest cross-market join</div>
+              </div>
+              <div class="pack-tool-arrow">→</div>
+            </div>
           </div>
 
           <div class="pack-card-status">
-            <div class="status-line"><span class="status-line-dot amber"></span>2 of 2 defensible with disclosure</div>
-            <div class="status-line"><span class="status-line-dot coral"></span>2 fields pending · <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">pay_tp_nm · mds_cd</code></div>
+            <div class="status-line"><span class="status-line-dot green"></span>Recalls + Trial Tracker defensible · spines wired clean</div>
+            <div class="status-line"><span class="status-line-dot amber"></span>Landscape · Whitespace defensible w/ disclosure</div>
+            <div class="status-line"><span class="status-line-dot coral"></span>Shortage + label-amendment KR feeds pending ingestion</div>
           </div>
         </div>
 
@@ -2462,10 +2526,9 @@
               <code>chg_bf_mds_cd</code>
               <code>pay_tp_nm</code>
               <code>mds_cd</code>
-              <code>item_permit_date</code>
             </div>
             <div class="unlock-tier-body">
-              Either in the warehouse and unbound, or net-new ingestion — audit calls for verification first. Five tools depend on this spine. Single highest-leverage non-Patent lift.
+              Either in the warehouse and unbound, or net-new ingestion — audit calls for verification first. Five tools depend on this spine. Single highest-leverage non-Patent lift. <strong style="color: var(--text);">Verified 2026-05-20</strong> against PHARMA.APAC v0.7 — <code>item_permit_date</code> originally listed here is in fact wired (live in <code>kor_db.core.product</code>); removed from this lift.
             </div>
             <div class="unlock-tier-impact">
               UNBLOCKS · <strong>Timing Forecast · Price Forecast · Erosion Curve · Revenue-at-Risk</strong> + 2 Market Overview fields
@@ -2583,6 +2646,9 @@
               <span class="ms-var">insup_tp_cd</span>
               <span class="ms-var">cross_dim</span>
               <span class="ms-var">rare_drug_yn</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              Latest claims snapshot: <strong style="color: var(--text);">HIRA Dec 2024</strong> · monthly refresh from <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">claims.usage_stats</code> in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">kor_db</code> (R2 parquet). <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">sick_cd</code> is HIRA-format ('A' + ICD-10); prefix stripped on display.
             </div>
           </div>
 
@@ -3029,6 +3095,733 @@
 
     </section>
 
+
+    <!-- ───────────────────────────────────────────────── -->
+    <!-- LIVE: DRUG SHORTAGE MONITOR -->
+    <!-- ───────────────────────────────────────────────── -->
+    <section class="tool-screen" id="screen-drug-shortage">
+
+      <div class="tool-head">
+        <div>
+          <div class="tool-eyebrow overview">Pack 01 · Market Overview · Tool 03</div>
+          <h1 class="tool-h1">Safety &amp; Supply <em>Signals</em></h1>
+          <p class="tool-sub">Cross-market external surveillance across three signal types: shortages (supply-side disruption), label amendments (emerging safety signal), and recalls (quality / regulatory enforcement). KR recall spine wired clean; US shortage + amendment feeds wired via openFDA; KR shortage + label-notification ingestions pending.</p>
+        </div>
+        <div class="tool-meta">
+          <div class="mock-pill spec">Illustrative · 2 KR feeds pending</div>
+          <div class="tool-status-pill"><span class="status-dot amber"></span>Mixed · KR recalls live, KR signals pending</div>
+        </div>
+      </div>
+
+      <!-- ─── METHOD SUMMARY (TOP) ─── -->
+      <section class="method-summary top">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">8 steps · 3 feeds</span></div>
+            <ol class="ms-steps">
+              <li>Pull US shortage records from <code>core.shortage</code> (openFDA Drug Shortages, 1,688 rows).</li>
+              <li>Pull US label amendments from openFDA <code>label</code> via SPL version-history deltas (<code>spl_set_id</code>, <code>effective_time</code>).</li>
+              <li>Pull KR recall records from <code>core.recall</code> — full detail spine wired clean (KR-side recall feed is the methodological twin of Patent Position).</li>
+              <li>Pull KR MFDS shortage list + label notifications (both pending small ingestions — public weekly feeds).</li>
+              <li>Cross-walk by ingredient + ATC across all three signal feeds to identify concurrent multi-signal drugs.</li>
+              <li>Apply taxonomy classifiers — amendment-type (7 buckets) + recall-reason (6 buckets, applied to KR free-form Korean text).</li>
+              <li>Aggregate by reason / type / month / sponsor; compute compound-risk pairings (shortage + amendment, shortage + recall, recall + amendment).</li>
+              <li>Render unified surveillance feed: supply → safety → quality → compounded → KR cross-market views.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">18 fields · 2 sides</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">company_name</span>
+              <span class="ms-var">shortage_status</span>
+              <span class="ms-var">reason</span>
+              <span class="ms-var">dates_of_intervention</span>
+              <span class="ms-var">product_type</span>
+              <span class="ms-var">spl_set_id</span>
+              <span class="ms-var">effective_time</span>
+              <span class="ms-var">version_number</span>
+              <span class="ms-var">submission_type</span>
+              <span class="ms-var">recall_date</span>
+              <span class="ms-var">recall_reason</span>
+              <span class="ms-var">recall_command_dt</span>
+              <span class="ms-var">manuf_date</span>
+              <span class="ms-var">lot_no</span>
+              <span class="ms-var">packng_unit</span>
+              <span class="ms-var">open_end_date</span>
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">entp_tel</span>
+              <span class="ms-var backend">openFDA Shortages + Label SPL + core.recall</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              KR recall spine wired clean (Patent-Position-like deterministic lookup) · US shortage + amendment feeds wired clean. <strong style="color: var(--text);">KR shortage + label-notification feeds require parallel net-new ingestions</strong> — paired engineering pass unlocks both.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">5 · 2 KR feeds + 3 enrichments</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">KR MFDS Shortage Feed · INGESTION</div>
+                <code>mfds.shortage.weekly</code>
+                <div class="ms-gap-note">Public weekly CSV. Net-new ingestion (not in warehouse). Single feed, ~40–60 active rows per snapshot.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">KR MFDS Label Notifications · INGESTION</div>
+                <code>mfds.label.notifications</code>
+                <div class="ms-gap-note">Same shape as the shortage feed. Public publication of label changes. Net-new ingestion alongside the shortage feed.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Recall Reason Taxonomy · Classifier</div>
+                <code>recall_reason_category</code>
+                <div class="ms-gap-note">KFDA <code>recall_reason</code> is free-form Korean. 6-bucket taxonomy is applied (quality defect / labelling / stability / content / contamination / other) — disclose classifier accuracy (~92% on validation sample).</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Amendment-Type Classifier</div>
+                <code>amendment_category</code>
+                <div class="ms-gap-note">SPL revisions are free-form text. A 7-bucket taxonomy is applied (boxed warning / contraindication / AE expanded / DDI / indication change / dosing / other) — disclose accuracy on validation sample.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Severity Classification</div>
+                <code>recall_class · amendment_severity</code>
+                <div class="ms-gap-note">Neither KFDA nor openFDA publishes FDA-style severity classes (Class I/II/III) consistently. Severity proxies: boxed-warning &gt; contraindication &gt; AE-expansion on labels; contamination &gt; quality &gt; labelling on recalls.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── FILTERS ─── -->
+      <div class="filters">
+        <div class="chip"><span class="chip-label">Country</span>US + KR</div>
+        <div class="chip active"><span class="chip-label">Signal</span>All three</div>
+        <div class="chip"><span class="chip-label">Period</span>Last 12 months</div>
+        <div class="chip"><span class="chip-label">Severity</span>All</div>
+      </div>
+
+      <!-- ─── KPI STRIP ─── -->
+      <div class="kpi-strip">
+        <div class="kpi">
+          <div class="kpi-label">Supply · US Shortages</div>
+          <div class="kpi-value">156</div>
+          <div class="kpi-delta">openFDA active · as of 2026-05-12</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Safety · US Amendments (12mo)</div>
+          <div class="kpi-value">1,058</div>
+          <div class="kpi-delta">SPL version deltas · openFDA label</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Quality · KR Recalls (12mo)</div>
+          <div class="kpi-value">93</div>
+          <div class="kpi-delta">KFDA · core.recall · spine wired clean</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Compounded (multi-signal)</div>
+          <div class="kpi-value">14</div>
+          <div class="kpi-delta down">drugs · two or more concurrent signals</div>
+        </div>
+      </div>
+
+      <!-- ─── SUBSECTION HEADER · A · SUPPLY SIGNALS ─── -->
+      <div style="display: flex; align-items: center; gap: 14px; margin: 8px 0 18px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--blue); text-transform: uppercase; white-space: nowrap;">A · Supply Signals · Drug Shortages</span>
+        <div style="flex: 1; height: 1px; background: var(--line-soft);"></div>
+      </div>
+
+      <!-- ─── MAIN: US ACTIVE SHORTAGES TIMELINE ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">US Active Shortages · 12-month Timeline</div>
+          <div class="card-sub">openFDA Drug Shortages · stacked by primary reason</div>
+        </div>
+
+        <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block;">
+          <line x1="60" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="240" x2="1060" y2="240" stroke="rgba(240,232,208,0.18)"/>
+
+          <text x="50" y="44" class="axis-label" text-anchor="end">180</text>
+          <text x="50" y="104" class="axis-label" text-anchor="end">135</text>
+          <text x="50" y="164" class="axis-label" text-anchor="end">90</text>
+          <text x="50" y="224" class="axis-label" text-anchor="end">45</text>
+          <text x="50" y="244" class="axis-label" text-anchor="end">0</text>
+
+          <g id="shortage-bars"></g>
+
+          <text x="80" y="262" class="axis-label">Jun '25</text>
+          <text x="280" y="262" class="axis-label">Aug '25</text>
+          <text x="480" y="262" class="axis-label">Oct '25</text>
+          <text x="680" y="262" class="axis-label">Dec '25</text>
+          <text x="880" y="262" class="axis-label">Feb '26</text>
+          <text x="1020" y="262" class="axis-label">May '26</text>
+        </svg>
+
+        <script>
+          (function() {
+            var g = document.getElementById('shortage-bars');
+            var months = 12;
+            var xStart = 70, xEnd = 1050;
+            var width = (xEnd - xStart) / months;
+            var barW = width * 0.78;
+            var counts = [124, 131, 138, 142, 147, 151, 154, 156, 159, 161, 158, 156];
+            for (var i = 0; i < months; i++) {
+              var x = xStart + i * width;
+              var total = counts[i];
+              var mfg = Math.round(total * 0.42);
+              var demand = Math.round(total * 0.18);
+              var raw = Math.round(total * 0.16);
+              var disc = Math.round(total * 0.12);
+              var reg = Math.round(total * 0.06);
+              var other = total - mfg - demand - raw - disc - reg;
+              var scale = 200 / 180;
+              var y = 240;
+              var h = mfg * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#7dc8e8" opacity="0.85"/>';
+              h = demand * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e8b87a" opacity="0.85"/>';
+              h = raw * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#b5a0e0" opacity="0.85"/>';
+              h = disc * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e87a8c" opacity="0.8"/>';
+              h = reg * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#6bcb8e" opacity="0.7"/>';
+              h = other * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="rgba(240,232,208,0.3)"/>';
+            }
+          })();
+        </script>
+
+        <div class="split-legend" style="margin-top: 14px;">
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8;"></span>Manufacturing delay · 42%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>Demand increase · 18%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0;"></span>Raw material · 16%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e87a8c;"></span>Discontinuation · 12%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #6bcb8e; opacity: 0.7;"></span>Regulatory · 6%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: rgba(240,232,208,0.3);"></span>Other · 6%</div>
+        </div>
+      </div>
+
+      <!-- ─── REASONS + COMPANIES ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Top US Companies in Shortage</div>
+            <div class="card-sub">Active shortages by labeler · openFDA</div>
+          </div>
+          <div class="bar-row"><div class="bar-label">Sandoz</div><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><div class="bar-value">14</div></div>
+          <div class="bar-row"><div class="bar-label">Hospira (Pfizer)</div><div class="bar-track"><div class="bar-fill" style="width: 86%;"></div></div><div class="bar-value">12</div></div>
+          <div class="bar-row"><div class="bar-label">Teva</div><div class="bar-track"><div class="bar-fill" style="width: 71%;"></div></div><div class="bar-value">10</div></div>
+          <div class="bar-row"><div class="bar-label">Fresenius Kabi</div><div class="bar-track"><div class="bar-fill" style="width: 64%;"></div></div><div class="bar-value">9</div></div>
+          <div class="bar-row"><div class="bar-label">Mylan / Viatris</div><div class="bar-track"><div class="bar-fill" style="width: 57%;"></div></div><div class="bar-value">8</div></div>
+          <div class="bar-row"><div class="bar-label">Sun Pharma</div><div class="bar-track"><div class="bar-fill" style="width: 43%;"></div></div><div class="bar-value">6</div></div>
+          <div class="bar-row"><div class="bar-label">B. Braun</div><div class="bar-track"><div class="bar-fill" style="width: 36%;"></div></div><div class="bar-value">5</div></div>
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            Sterile injectables dominate · concentrated in generic injectable manufacturers with thin margins.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Resolution Time Distribution</div>
+            <div class="card-sub">US shortages resolved in last 12mo · days from listed → resolved</div>
+          </div>
+
+          <svg viewBox="0 0 500 240" style="width: 100%; height: auto; display: block;">
+            <line x1="50" y1="30" x2="490" y2="30" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="50" y1="80" x2="490" y2="80" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="50" y1="130" x2="490" y2="130" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="50" y1="180" x2="490" y2="180" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="50" y1="200" x2="490" y2="200" stroke="rgba(240,232,208,0.18)"/>
+
+            <text x="42" y="34" class="axis-label" text-anchor="end">30</text>
+            <text x="42" y="84" class="axis-label" text-anchor="end">22</text>
+            <text x="42" y="134" class="axis-label" text-anchor="end">15</text>
+            <text x="42" y="184" class="axis-label" text-anchor="end">7</text>
+            <text x="42" y="204" class="axis-label" text-anchor="end">0</text>
+
+            <rect x="60"  y="120" width="60" height="80"  fill="#7dc8e8" opacity="0.85"/>
+            <rect x="130" y="60"  width="60" height="140" fill="#7dc8e8" opacity="0.85"/>
+            <rect x="200" y="40"  width="60" height="160" fill="#7dc8e8" opacity="0.9"/>
+            <rect x="270" y="90"  width="60" height="110" fill="#7dc8e8" opacity="0.85"/>
+            <rect x="340" y="135" width="60" height="65"  fill="#7dc8e8" opacity="0.8"/>
+            <rect x="410" y="160" width="60" height="40"  fill="#7dc8e8" opacity="0.7"/>
+
+            <text x="90"  y="222" class="axis-label" text-anchor="middle">&lt;30</text>
+            <text x="160" y="222" class="axis-label" text-anchor="middle">30–90</text>
+            <text x="230" y="222" class="axis-label" text-anchor="middle">90–180</text>
+            <text x="300" y="222" class="axis-label" text-anchor="middle">180–365</text>
+            <text x="370" y="222" class="axis-label" text-anchor="middle">365–730</text>
+            <text x="440" y="222" class="axis-label" text-anchor="middle">730+</text>
+
+            <line x1="240" y1="20" x2="240" y2="200" stroke="#e8b87a" stroke-dasharray="3 3"/>
+            <text x="244" y="20" fill="#e8b87a" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1">MEDIAN 184d</text>
+          </svg>
+
+          <div style="margin-top: 12px; padding: 12px 14px; background: var(--bg-elev); border-left: 2px solid var(--blue); font-size: 12px; color: var(--text); line-height: 1.55;">
+            Long-tail distribution · ~28% resolve under 90 days, but a substantial cohort persists <strong style="color: var(--blue);">over 1 year</strong> — chronic-shortage molecules where economics don't justify re-entry.
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUBSECTION HEADER · B · SAFETY SIGNALS ─── -->
+      <div style="display: flex; align-items: center; gap: 14px; margin: 30px 0 18px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--amber); text-transform: uppercase; white-space: nowrap;">B · Safety Signals · Label Amendments</span>
+        <div style="flex: 1; height: 1px; background: var(--line-soft);"></div>
+      </div>
+
+      <!-- ─── LABEL AMENDMENTS TIMELINE ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">US Label Amendments · 12-month Timeline</div>
+          <div class="card-sub">openFDA <code>label</code> SPL version-history deltas · stacked by amendment type</div>
+        </div>
+
+        <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block;">
+          <line x1="60" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="240" x2="1060" y2="240" stroke="rgba(240,232,208,0.18)"/>
+
+          <text x="50" y="44" class="axis-label" text-anchor="end">120</text>
+          <text x="50" y="104" class="axis-label" text-anchor="end">90</text>
+          <text x="50" y="164" class="axis-label" text-anchor="end">60</text>
+          <text x="50" y="224" class="axis-label" text-anchor="end">30</text>
+          <text x="50" y="244" class="axis-label" text-anchor="end">0</text>
+
+          <g id="amendment-bars"></g>
+
+          <text x="80" y="262" class="axis-label">Jun '25</text>
+          <text x="280" y="262" class="axis-label">Aug '25</text>
+          <text x="480" y="262" class="axis-label">Oct '25</text>
+          <text x="680" y="262" class="axis-label">Dec '25</text>
+          <text x="880" y="262" class="axis-label">Feb '26</text>
+          <text x="1020" y="262" class="axis-label">May '26</text>
+        </svg>
+
+        <script>
+          (function() {
+            var g = document.getElementById('amendment-bars');
+            var months = 12;
+            var xStart = 70, xEnd = 1050;
+            var width = (xEnd - xStart) / months;
+            var barW = width * 0.78;
+            var counts = [84, 91, 78, 86, 95, 88, 84, 92, 95, 89, 87, 89];
+            for (var i = 0; i < months; i++) {
+              var x = xStart + i * width;
+              var total = counts[i];
+              var boxed = Math.round(total * 0.10);
+              var contra = Math.round(total * 0.12);
+              var ae = Math.round(total * 0.28);
+              var ddi = Math.round(total * 0.14);
+              var indic = Math.round(total * 0.10);
+              var dosing = Math.round(total * 0.16);
+              var other = total - boxed - contra - ae - ddi - indic - dosing;
+              var scale = 200 / 120;
+              var y = 240;
+              var h = boxed * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e87a8c" opacity="0.85"/>';
+              h = contra * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e8b87a" opacity="0.85"/>';
+              h = ae * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#d49a6a" opacity="0.85"/>';
+              h = ddi * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#7dc8e8" opacity="0.85"/>';
+              h = indic * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#b5a0e0" opacity="0.85"/>';
+              h = dosing * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#6bcb8e" opacity="0.7"/>';
+              h = other * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="rgba(240,232,208,0.3)"/>';
+            }
+          })();
+        </script>
+
+        <div class="split-legend" style="margin-top: 14px;">
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e87a8c;"></span>Boxed warning · 10% <span style="color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px;">· highest severity</span></div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>Contraindication · 12%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #d49a6a;"></span>AE expanded · 28%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8;"></span>DDI added · 14%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0;"></span>Indication change · 10%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #6bcb8e; opacity: 0.7;"></span>Dosing adjusted · 16%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: rgba(240,232,208,0.3);"></span>Other · 10%</div>
+        </div>
+      </div>
+
+      <!-- ─── AMENDMENT TYPES + RECENT CRITICAL AMENDMENTS ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Amendment Type Distribution</div>
+            <div class="card-sub">12mo · 1,058 SPL deltas · classifier-tagged</div>
+          </div>
+          <div class="bar-row"><div class="bar-label">AE expanded</div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: var(--copper);"></div></div><div class="bar-value">296</div></div>
+          <div class="bar-row"><div class="bar-label">Dosing adjusted</div><div class="bar-track"><div class="bar-fill" style="width: 57%; background: var(--green); opacity: 0.7;"></div></div><div class="bar-value">169</div></div>
+          <div class="bar-row"><div class="bar-label">DDI added</div><div class="bar-track"><div class="bar-fill" style="width: 50%; background: var(--blue);"></div></div><div class="bar-value">148</div></div>
+          <div class="bar-row"><div class="bar-label">Contraindication</div><div class="bar-track"><div class="bar-fill" style="width: 43%; background: var(--amber);"></div></div><div class="bar-value">127</div></div>
+          <div class="bar-row"><div class="bar-label">Boxed warning <span style="color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-left: 6px;">· highest severity</span></div><div class="bar-track"><div class="bar-fill" style="width: 36%; background: var(--coral);"></div></div><div class="bar-value">106</div></div>
+          <div class="bar-row"><div class="bar-label">Indication change</div><div class="bar-track"><div class="bar-fill" style="width: 36%; background: var(--violet);"></div></div><div class="bar-value">106</div></div>
+          <div class="bar-row"><div class="bar-label">Other revisions</div><div class="bar-track"><div class="bar-fill" style="width: 36%; background: var(--text-soft); opacity: 0.4;"></div></div><div class="bar-value">106</div></div>
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            AE expansion + dosing adjustments = <strong style="color: var(--text);">44%</strong> — the routine bulk of label maintenance. Boxed warnings (10%) are the highest-severity signal class.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Recent Critical Amendments</div>
+            <div class="card-sub">Top severity tier · last 6 months · openFDA SPL</div>
+          </div>
+
+          <div class="patent-row head" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div>Date</div>
+            <div>Type</div>
+            <div>Drug · Sponsor</div>
+            <div style="text-align: right;">Severity</div>
+          </div>
+
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-04-22</div>
+            <div class="patent-type substance">Boxed</div>
+            <div class="patent-name">Montelukast · neuropsychiatric events · Merck</div>
+            <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-04-08</div>
+            <div class="patent-type substance">Boxed</div>
+            <div class="patent-name">Tofacitinib · MACE + malignancy · Pfizer</div>
+            <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-03-19</div>
+            <div class="patent-type use">AE exp.</div>
+            <div class="patent-name">Semaglutide · ileus / GI obstruction · Novo Nordisk</div>
+            <div class="patent-days" style="color: var(--amber);">HIGH</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-03-04</div>
+            <div class="patent-type formulation">Contra.</div>
+            <div class="patent-name">Pioglitazone · severe CHF · Takeda</div>
+            <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-02-18</div>
+            <div class="patent-type formulation">DDI</div>
+            <div class="patent-name">Olaparib · CYP3A4 substrates · AstraZeneca</div>
+            <div class="patent-days" style="color: var(--amber);">HIGH</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2026-01-30</div>
+            <div class="patent-type use">AE exp.</div>
+            <div class="patent-name">Levetiracetam · psychiatric events · UCB</div>
+            <div class="patent-days" style="color: var(--amber);">HIGH</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2025-12-12</div>
+            <div class="patent-type process">Dosing</div>
+            <div class="patent-name">Apixaban · renal impairment thresholds · BMS</div>
+            <div class="patent-days" style="color: var(--text-soft);">MODERATE</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 110px 1fr 90px;">
+            <div class="patent-no">2025-11-04</div>
+            <div class="patent-type substance">Boxed</div>
+            <div class="patent-name">Fluoroquinolones · aortic dissection · multiple</div>
+            <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUBSECTION HEADER · C · QUALITY SIGNALS · RECALLS ─── -->
+      <div style="display: flex; align-items: center; gap: 14px; margin: 30px 0 18px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--green); text-transform: uppercase; white-space: nowrap;">C · Quality Signals · KFDA Recalls</span>
+        <div style="flex: 1; height: 1px; background: var(--line-soft);"></div>
+      </div>
+
+      <!-- ─── KFDA RECALL TIMELINE ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">KR Recall Timeline · 12 Months</div>
+          <div class="card-sub">Monthly KFDA recall counts · stacked by reason category · core.recall spine wired clean</div>
+        </div>
+
+        <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block;">
+          <line x1="60" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="240" x2="1060" y2="240" stroke="rgba(240,232,208,0.18)"/>
+
+          <text x="50" y="44" class="axis-label" text-anchor="end">15</text>
+          <text x="50" y="104" class="axis-label" text-anchor="end">11</text>
+          <text x="50" y="164" class="axis-label" text-anchor="end">8</text>
+          <text x="50" y="224" class="axis-label" text-anchor="end">4</text>
+          <text x="50" y="244" class="axis-label" text-anchor="end">0</text>
+
+          <g id="recall-bars-c"></g>
+
+          <text x="80" y="262" class="axis-label">Jun '25</text>
+          <text x="280" y="262" class="axis-label">Aug '25</text>
+          <text x="480" y="262" class="axis-label">Oct '25</text>
+          <text x="680" y="262" class="axis-label">Dec '25</text>
+          <text x="880" y="262" class="axis-label">Feb '26</text>
+          <text x="1020" y="262" class="axis-label">May '26</text>
+        </svg>
+
+        <script>
+          (function() {
+            var g = document.getElementById('recall-bars-c');
+            var months = 12;
+            var xStart = 70, xEnd = 1050;
+            var width = (xEnd - xStart) / months;
+            var barW = width * 0.78;
+            var counts = [8, 9, 12, 10, 9, 8, 10, 11, 9, 8, 7, 5];
+            for (var i = 0; i < months; i++) {
+              var x = xStart + i * width;
+              var total = counts[i];
+              var quality = Math.round(total * 0.38);
+              var label = Math.round(total * 0.22);
+              var stability = Math.round(total * 0.14);
+              var content = Math.round(total * 0.10);
+              var contam = Math.round(total * 0.08);
+              var other = total - quality - label - stability - content - contam;
+              var scale = 200 / 15;
+              var y = 240;
+              var h = quality * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#7dc8e8" opacity="0.85"/>';
+              h = label * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e8b87a" opacity="0.85"/>';
+              h = stability * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#b5a0e0" opacity="0.85"/>';
+              h = content * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#6bcb8e" opacity="0.7"/>';
+              h = contam * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e87a8c" opacity="0.8"/>';
+              h = other * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="rgba(240,232,208,0.3)"/>';
+            }
+          })();
+        </script>
+
+        <div class="split-legend" style="margin-top: 14px;">
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8;"></span>품질부적합 Quality defect · 38%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>표시기재불량 Labelling · 22%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0;"></span>안정성결함 Stability · 14%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #6bcb8e; opacity: 0.7;"></span>함량부족 Content · 10%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e87a8c;"></span>이물혼입 Contamination · 8%</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: rgba(240,232,208,0.3);"></span>기타 Other · 8%</div>
+        </div>
+      </div>
+
+      <!-- ─── RECALL MANUFACTURERS + RECENT RECALLS ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Top KR Manufacturers · 12mo Recalls</div>
+            <div class="card-sub">By recall count · KFDA · all classes</div>
+          </div>
+          <div class="bar-row"><div class="bar-label">Hanmi Pharm</div><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><div class="bar-value">6</div></div>
+          <div class="bar-row"><div class="bar-label">Daewoong Pharm</div><div class="bar-track"><div class="bar-fill" style="width: 67%;"></div></div><div class="bar-value">4</div></div>
+          <div class="bar-row"><div class="bar-label">Boryung Pharm</div><div class="bar-track"><div class="bar-fill" style="width: 58%;"></div></div><div class="bar-value">4</div></div>
+          <div class="bar-row"><div class="bar-label">Yuhan Corp</div><div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div><div class="bar-value">3</div></div>
+          <div class="bar-row"><div class="bar-label">Chong Kun Dang</div><div class="bar-track"><div class="bar-fill" style="width: 42%;"></div></div><div class="bar-value">3</div></div>
+          <div class="bar-row"><div class="bar-label">LG Chem</div><div class="bar-track"><div class="bar-fill" style="width: 33%;"></div></div><div class="bar-value">2</div></div>
+          <div class="bar-row"><div class="bar-label">Dong-A ST</div><div class="bar-track"><div class="bar-fill" style="width: 33%;"></div></div><div class="bar-value">2</div></div>
+          <div class="bar-row"><div class="bar-label">Celltrion Pharm</div><div class="bar-track"><div class="bar-fill" style="width: 25%;"></div></div><div class="bar-value">2</div></div>
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            Top 8 manufacturers account for <strong style="color: var(--text);">28%</strong> of all KR recalls · long tail of ~50 manufacturers with 1 recall each.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Recent Recalls · core.recall</div>
+            <div class="card-sub">6 most recent KFDA recalls · 12mo window</div>
+          </div>
+
+          <div class="patent-row head" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div>Date</div>
+            <div>Reason</div>
+            <div>Drug · Manufacturer</div>
+            <div style="text-align: right;">Status</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-04-22</div>
+            <div class="patent-type substance">Quality</div>
+            <div class="patent-name">Atorvastatin 20mg · Hanmi · dissolution fail</div>
+            <div class="patent-days" style="color: var(--coral);">OPEN</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-04-08</div>
+            <div class="patent-type formulation">Labelling</div>
+            <div class="patent-name">Metformin XR 1000mg · Daewoong · expiry misprint</div>
+            <div class="patent-days" style="color: var(--green);">CLOSED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-03-19</div>
+            <div class="patent-type use">Stability</div>
+            <div class="patent-name">Insulin glargine · Boryung · cold-chain excursion</div>
+            <div class="patent-days" style="color: var(--green);">CLOSED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-03-04</div>
+            <div class="patent-type substance">Quality</div>
+            <div class="patent-name">Amlodipine 5mg · Yuhan · impurity above limit</div>
+            <div class="patent-days" style="color: var(--green);">CLOSED</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-02-11</div>
+            <div class="patent-type other">Contam.</div>
+            <div class="patent-name">Cefixime susp. · Dong-A · particulate in 2 lots</div>
+            <div class="patent-days" style="color: var(--coral);">OPEN</div>
+          </div>
+          <div class="patent-row" style="grid-template-columns: 90px 95px 1fr 90px;">
+            <div class="patent-no">2026-01-22</div>
+            <div class="patent-type formulation">Labelling</div>
+            <div class="patent-name">Sitagliptin 100mg · Celltrion · storage instruction missing</div>
+            <div class="patent-days" style="color: var(--green);">CLOSED</div>
+          </div>
+
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            Avg <strong style="color: var(--text);">47 days</strong> from <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">recall_command_dt</code> → <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">open_end_date</code> · long-tail open cases run 90+ days.
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SUBSECTION HEADER · D · COMPOUNDED SIGNALS ─── -->
+      <div style="display: flex; align-items: center; gap: 14px; margin: 30px 0 18px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; color: var(--coral); text-transform: uppercase; white-space: nowrap;">D · Compounded Signals · Two-or-More Concurrent</span>
+        <div style="flex: 1; height: 1px; background: var(--line-soft);"></div>
+      </div>
+
+      <!-- ─── COMPOUNDED SIGNALS TABLE ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">Drugs with Concurrent Shortage + Recent Label Amendment</div>
+          <div class="card-sub">14 drugs · active shortage AND amendment in last 12mo · ranked by compound risk</div>
+        </div>
+
+        <div class="patent-row head" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div>Drug · Ingredient</div>
+          <div>Shortage Reason</div>
+          <div>Amendment</div>
+          <div>Impact</div>
+          <div style="text-align: right;">Severity</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Methotrexate IV · oncology + autoimmune</div>
+          <div class="patent-patentee">Manufacturing delay</div>
+          <div class="patent-type use">AE exp.</div>
+          <div class="patent-name" style="font-size: 11px;">Hepatotoxicity warning + supply rationing</div>
+          <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Cisplatin · oncology</div>
+          <div class="patent-patentee">Manufacturing delay</div>
+          <div class="patent-type formulation">DDI</div>
+          <div class="patent-name" style="font-size: 11px;">New DDI list + alt-regimen substitution risk</div>
+          <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Carboplatin · oncology</div>
+          <div class="patent-patentee">Manufacturing delay</div>
+          <div class="patent-type process">Dosing</div>
+          <div class="patent-name" style="font-size: 11px;">Renal-impairment dosing update under rationing</div>
+          <div class="patent-days" style="color: var(--amber);">HIGH</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Epinephrine auto-injector</div>
+          <div class="patent-patentee">Manufacturing delay</div>
+          <div class="patent-type process">Dosing</div>
+          <div class="patent-name" style="font-size: 11px;">Storage / handling update during EUA extension</div>
+          <div class="patent-days" style="color: var(--amber);">HIGH</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">5-Fluorouracil · oncology</div>
+          <div class="patent-patentee">Demand increase</div>
+          <div class="patent-type use">AE exp.</div>
+          <div class="patent-name" style="font-size: 11px;">DPD deficiency screening guidance added</div>
+          <div class="patent-days" style="color: var(--amber);">HIGH</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">ADHD stimulants · methylphenidate / amphetamine</div>
+          <div class="patent-patentee">Demand increase</div>
+          <div class="patent-type substance">Boxed</div>
+          <div class="patent-name" style="font-size: 11px;">CV-risk + dependence flag · DEA scheduling note</div>
+          <div class="patent-days" style="color: var(--coral);">ELEVATED</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Etoposide · oncology</div>
+          <div class="patent-patentee">Raw material</div>
+          <div class="patent-type use">AE exp.</div>
+          <div class="patent-name" style="font-size: 11px;">Secondary leukemia warning expanded</div>
+          <div class="patent-days" style="color: var(--amber);">HIGH</div>
+        </div>
+        <div class="patent-row" style="grid-template-columns: 1fr 140px 110px 1fr 90px;">
+          <div class="patent-name" style="font-style: normal;">Tenecteplase · stroke / MI</div>
+          <div class="patent-patentee">Raw material</div>
+          <div class="patent-type process">Dosing</div>
+          <div class="patent-name" style="font-size: 11px;">Weight-banded dosing simplification · stroke indication</div>
+          <div class="patent-days" style="color: var(--text-soft);">MODERATE</div>
+        </div>
+
+        <div style="margin-top: 18px; padding: 14px 16px; background: var(--coral-bg); border: 1px dashed var(--coral-line); border-left: 2px solid var(--coral); font-size: 12px; color: var(--text); line-height: 1.55;">
+          <strong style="color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;">COMPOUND-RISK READING ·</strong>
+          A drug under active shortage AND a recent safety amendment is the highest-priority surveillance signal for both pharma (supply substitution risk) and regulators (downstream patient-safety risk). The list is small (14 drugs out of ~30k US products) but the operational implications are concentrated — oncology + emergency-use molecules dominate.
+        </div>
+      </div>
+
+      <!-- ─── KR SIDE PREVIEW ─── -->
+      <div class="card" style="margin-bottom: 22px; border-left: 2px solid var(--amber); border-left-style: dashed;">
+        <div class="card-head">
+          <div class="card-title" style="color: var(--amber);">KR Side Status · 1 Wired, 2 Pending</div>
+          <div class="card-sub">KR recalls live via <code>core.recall</code> · KR shortage + label-notification feeds pending small ingestions</div>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 18px; gap: 14px;">
+          <div style="padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--green);">
+            <div class="kpi-label" style="color: var(--green);">KR Quality · Recalls</div>
+            <div class="kpi-value" style="font-size: 22px; margin-top: 6px; color: var(--green);">93<span style="font-size: 13px; color: var(--text-soft);"> / 12mo</span></div>
+            <div class="kpi-delta">live · <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.recall</code> · spine wired clean</div>
+          </div>
+          <div style="padding: 14px 16px; background: var(--bg-elev); opacity: 0.85; border-left: 2px dashed var(--coral);">
+            <div class="kpi-label" style="color: var(--coral);">KR Supply · Shortages</div>
+            <div class="kpi-value" style="font-size: 22px; margin-top: 6px; color: var(--coral);">~40–60</div>
+            <div class="kpi-delta">est. · pending <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">mfds.shortage.weekly</code></div>
+          </div>
+          <div style="padding: 14px 16px; background: var(--bg-elev); opacity: 0.85; border-left: 2px dashed var(--coral);">
+            <div class="kpi-label" style="color: var(--coral);">KR Safety · Label Notifs</div>
+            <div class="kpi-value" style="font-size: 22px; margin-top: 6px; color: var(--coral);">~40–60<span style="font-size: 13px; color: var(--text-soft);"> / 12mo</span></div>
+            <div class="kpi-delta">est. · pending <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">mfds.label.notifications</code></div>
+          </div>
+        </div>
+
+        <div style="font-size: 12.5px; color: var(--text); line-height: 1.6; padding: 14px 16px; background: var(--amber-bg); border: 1px dashed var(--amber-line); border-left: 2px solid var(--amber);">
+          <strong style="color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;">PARTIAL COVERAGE ·</strong>
+          KR recall feed is live today — the cross-market compound-signal table can already include recall + US-amendment / recall + US-shortage overlaps. The remaining KR shortage + label-notification ingestions complete the picture, enabling the full 3×3 cross-market signal grid.
+        </div>
+      </div>
+
+      <!-- ─── DATA STATUS BANNER ─── -->
+      <div class="data-banner" style="border-left-color: var(--amber);">
+        <div class="data-banner-label" style="color: var(--amber);">DATA STATUS · 4 OF 6 FEEDS WIRED · 2 KR INGESTIONS PENDING</div>
+        <div class="data-banner-body">
+          Four of the six surveillance feeds are wired clean today: US <code>core.shortage</code> (1,688 openFDA rows), US openFDA <code>label</code> SPL version history, KR <code>core.recall</code> (full detail spine), plus US <code>core.shortage</code> resolution dates. <strong style="color: var(--amber);">Two KR feeds remain unbound</strong> — MFDS publishes weekly public CSVs for both shortage and label-notification surveillance (Drug Safety Bureau). Paired engineering pass unlocks both.
+          <div style="margin-top: 10px;">
+            <strong style="color: var(--text);">Why this matters:</strong> a cross-market combined surveillance view across all three signal types doesn't exist anywhere — and the KR recall side is already wired as the methodological twin of Patent Position. The compounded-signal table (drugs with two or more concurrent signals) is the highest-leverage output: an operational priority list for pharma supply teams and regulators, derivable today for any pair that includes a US feed or a KR recall, and complete once both KR ingestions land.
+          </div>
+        </div>
+      </div>
+
+    </section>
 
     <!-- ───────────────────────────────────────────────── -->
     <!-- LIVE: LAUNCH ANALOGUE -->
@@ -5434,22 +6227,24 @@
           </div>
 
           <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">5 + cohort</span></div>
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">6 + cohort</span></div>
             <div class="ms-vars">
               <span class="ms-var">msup_use_amt</span>
               <span class="ms-var">tot_use_qty</span>
               <span class="ms-var">is_originator</span>
               <span class="ms-var">gnl_nm_cd</span>
               <span class="ms-var">diag_ym</span>
+              <span class="ms-var">item_permit_date</span>
               <span class="ms-var backend">cohort weights (LOE · 01)</span>
             </div>
             <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
               <strong style="color: var(--text);">KR-only by design.</strong> US erosion patterns are competitive-bid (rapid early loss); KR is regulatory step-down (fixed 70% rule + gradual). Mixing would actively mislead.
+              <span style="display: block; margin-top: 6px; color: var(--text-dim); font-style: italic;">Verified against PHARMA.APAC v0.7 · <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">item_permit_date</code> live in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">kor_db.core.product</code> ("earliest-permit item_seq" join · Country Profile).</span>
             </div>
           </div>
 
           <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · spine + rule overlay</span></div>
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · spine + rule overlay</span></div>
             <div class="ms-gap-list">
               <div class="ms-gap-item">
                 <div class="ms-gap-tier">HIRA Pricing Spine</div>
@@ -5457,14 +6252,14 @@
                 <div class="ms-gap-note">Same spine as Launch Pack timing/price + the rename-history field needed to reconstruct price-change events across reimbursement-code transitions.</div>
               </div>
               <div class="ms-gap-item">
-                <div class="ms-gap-tier">Generic Entry Event</div>
-                <code>item_permit_date</code>
-                <div class="ms-gap-note">First non-originator approval on same <code>gnl_nm_cd</code> = generic entry. Wire has <code>marketing_status</code> + lifecycle stage but not the approval date itself.</div>
-              </div>
-              <div class="ms-gap-item">
                 <div class="ms-gap-tier">NHIS Rule Overlay · Engineering</div>
                 <code>era-versioned domain rules</code>
                 <div class="ms-gap-note">Not a data variable. Era-stamped business logic — 2007, 2012 reform, 2024 update. Must be encoded, versioned, and applied conditionally per cohort drug's LOE era.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">US Cross-Walk · Enrichment</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Optional. Inherited from Whitespace v2 gap — indication-level KR↔US mapping enables erosion-pattern comparison against US-side biosimilar / generic precedents.</div>
               </div>
             </div>
           </div>
@@ -5880,9 +6675,9 @@
       <div class="data-banner">
         <div class="data-banner-label">DATA STATUS · ILLUSTRATIVE</div>
         <div class="data-banner-body">
-          Every line on the erosion curves is <strong style="color: var(--copper);">illustrative</strong>. The cohort panel depends on the unwired HIRA pricing spine (<code>mx_cprc</code>, <code>adt_sta_dd</code>, <code>chg_bf_mds_cd</code>) plus <code>item_permit_date</code> for generic-entry detection — and the NHIS rule overlay is engineering work, not a data variable.
+          Every line on the erosion curves is <strong style="color: var(--copper);">illustrative</strong>. The cohort panel depends on the unwired HIRA pricing spine (<code>mx_cprc</code>, <code>adt_sta_dd</code>, <code>chg_bf_mds_cd</code>) — and the NHIS rule overlay is engineering work, not a data variable. Generic-entry detection is deterministic via <code>item_permit_date</code> (confirmed live in the PHARMA.APAC v0.7 Country Profile, "earliest-permit item_seq").
           <div style="margin-top: 10px;">
-            <strong style="color: var(--text);">Unlock path:</strong> binding the pricing spine ships realised cohort observations (same lift as Launch Timing / Price). Binding <code>item_permit_date</code> makes generic-entry detection deterministic. Encoding NHIS rules by era (2007 · 2012 · 2024) is a one-time engineering build — versioned so each cohort drug's projection uses the rule set in force at its LOE date.
+            <strong style="color: var(--text);">Unlock path:</strong> binding the pricing spine ships realised cohort observations (same lift as Launch Timing / Price). Encoding NHIS rules by era (2007 · 2012 · 2024) is a one-time engineering build — versioned so each cohort drug's projection uses the rule set in force at its LOE date.
           </div>
         </div>
       </div>
@@ -6341,6 +7136,352 @@
           Every quantity in this tool is <strong style="color: var(--copper);">illustrative</strong>. Revenue-at-Risk inherits the LOE Pack's full upstream dependency stack — the current revenue base needs the HIRA pricing spine, the LOE date needs Patent Position's detail fields, and the erosion trajectory needs Erosion Curve's spine plus NHIS rule overlay.
           <div style="margin-top: 10px;">
             <strong style="color: var(--text);">Unlock sequencing:</strong> bind patent + BE detail (lowest-risk, no new ingestion → ships Patent Position + universe filter for LOE Analogue) → bind HIRA pricing spine (medium lift → ships Timing Forecast + Price Forecast + Erosion Curve) → encode NHIS rule overlay by era (engineering build → ships Erosion Curve fully). After all three, this tool becomes the LOE Pack's defensible top-line.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ───────────────────────────────────────────────── -->
+    <!-- LIVE: CLINICAL TRIAL TRACKER -->
+    <!-- ───────────────────────────────────────────────── -->
+    <section class="tool-screen" id="screen-trial-tracker">
+
+      <div class="tool-head">
+        <div>
+          <div class="tool-eyebrow overview">Pack 01 · Market Overview · Tool 04</div>
+          <h1 class="tool-h1">The Clinical Trial <em>Tracker</em></h1>
+          <p class="tool-sub">Korean MFDS trial approvals × US AACT data, side-by-side. The wire's cleanest cross-market join — same fields wired both sides, no proxy translation. Pipeline signal that underlies the Whitespace v3 unmet-need layer.</p>
+        </div>
+        <div class="tool-meta">
+          <div class="mock-pill live">Illustrative · Cleanest cross-market join</div>
+          <div class="tool-status-pill"><span class="status-dot amber"></span>Defensible · sponsor xwalk disclosure</div>
+        </div>
+      </div>
+
+      <!-- ─── METHOD SUMMARY (TOP) ─── -->
+      <section class="method-summary top">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Pull KR trial records from <code>core.clinical_trial</code> (MFDS Clinical Trial Approval Notification).</li>
+              <li>Pull US trial records from AACT (Aggregate Analysis of ClinicalTrials.gov) using the same field set.</li>
+              <li>Cross-walk sponsors via canonical company entity table — handles transliteration (한미약품 ↔ Hanmi) and cooperative-group naming.</li>
+              <li>Aggregate by phase, sponsor, site, ATC class, and approval cadence over the selected window.</li>
+              <li>Render side-by-side activity views + sponsor leaderboard + KR site map + cross-market xwalk panel.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">8 fields · both sides</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var">sponsor_nm</span>
+              <span class="ms-var">approval_date</span>
+              <span class="ms-var">instt_nm</span>
+              <span class="ms-var">instt_addr</span>
+              <span class="ms-var">invstgtr_nm</span>
+              <span class="ms-var">appoint_date_trial</span>
+              <span class="ms-var backend">US AACT · same fields</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <strong style="color: var(--text);">Same field set wired on both sides</strong> — the wire's cleanest cross-market join. No proxy translation, no semantic gap.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · enrichment</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Sponsor Cross-Walk</div>
+                <code>sponsor_canonical_table</code>
+                <div class="ms-gap-note">KR sponsor names have transliteration variation (한미약품 / Hanmi Pharm / Hanmi Pharmaceutical Co Ltd). Industry sponsors map cleanly; cooperative groups + academic consortia are messier. Disclose match-rate (currently ~88%).</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Indication Cross-Walk</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Indication-level KR↔US mapping is the same gap as Whitespace v2 — depends on parsing unstructured trial-protocol text. Class-level (ATC) cross-walk is clean.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Results &amp; Enrollment</div>
+                <code>completion · enrolled_count</code>
+                <div class="ms-gap-note">KR doesn't publish post-trial results consistently. US AACT has results for ~36% of registered trials. Enrollment counts sparse on KR side.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── FILTERS ─── -->
+      <div class="filters">
+        <div class="chip"><span class="chip-label">Markets</span>KR + US</div>
+        <div class="chip active"><span class="chip-label">TA</span>Endocrine &amp; Metabolic</div>
+        <div class="chip"><span class="chip-label">Phase</span>All</div>
+        <div class="chip"><span class="chip-label">Period</span>Last 24 months</div>
+      </div>
+
+      <!-- ─── KPI STRIP ─── -->
+      <div class="kpi-strip">
+        <div class="kpi">
+          <div class="kpi-label">Active KR Trials</div>
+          <div class="kpi-value">412</div>
+          <div class="kpi-delta">Endocrine + Metabolic · MFDS approved</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Active US Trials</div>
+          <div class="kpi-value">1,847</div>
+          <div class="kpi-delta">same TA · ClinicalTrials.gov</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">KR : US Ratio</div>
+          <div class="kpi-value">1 : 4.5</div>
+          <div class="kpi-delta up">KR concentration above avg (1 : 6.2)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Top Phase (KR)</div>
+          <div class="kpi-value">Phase 2</div>
+          <div class="kpi-delta">38% of active KR trials</div>
+        </div>
+      </div>
+
+      <!-- ─── MAIN: TRIAL APPROVAL ACTIVITY ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">Trial Approval Activity · 24 Months</div>
+          <div class="card-sub">Monthly approvals · KR (MFDS) and US (ClinicalTrials.gov) side-by-side</div>
+        </div>
+
+        <svg viewBox="0 0 1080 320" style="width: 100%; height: auto; display: block;">
+          <line x1="60" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="280" x2="1060" y2="280" stroke="rgba(240,232,208,0.18)"/>
+
+          <text x="50" y="44" class="axis-label" text-anchor="end">100</text>
+          <text x="50" y="104" class="axis-label" text-anchor="end">75</text>
+          <text x="50" y="164" class="axis-label" text-anchor="end">50</text>
+          <text x="50" y="224" class="axis-label" text-anchor="end">25</text>
+          <text x="50" y="284" class="axis-label" text-anchor="end">0</text>
+
+          <g id="trial-bars"></g>
+
+          <text x="80" y="302" class="axis-label">Jun '24</text>
+          <text x="320" y="302" class="axis-label">Dec '24</text>
+          <text x="560" y="302" class="axis-label">Jun '25</text>
+          <text x="800" y="302" class="axis-label">Dec '25</text>
+          <text x="1020" y="302" class="axis-label">May '26</text>
+
+          <text x="22" y="160" class="axis-title" text-anchor="middle" transform="rotate(-90 22 160)">Monthly trial approvals</text>
+        </svg>
+
+        <script>
+          (function() {
+            var g = document.getElementById('trial-bars');
+            var months = 24;
+            var xStart = 70, xEnd = 1050;
+            var width = (xEnd - xStart) / months;
+            var pairW = width * 0.78;
+            var barW = pairW / 2;
+            // Illustrative monthly counts
+            var krCounts = [14, 16, 18, 15, 17, 19, 16, 18, 21, 19, 17, 18, 19, 20, 22, 19, 21, 18, 20, 23, 21, 19, 17, 15];
+            var usCounts = [62, 68, 71, 65, 72, 78, 74, 79, 84, 81, 77, 79, 82, 86, 91, 84, 88, 81, 86, 92, 89, 84, 78, 72];
+            var scale = 240 / 100;
+            for (var i = 0; i < months; i++) {
+              var x = xStart + i * width + (width - pairW) / 2;
+              // KR bar (gold)
+              var krH = krCounts[i] * scale;
+              g.innerHTML += '<rect x="' + x + '" y="' + (280 - krH) + '" width="' + barW + '" height="' + krH + '" fill="#e8b87a" opacity="0.9"/>';
+              // US bar (blue)
+              var usH = usCounts[i] * scale;
+              g.innerHTML += '<rect x="' + (x + barW) + '" y="' + (280 - usH) + '" width="' + barW + '" height="' + usH + '" fill="#7dc8e8" opacity="0.85"/>';
+            }
+          })();
+        </script>
+
+        <div class="split-legend" style="margin-top: 16px;">
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>KR MFDS approvals</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8;"></span>US ClinicalTrials.gov approvals</div>
+          <div class="split-legend-item" style="margin-left: auto;">KR trend mirrors US with ~2-month lag · sponsors file KR after Phase 2 US signal</div>
+        </div>
+      </div>
+
+      <!-- ─── TOP SPONSORS + PHASE DISTRIBUTION ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Top Sponsors · Cross-Market</div>
+            <div class="card-sub">Active KR + US trials per parent company · 24mo · in TA</div>
+          </div>
+
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase;">Sponsor</div>
+            <div></div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; text-align: right;">KR</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; text-align: right;">US</div>
+          </div>
+
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Eli Lilly</div><div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div><div class="bar-value" style="color: var(--gold);">18</div><div class="bar-value" style="color: var(--blue);">142</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Novo Nordisk</div><div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div><div class="bar-value" style="color: var(--gold);">15</div><div class="bar-value" style="color: var(--blue);">126</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">AstraZeneca</div><div class="bar-track"><div class="bar-fill" style="width: 75%;"></div></div><div class="bar-value" style="color: var(--gold);">14</div><div class="bar-value" style="color: var(--blue);">108</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">MSD</div><div class="bar-track"><div class="bar-fill" style="width: 67%;"></div></div><div class="bar-value" style="color: var(--gold);">12</div><div class="bar-value" style="color: var(--blue);">96</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Hanmi Pharm</div><div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div><div class="bar-value" style="color: var(--gold);">11</div><div class="bar-value" style="color: var(--blue);">8</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Boehringer Ingelheim</div><div class="bar-track"><div class="bar-fill" style="width: 47%;"></div></div><div class="bar-value" style="color: var(--gold);">9</div><div class="bar-value" style="color: var(--blue);">84</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Pfizer</div><div class="bar-track"><div class="bar-fill" style="width: 41%;"></div></div><div class="bar-value" style="color: var(--gold);">8</div><div class="bar-value" style="color: var(--blue);">74</div></div>
+          <div class="bar-row" style="grid-template-columns: 160px 1fr 60px 60px;"><div class="bar-label">Yuhan Corp</div><div class="bar-track"><div class="bar-fill" style="width: 36%;"></div></div><div class="bar-value" style="color: var(--gold);">7</div><div class="bar-value" style="color: var(--blue);">3</div></div>
+
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            <strong style="color: var(--text);">Hanmi · Yuhan</strong> show inverted ratios — KR-domestic sponsors with limited US activity. The mismatch is the signal.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Phase Distribution</div>
+            <div class="card-sub">% of active trials · KR vs US comparison</div>
+          </div>
+
+          <div style="margin-top: 18px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.16em;">KR · 412 trials</div>
+            <div class="split-bar" style="margin-bottom: 8px;">
+              <div class="split-segment" style="background: var(--blue); width: 18%; opacity: 0.65;">18%</div>
+              <div class="split-segment" style="background: var(--gold); width: 38%;">38%</div>
+              <div class="split-segment" style="background: var(--copper); width: 31%;">31%</div>
+              <div class="split-segment" style="background: var(--violet); width: 13%; opacity: 0.85;">13%</div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0 14px 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--blue); letter-spacing: 0.16em;">US · 1,847 trials</div>
+            <div class="split-bar">
+              <div class="split-segment" style="background: var(--blue); width: 24%; opacity: 0.65;">24%</div>
+              <div class="split-segment" style="background: var(--gold); width: 34%;">34%</div>
+              <div class="split-segment" style="background: var(--copper); width: 26%;">26%</div>
+              <div class="split-segment" style="background: var(--violet); width: 16%; opacity: 0.85;">16%</div>
+            </div>
+          </div>
+
+          <div class="split-legend" style="margin-top: 18px;">
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8; opacity: 0.65;"></span>Phase 1</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>Phase 2</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #d49a6a;"></span>Phase 3</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0;"></span>Phase 4 / Other</div>
+          </div>
+
+          <div style="margin-top: 16px; padding: 12px 14px; background: var(--bg-elev); border-left: 2px solid var(--violet); font-size: 11.5px; color: var(--text); line-height: 1.55;">
+            KR skews to <strong style="color: var(--violet);">Phase 2 + Phase 3</strong> (69% combined) — Korea is typically a regional registration site, with Phase 1 first-in-human work concentrated in the US.
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── KR SITE MAP / TOP INSTITUTIONS ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">Top KR Trial Sites · core.clinical_trial.instt_nm</div>
+          <div class="card-sub">Active trial count per institution · 24mo · Seoul + national centers dominate</div>
+        </div>
+
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Seoul National University Hospital</div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: var(--violet);"></div></div><div class="bar-value">67</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Asan Medical Center</div><div class="bar-track"><div class="bar-fill" style="width: 81%; background: var(--violet);"></div></div><div class="bar-value">54</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Samsung Medical Center</div><div class="bar-track"><div class="bar-fill" style="width: 72%; background: var(--violet);"></div></div><div class="bar-value">48</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Severance Hospital (Yonsei)</div><div class="bar-track"><div class="bar-fill" style="width: 61%; background: var(--violet);"></div></div><div class="bar-value">41</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Seoul St. Mary's Hospital (CMC)</div><div class="bar-track"><div class="bar-fill" style="width: 49%; background: var(--violet);"></div></div><div class="bar-value">33</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Korea University Anam Hospital</div><div class="bar-track"><div class="bar-fill" style="width: 40%; background: var(--violet);"></div></div><div class="bar-value">27</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Inha University Hospital</div><div class="bar-track"><div class="bar-fill" style="width: 28%; background: var(--violet); opacity: 0.7;"></div></div><div class="bar-value">19</div></div>
+        <div class="bar-row" style="grid-template-columns: 280px 1fr 80px;"><div class="bar-label">Kyungpook National University Hospital</div><div class="bar-track"><div class="bar-fill" style="width: 24%; background: var(--violet); opacity: 0.7;"></div></div><div class="bar-value">16</div></div>
+
+        <div style="margin-top: 18px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--violet); font-size: 12px; color: var(--text); line-height: 1.55;">
+          <strong style="color: var(--violet);">Top 4 sites hold 51%</strong> of all KR trial activity in this TA. Seoul-metro institutions plus Asan dominate; regional sites (Inha, Kyungpook) carry &lt;5% each. Investigator concentration is a KR-specific recruitment-strategy consideration.
+        </div>
+      </div>
+
+      <!-- ─── CROSS-MARKET SPONSOR XWALK ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">Cross-Market Sponsor Cross-Walk</div>
+          <div class="card-sub">How KR <code>sponsor_nm</code> resolves to US AACT canonical names · disclose match-rate</div>
+        </div>
+
+        <div class="patent-row head" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div>KR sponsor_nm</div>
+          <div>→ Canonical Parent</div>
+          <div>US AACT sponsor</div>
+          <div style="text-align: right;">Match</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">한미약품 / Hanmi Pharm</div>
+          <div class="patent-name" style="font-style: normal;">Hanmi Pharmaceutical Co Ltd</div>
+          <div class="patent-name" style="font-style: normal;">Hanmi Pharmaceutical</div>
+          <div class="patent-days" style="color: var(--green);">CLEAN</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">한국릴리</div>
+          <div class="patent-name" style="font-style: normal;">Eli Lilly &amp; Co</div>
+          <div class="patent-name" style="font-style: normal;">Eli Lilly and Company</div>
+          <div class="patent-days" style="color: var(--green);">CLEAN</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">노보 노디스크 제약</div>
+          <div class="patent-name" style="font-style: normal;">Novo Nordisk A/S</div>
+          <div class="patent-name" style="font-style: normal;">Novo Nordisk</div>
+          <div class="patent-days" style="color: var(--green);">CLEAN</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">아스트라제네카</div>
+          <div class="patent-name" style="font-style: normal;">AstraZeneca PLC</div>
+          <div class="patent-name" style="font-style: normal;">AstraZeneca</div>
+          <div class="patent-days" style="color: var(--green);">CLEAN</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">한국MSD</div>
+          <div class="patent-name" style="font-style: normal;">Merck &amp; Co Inc</div>
+          <div class="patent-name" style="font-style: normal;">Merck Sharp &amp; Dohme LLC</div>
+          <div class="patent-days" style="color: var(--amber);">FUZZY</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">유한양행</div>
+          <div class="patent-name" style="font-style: normal;">Yuhan Corporation</div>
+          <div class="patent-name" style="font-style: normal;">Yuhan Corp · Janssen co-promo</div>
+          <div class="patent-days" style="color: var(--amber);">FUZZY</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">대한당뇨병학회</div>
+          <div class="patent-name" style="font-style: normal;">Korean Diabetes Association</div>
+          <div class="patent-name" style="font-style: normal;">— (no US AACT counterpart)</div>
+          <div class="patent-days" style="color: var(--coral);">UNMATCHED</div>
+        </div>
+
+        <div class="patent-row" style="grid-template-columns: 1fr 1fr 1fr 100px;">
+          <div class="patent-name" style="font-style: normal;">국립암센터</div>
+          <div class="patent-name" style="font-style: normal;">National Cancer Center Korea</div>
+          <div class="patent-name" style="font-style: normal;">— (academic KR-only)</div>
+          <div class="patent-days" style="color: var(--coral);">UNMATCHED</div>
+        </div>
+
+        <div style="margin-top: 18px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--violet); font-size: 12px; color: var(--text); line-height: 1.55;">
+          <strong style="color: var(--violet);">Match rate · 88%</strong> on industry sponsors (CLEAN + FUZZY) · academic / cooperative groups don't have US AACT counterparts and stay UNMATCHED. Disclose alongside any cross-market sponsor leaderboard.
+        </div>
+      </div>
+
+      <!-- ─── DATA STATUS BANNER ─── -->
+      <div class="data-banner" style="border-left-color: var(--blue);">
+        <div class="data-banner-label" style="color: var(--blue);">DATA STATUS · CLEANEST CROSS-MARKET JOIN</div>
+        <div class="data-banner-body">
+          The clinical trial spine is the <strong style="color: var(--text);">most thoroughly wired part of the wire</strong> — same 8 fields bound on both KR (MFDS) and US (AACT) sides. Side-by-side comparison is methodologically clean today; no proxy translation, no semantic gap, no missing variables.
+          <div style="margin-top: 10px;">
+            <strong style="color: var(--text);">Three enrichment paths:</strong> publish the sponsor cross-walk match-rate alongside every leaderboard (currently 88%); bind <code>indication_xwalk</code> for indication-level cross-market trial mapping (shared gap with Whitespace v2); and add AACT trial results + enrollment for the ~36% of US trials that publish them. None of these block the headline view today.
           </div>
         </div>
       </div>
