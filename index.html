@@ -2816,62 +2816,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY — Market Landscape (TOP) ─── -->
-      <section class="method-summary top">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
-            <ol class="ms-steps">
-              <li>Filter HIRA all-payer utilization records by ATC class within the selected TA, scoped to <code>diag_ym</code> window.</li>
-              <li>Aggregate <code>msup_use_amt</code> and <code>tot_use_qty</code> by month, class, manufacturer, and ICD-10 indication.</li>
-              <li>Compute originator/generic shares from <code>is_originator</code>, class CAGR from monthly time series, payer mix from <code>insup_tp_cd</code>.</li>
-              <li>Render time series, class rankings, manufacturer concentration, disease mix, and payer split.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">diag_ym</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">meft_div_no</span>
-              <span class="ms-var">sick_cd</span>
-              <span class="ms-var">sick_nm</span>
-              <span class="ms-var">entp_eng_name</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">insup_tp_cd</span>
-              <span class="ms-var">cross_dim</span>
-              <span class="ms-var">rare_drug_yn</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              Latest claims snapshot: <strong style="color: var(--text);">HIRA Dec 2024</strong> · monthly refresh from <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">claims.usage_stats</code> in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">kor_db</code> (R2 parquet). <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">sick_cd</code> is HIRA-format ('A' + ICD-10); prefix stripped on display.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">2 fields</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>pay_tp_nm</code>
-                <div class="ms-gap-note">Reimbursement status — covered / non-payable / arbitrary-not-allowed / payment-suspended. Needed to surface reimbursed vs non-reimbursed share at class level.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>mds_cd</code>
-                <div class="ms-gap-note">Insurance billing code. Needed to count reimbursed drugs per class for competitive density view.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div class="filters">
         <div class="chip"><span class="chip-label">Country</span>Korea</div>
@@ -3062,6 +3006,62 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY— Market Landscape ─── -->
+      <section class="method-summary">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
+            <ol class="ms-steps">
+              <li>Filter HIRA all-payer utilization records by ATC class within the selected TA, scoped to <code>diag_ym</code> window.</li>
+              <li>Aggregate <code>msup_use_amt</code> and <code>tot_use_qty</code> by month, class, manufacturer, and ICD-10 indication.</li>
+              <li>Compute originator/generic shares from <code>is_originator</code>, class CAGR from monthly time series, payer mix from <code>insup_tp_cd</code>.</li>
+              <li>Render time series, class rankings, manufacturer concentration, disease mix, and payer split.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">diag_ym</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">meft_div_no</span>
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">insup_tp_cd</span>
+              <span class="ms-var">cross_dim</span>
+              <span class="ms-var">rare_drug_yn</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              Latest claims snapshot: <strong style="color: var(--text);">HIRA Dec 2024</strong> · monthly refresh from <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">claims.usage_stats</code> in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">kor_db</code> (R2 parquet). <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">sick_cd</code> is HIRA-format ('A' + ICD-10); prefix stripped on display.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">2 fields</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>pay_tp_nm</code>
+                <div class="ms-gap-note">Reimbursement status — covered / non-payable / arbitrary-not-allowed / payment-suspended. Needed to surface reimbursed vs non-reimbursed share at class level.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mds_cd</code>
+                <div class="ms-gap-note">Insurance billing code. Needed to count reimbursed drugs per class for competitive density view.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
@@ -3080,66 +3080,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY — Whitespace (TOP) ─── -->
-      <section class="method-summary top">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
-            <ol class="ms-steps">
-              <li>Aggregate treated patient volume per ICD-10 code (<code>sick_cd</code>) from HIRA utilization data — proxy for disease burden.</li>
-              <li>Count reimbursed therapy options per indication using ATC class plus reimbursement status; surface manufacturer concentration.</li>
-              <li>Compute gap score as a function of treated burden, treatment density, and class growth — weighted to highlight under-treated diseases.</li>
-              <li>Rank diseases by gap score; render bubble matrix and ranked opportunity list. Whitespace = high burden × low treatment density.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">sick_cd</span>
-              <span class="ms-var">sick_nm</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">entp_eng_name</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">clnc_test_sn</span>
-              <span class="ms-var">trial_phase</span>
-              <span class="ms-var backend">US Drugs@FDA (backend)</span>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · layered</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v1 · KR Reimbursement Gap</div>
-                <code>pay_tp_nm</code><code>mds_cd</code>
-                <div class="ms-gap-note">Needed for full reimbursement-gap view — drugs MFDS-approved but HIRA non-reimbursed.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v2 · US–KR Availability Gap</div>
-                <code>indication_xwalk</code>
-                <div class="ms-gap-note">Indication-level KR↔US cross-walk. Wire supports product-level mapping; indication mapping requires parsing unstructured <code>ee_doc_data</code> label text.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v3 · True Unmet Need</div>
-                <code>external_prevalence</code>
-                <div class="ms-gap-note">External disease prevalence dataset (KOSIS / WHO / Global Burden of Disease) to convert "treated volume" to "true prevalence" and surface under-diagnosed conditions.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v3 · Post-LOE Opportunity</div>
-                <code>expire_date</code>
-                <div class="ms-gap-note">Patent expiration — needed to flag classes where patents expired but few generics launched (regulatory/commercial barrier or opportunity).</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <div class="filters">
         <div class="chip"><span class="chip-label">Country</span>Korea</div>
@@ -3296,6 +3236,66 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY— Whitespace ─── -->
+      <section class="method-summary">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
+            <ol class="ms-steps">
+              <li>Aggregate treated patient volume per ICD-10 code (<code>sick_cd</code>) from HIRA utilization data — proxy for disease burden.</li>
+              <li>Count reimbursed therapy options per indication using ATC class plus reimbursement status; surface manufacturer concentration.</li>
+              <li>Compute gap score as a function of treated burden, treatment density, and class growth — weighted to highlight under-treated diseases.</li>
+              <li>Rank diseases by gap score; render bubble matrix and ranked opportunity list. Whitespace = high burden × low treatment density.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var backend">US Drugs@FDA (backend)</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · layered</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · KR Reimbursement Gap</div>
+                <code>pay_tp_nm</code><code>mds_cd</code>
+                <div class="ms-gap-note">Needed for full reimbursement-gap view — drugs MFDS-approved but HIRA non-reimbursed.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · US–KR Availability Gap</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Indication-level KR↔US cross-walk. Wire supports product-level mapping; indication mapping requires parsing unstructured <code>ee_doc_data</code> label text.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v3 · True Unmet Need</div>
+                <code>external_prevalence</code>
+                <div class="ms-gap-note">External disease prevalence dataset (KOSIS / WHO / Global Burden of Disease) to convert "treated volume" to "true prevalence" and surface under-diagnosed conditions.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v3 · Post-LOE Opportunity</div>
+                <code>expire_date</code>
+                <div class="ms-gap-note">Patent expiration — needed to flag classes where patents expired but few generics launched (regulatory/commercial barrier or opportunity).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
 
@@ -3316,88 +3316,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">8 steps · 3 feeds</span></div>
-            <ol class="ms-steps">
-              <li>Pull US shortage records from <code>core.shortage</code> (openFDA Drug Shortages, 1,688 rows).</li>
-              <li>Pull US label amendments from openFDA <code>label</code> via SPL version-history deltas (<code>spl_set_id</code>, <code>effective_time</code>).</li>
-              <li>Pull KR recall records from <code>core.recall</code> — full detail spine wired clean (KR-side recall feed is the methodological twin of Patent Position).</li>
-              <li>Pull KR MFDS shortage list + label notifications (both pending small ingestions — public weekly feeds).</li>
-              <li>Cross-walk by ingredient + ATC across all three signal feeds to identify concurrent multi-signal drugs.</li>
-              <li>Apply taxonomy classifiers — amendment-type (7 buckets) + recall-reason (6 buckets, applied to KR free-form Korean text).</li>
-              <li>Aggregate by reason / type / month / sponsor; compute compound-risk pairings (shortage + amendment, shortage + recall, recall + amendment).</li>
-              <li>Render unified surveillance feed: supply → safety → quality → compounded → KR cross-market views.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">18 fields · 2 sides</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">company_name</span>
-              <span class="ms-var">shortage_status</span>
-              <span class="ms-var">reason</span>
-              <span class="ms-var">dates_of_intervention</span>
-              <span class="ms-var">product_type</span>
-              <span class="ms-var">spl_set_id</span>
-              <span class="ms-var">effective_time</span>
-              <span class="ms-var">version_number</span>
-              <span class="ms-var">submission_type</span>
-              <span class="ms-var">recall_date</span>
-              <span class="ms-var">recall_reason</span>
-              <span class="ms-var">recall_command_dt</span>
-              <span class="ms-var">manuf_date</span>
-              <span class="ms-var">lot_no</span>
-              <span class="ms-var">packng_unit</span>
-              <span class="ms-var">open_end_date</span>
-              <span class="ms-var">item_seq</span>
-              <span class="ms-var">entp_tel</span>
-              <span class="ms-var backend">openFDA Shortages + Label SPL + core.recall</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              KR recall spine wired clean (Patent-Position-like deterministic lookup) · US shortage + amendment feeds wired clean. <strong style="color: var(--text);">KR shortage + label-notification feeds require parallel net-new ingestions</strong> — paired engineering pass unlocks both.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">5 · 2 KR feeds + 3 enrichments</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">KR MFDS Shortage Feed · INGESTION</div>
-                <code>mfds.shortage.weekly</code>
-                <div class="ms-gap-note">Public weekly CSV. Net-new ingestion (not in warehouse). Single feed, ~40–60 active rows per snapshot.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">KR MFDS Label Notifications · INGESTION</div>
-                <code>mfds.label.notifications</code>
-                <div class="ms-gap-note">Same shape as the shortage feed. Public publication of label changes. Net-new ingestion alongside the shortage feed.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Recall Reason Taxonomy · Classifier</div>
-                <code>recall_reason_category</code>
-                <div class="ms-gap-note">KFDA <code>recall_reason</code> is free-form Korean. 6-bucket taxonomy is applied (quality defect / labelling / stability / content / contamination / other) — disclose classifier accuracy (~92% on validation sample).</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Amendment-Type Classifier</div>
-                <code>amendment_category</code>
-                <div class="ms-gap-note">SPL revisions are free-form text. A 7-bucket taxonomy is applied (boxed warning / contraindication / AE expanded / DDI / indication change / dosing / other) — disclose accuracy on validation sample.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Severity Classification</div>
-                <code>recall_class · amendment_severity</code>
-                <div class="ms-gap-note">Neither KFDA nor openFDA publishes FDA-style severity classes (Class I/II/III) consistently. Severity proxies: boxed-warning &gt; contraindication &gt; AE-expansion on labels; contamination &gt; quality &gt; labelling on recalls.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── FILTERS ─── -->
       <div class="filters">
@@ -4013,6 +3931,88 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">8 steps · 3 feeds</span></div>
+            <ol class="ms-steps">
+              <li>Pull US shortage records from <code>core.shortage</code> (openFDA Drug Shortages, 1,688 rows).</li>
+              <li>Pull US label amendments from openFDA <code>label</code> via SPL version-history deltas (<code>spl_set_id</code>, <code>effective_time</code>).</li>
+              <li>Pull KR recall records from <code>core.recall</code> — full detail spine wired clean (KR-side recall feed is the methodological twin of Patent Position).</li>
+              <li>Pull KR MFDS shortage list + label notifications (both pending small ingestions — public weekly feeds).</li>
+              <li>Cross-walk by ingredient + ATC across all three signal feeds to identify concurrent multi-signal drugs.</li>
+              <li>Apply taxonomy classifiers — amendment-type (7 buckets) + recall-reason (6 buckets, applied to KR free-form Korean text).</li>
+              <li>Aggregate by reason / type / month / sponsor; compute compound-risk pairings (shortage + amendment, shortage + recall, recall + amendment).</li>
+              <li>Render unified surveillance feed: supply → safety → quality → compounded → KR cross-market views.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">18 fields · 2 sides</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">company_name</span>
+              <span class="ms-var">shortage_status</span>
+              <span class="ms-var">reason</span>
+              <span class="ms-var">dates_of_intervention</span>
+              <span class="ms-var">product_type</span>
+              <span class="ms-var">spl_set_id</span>
+              <span class="ms-var">effective_time</span>
+              <span class="ms-var">version_number</span>
+              <span class="ms-var">submission_type</span>
+              <span class="ms-var">recall_date</span>
+              <span class="ms-var">recall_reason</span>
+              <span class="ms-var">recall_command_dt</span>
+              <span class="ms-var">manuf_date</span>
+              <span class="ms-var">lot_no</span>
+              <span class="ms-var">packng_unit</span>
+              <span class="ms-var">open_end_date</span>
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">entp_tel</span>
+              <span class="ms-var backend">openFDA Shortages + Label SPL + core.recall</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              KR recall spine wired clean (Patent-Position-like deterministic lookup) · US shortage + amendment feeds wired clean. <strong style="color: var(--text);">KR shortage + label-notification feeds require parallel net-new ingestions</strong> — paired engineering pass unlocks both.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">5 · 2 KR feeds + 3 enrichments</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">KR MFDS Shortage Feed · INGESTION</div>
+                <code>mfds.shortage.weekly</code>
+                <div class="ms-gap-note">Public weekly CSV. Net-new ingestion (not in warehouse). Single feed, ~40–60 active rows per snapshot.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">KR MFDS Label Notifications · INGESTION</div>
+                <code>mfds.label.notifications</code>
+                <div class="ms-gap-note">Same shape as the shortage feed. Public publication of label changes. Net-new ingestion alongside the shortage feed.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Recall Reason Taxonomy · Classifier</div>
+                <code>recall_reason_category</code>
+                <div class="ms-gap-note">KFDA <code>recall_reason</code> is free-form Korean. 6-bucket taxonomy is applied (quality defect / labelling / stability / content / contamination / other) — disclose classifier accuracy (~92% on validation sample).</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Amendment-Type Classifier</div>
+                <code>amendment_category</code>
+                <div class="ms-gap-note">SPL revisions are free-form text. A 7-bucket taxonomy is applied (boxed warning / contraindication / AE expanded / DDI / indication change / dosing / other) — disclose accuracy on validation sample.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Severity Classification</div>
+                <code>recall_class · amendment_severity</code>
+                <div class="ms-gap-note">Neither KFDA nor openFDA publishes FDA-style severity classes (Class I/II/III) consistently. Severity proxies: boxed-warning &gt; contraindication &gt; AE-expansion on labels; contamination &gt; quality &gt; labelling on recalls.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner" style="border-left-color: var(--amber);">
         <div class="data-banner-label" style="color: var(--amber);">DATA STATUS · 4 OF 6 FEEDS WIRED · 2 KR INGESTIONS PENDING</div>
@@ -4043,72 +4043,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top launch">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Anchor the subject drug to its US originator via Drugs@FDA <code>application_number</code> and KR <code>trust_item_seq</code> (backend join, never displayed).</li>
-              <li>Build candidate universe: all KR drugs with a US-originator anchor that completed MFDS filing 2014–present.</li>
-              <li>Score each candidate across 6 similarity dimensions — class, indication, modality, mechanism, orphan status, US-tier — with prior weights.</li>
-              <li>Apply dimension confidence multipliers (wired dims = 1.0; unwired dims = 0.0 contribution + flagged).</li>
-              <li>Rank by weighted similarity; surface top 14 with full dimension breakdown. Cohort feeds Timing &amp; Price forecasts downstream.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">item_seq</span>
-              <span class="ms-var">item_eng_name</span>
-              <span class="ms-var">main_ingr_eng</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">is_orphan_drug</span>
-              <span class="ms-var">mix_type</span>
-              <span class="ms-var">form_name</span>
-              <span class="ms-var">route_of_administration</span>
-              <span class="ms-var">narcotic_kind_code</span>
-              <span class="ms-var">trial_phase</span>
-              <span class="ms-var">clnc_test_sn</span>
-              <span class="ms-var backend">trust_item_seq (backend)</span>
-              <span class="ms-var backend">Drugs@FDA (backend)</span>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · staged</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v1 · Mechanism Classifier</div>
-                <code>atc_5 + drugbank_xwalk</code>
-                <div class="ms-gap-note">Methodology weights mechanism at 0.20 — largest single hole. Needs ATC-5 + DrugBank/RxNorm hierarchy join. Cohort runs with 4 wired dims; mechanism dim greyed out.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v1 · Modality Classifier</div>
-                <code>material_name + induty_type</code>
-                <div class="ms-gap-note">Small-mol / biologic / cell-gene derivation rule. <code>material_name</code> wired, <code>induty_type</code> not. Need to author + validate classifier against manual sample.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v2 · US-Tier Backend</div>
-                <code>submission_class_code</code><code>Exclusivity_Code</code>
-                <div class="ms-gap-note">Drugs@FDA NCE / 505(b)(2) / Priority Review / Breakthrough flags. Backend prior only — never user-visible. Weighted 0.05.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v2 · Indication for New Drug</div>
-                <code>ee_doc_data parse</code>
-                <div class="ms-gap-note">For a drug with no usage history, indication has to come from the unstructured label text. Currently disclosed as a manual input.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR ─── -->
       <div class="subject-bar">
@@ -4483,6 +4417,72 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Anchor the subject drug to its US originator via Drugs@FDA <code>application_number</code> and KR <code>trust_item_seq</code> (backend join, never displayed).</li>
+              <li>Build candidate universe: all KR drugs with a US-originator anchor that completed MFDS filing 2014–present.</li>
+              <li>Score each candidate across 6 similarity dimensions — class, indication, modality, mechanism, orphan status, US-tier — with prior weights.</li>
+              <li>Apply dimension confidence multipliers (wired dims = 1.0; unwired dims = 0.0 contribution + flagged).</li>
+              <li>Rank by weighted similarity; surface top 14 with full dimension breakdown. Cohort feeds Timing &amp; Price forecasts downstream.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">item_eng_name</span>
+              <span class="ms-var">main_ingr_eng</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">is_orphan_drug</span>
+              <span class="ms-var">mix_type</span>
+              <span class="ms-var">form_name</span>
+              <span class="ms-var">route_of_administration</span>
+              <span class="ms-var">narcotic_kind_code</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var backend">trust_item_seq (backend)</span>
+              <span class="ms-var backend">Drugs@FDA (backend)</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · staged</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · Mechanism Classifier</div>
+                <code>atc_5 + drugbank_xwalk</code>
+                <div class="ms-gap-note">Methodology weights mechanism at 0.20 — largest single hole. Needs ATC-5 + DrugBank/RxNorm hierarchy join. Cohort runs with 4 wired dims; mechanism dim greyed out.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · Modality Classifier</div>
+                <code>material_name + induty_type</code>
+                <div class="ms-gap-note">Small-mol / biologic / cell-gene derivation rule. <code>material_name</code> wired, <code>induty_type</code> not. Need to author + validate classifier against manual sample.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · US-Tier Backend</div>
+                <code>submission_class_code</code><code>Exclusivity_Code</code>
+                <div class="ms-gap-note">Drugs@FDA NCE / 505(b)(2) / Priority Review / Breakthrough flags. Backend prior only — never user-visible. Weighted 0.05.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · Indication for New Drug</div>
+                <code>ee_doc_data parse</code>
+                <div class="ms-gap-note">For a drug with no usage history, indication has to come from the unstructured label text. Currently disclosed as a manual input.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
@@ -4502,65 +4502,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top launch">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Take subject drug + its analogue cohort from Launch Analogue; derive the relevant class universe (ATC-4 + adjacent ATC-5 codes).</li>
-              <li>Pull all HIRA-utilized drugs in the class universe, scoped to the indication's ICD-10 set (<code>sick_cd</code>).</li>
-              <li>Aggregate <code>msup_use_amt</code> by month and originator/generic status; compute class CAGR and concentration.</li>
-              <li>Position the subject drug's projected price band against current incumbents using HIRA <code>mx_cprc</code> distribution (when wired).</li>
-              <li>Render class trajectory, top incumbents, indication mix, payer mix, and price-band positioning — all class-scoped.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">entp_eng_name</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">sick_nm</span>
-              <span class="ms-var">sick_cd</span>
-              <span class="ms-var">diag_ym</span>
-              <span class="ms-var">insup_tp_cd</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 10px; color: var(--text-dim); line-height: 1.5;">
-              KR-only scope resolves the wire's cross-market 🔴 flags on <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">diag_ym</code> granularity and <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">insup_tp_cd</code> scope. Korea HIRA all-payer monthly is the entire view.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">3 fields</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>pay_tp_nm</code>
-                <div class="ms-gap-note">Reimbursement status — required to split competitors into covered / non-payable / arbitrary-not-allowed. Shared blocker with Market Landscape — fix once, ship twice.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>mds_cd</code>
-                <div class="ms-gap-note">Insurance billing code. Required to count competitors with non-null reimbursement at the class level.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Price Positioning</div>
-                <code>mx_cprc · adt_sta_dd</code>
-                <div class="ms-gap-note">Inherited from the unwired HIRA pricing data spine. Without it the price-band positioning is illustrative — current view uses cohort regression rather than realized prices.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR ─── -->
       <div class="subject-bar">
@@ -4831,6 +4772,65 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Take subject drug + its analogue cohort from Launch Analogue; derive the relevant class universe (ATC-4 + adjacent ATC-5 codes).</li>
+              <li>Pull all HIRA-utilized drugs in the class universe, scoped to the indication's ICD-10 set (<code>sick_cd</code>).</li>
+              <li>Aggregate <code>msup_use_amt</code> by month and originator/generic status; compute class CAGR and concentration.</li>
+              <li>Position the subject drug's projected price band against current incumbents using HIRA <code>mx_cprc</code> distribution (when wired).</li>
+              <li>Render class trajectory, top incumbents, indication mix, payer mix, and price-band positioning — all class-scoped.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">diag_ym</span>
+              <span class="ms-var">insup_tp_cd</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 10px; color: var(--text-dim); line-height: 1.5;">
+              KR-only scope resolves the wire's cross-market 🔴 flags on <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">diag_ym</code> granularity and <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">insup_tp_cd</code> scope. Korea HIRA all-payer monthly is the entire view.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 fields</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>pay_tp_nm</code>
+                <div class="ms-gap-note">Reimbursement status — required to split competitors into covered / non-payable / arbitrary-not-allowed. Shared blocker with Market Landscape — fix once, ship twice.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mds_cd</code>
+                <div class="ms-gap-note">Insurance billing code. Required to count competitors with non-null reimbursement at the class level.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Price Positioning</div>
+                <code>mx_cprc · adt_sta_dd</code>
+                <div class="ms-gap-note">Inherited from the unwired HIRA pricing data spine. Without it the price-band positioning is illustrative — current view uses cohort regression rather than realized prices.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
@@ -4850,60 +4850,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top launch">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Take cohort + weights from Launch Analogue (14 US→KR precedents · weighted ≥ 0.40).</li>
-              <li>For each analogue, observe filing-to-listing duration: filing = earliest pricing-change record, listing = <code>adt_sta_dd</code>.</li>
-              <li>Right-censor analogues still in review at observation date using <code>cancel_name</code> (Active &amp; null <code>mds_cd</code> → in review).</li>
-              <li>Fit weighted Kaplan-Meier survival estimator; condition on US-approval anchor lag from Drugs@FDA <code>submission_status_date</code>.</li>
-              <li>Project subject distribution: median, P10–P90, and 95% CI envelope on listing date.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">3 + cohort weights</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">clnc_test_sn</span>
-              <span class="ms-var">trial_phase</span>
-              <span class="ms-var">cancel_name</span>
-              <span class="ms-var backend">cohort weights (Launch · 01)</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">cancel_name</code> within KR distinguishes Active / Cancelled / Suspended cleanly — the wire's 🟡 flag is a backend US-join concern and doesn't touch the KR-side censoring rule.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">5 fields · the spine</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>adt_sta_dd</code><code>mx_cprc</code><code>chg_bf_mds_cd</code>
-                <div class="ms-gap-note">Price effective date is the listing-date proxy. Earliest pricing-change record is the filing-date proxy. Entire spine unwired. Cohort observations &amp; survival fit are illustrative until bound.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA listing notices</div>
-                <code>msupCmpnMeftDtl</code>
-                <div class="ms-gap-note">Alternate listing-date source. Useful for cross-validation against <code>adt_sta_dd</code>.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">US approval anchor · backend</div>
-                <code>submission_status_date</code>
-                <div class="ms-gap-note">Drugs@FDA. Sole US covariate — the US-approval → MFDS-filing lag enters as a single regressor.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR ─── -->
       <div class="subject-bar">
@@ -5188,6 +5134,60 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Take cohort + weights from Launch Analogue (14 US→KR precedents · weighted ≥ 0.40).</li>
+              <li>For each analogue, observe filing-to-listing duration: filing = earliest pricing-change record, listing = <code>adt_sta_dd</code>.</li>
+              <li>Right-censor analogues still in review at observation date using <code>cancel_name</code> (Active &amp; null <code>mds_cd</code> → in review).</li>
+              <li>Fit weighted Kaplan-Meier survival estimator; condition on US-approval anchor lag from Drugs@FDA <code>submission_status_date</code>.</li>
+              <li>Project subject distribution: median, P10–P90, and 95% CI envelope on listing date.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">3 + cohort weights</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var">cancel_name</span>
+              <span class="ms-var backend">cohort weights (Launch · 01)</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">cancel_name</code> within KR distinguishes Active / Cancelled / Suspended cleanly — the wire's 🟡 flag is a backend US-join concern and doesn't touch the KR-side censoring rule.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">5 fields · the spine</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>adt_sta_dd</code><code>mx_cprc</code><code>chg_bf_mds_cd</code>
+                <div class="ms-gap-note">Price effective date is the listing-date proxy. Earliest pricing-change record is the filing-date proxy. Entire spine unwired. Cohort observations &amp; survival fit are illustrative until bound.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA listing notices</div>
+                <code>msupCmpnMeftDtl</code>
+                <div class="ms-gap-note">Alternate listing-date source. Useful for cross-validation against <code>adt_sta_dd</code>.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">US approval anchor · backend</div>
+                <code>submission_status_date</code>
+                <div class="ms-gap-note">Drugs@FDA. Sole US covariate — the US-approval → MFDS-filing lag enters as a single regressor.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner" style="border-left-color: var(--gold);">
         <div class="data-banner-label" style="color: var(--gold);">DATA STATUS · ILLUSTRATIVE</div>
@@ -5218,63 +5218,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top launch">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Take cohort + weights from Launch Analogue. Pull each analogue's listed <code>mx_cprc</code> at <code>adt_sta_dd</code>.</li>
-              <li>Normalise to KRW per DDD: divide listed price by daily-defined-dose, using <code>strength</code>, <code>strength_unit</code>, <code>cont_qy</code>, and ATC-WHO DDD reference.</li>
-              <li>Fit weighted regression on cohort prices conditional on class, modality, and originator status.</li>
-              <li>Anchor central estimate to US ASP (single IRP anchor) — convert USD→KRW at <code>adt_sta_dd</code> month using FX series.</li>
-              <li>Project subject's KRW/DDD band: median, P25–P75, and 95% CI envelope.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">6 + cohort</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">strength</span>
-              <span class="ms-var">strength_unit</span>
-              <span class="ms-var">pack_unit</span>
-              <span class="ms-var">route_of_administration</span>
-              <span class="ms-var">form_name</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var backend">cohort weights (Launch · 01)</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">cont_qy</code> sits on the KR patent record (historical placement quirk). Strength normalisation handles it, but DDD calculation depends on the join.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 fields</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>mx_cprc</code><code>adt_sta_dd</code>
-                <div class="ms-gap-note">The empirical component — historical listing prices for the analogue cohort, time-indexed. Without it the cohort regression is unfittable.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">US IRP Anchor · backend</div>
-                <code>US ASP / NADAC</code>
-                <div class="ms-gap-note">Single backend reference. The methodology's minimum viable IRP overlay. JP / AU / CN / SG explicitly out of scope.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">FX series</div>
-                <code>USD↔KRW · 2014–2026</code>
-                <div class="ms-gap-note">Monthly FX needed to convert US ASP into a KRW-comparable reference at each price-observation date.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR ─── -->
       <div class="subject-bar">
@@ -5502,6 +5445,63 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Take cohort + weights from Launch Analogue. Pull each analogue's listed <code>mx_cprc</code> at <code>adt_sta_dd</code>.</li>
+              <li>Normalise to KRW per DDD: divide listed price by daily-defined-dose, using <code>strength</code>, <code>strength_unit</code>, <code>cont_qy</code>, and ATC-WHO DDD reference.</li>
+              <li>Fit weighted regression on cohort prices conditional on class, modality, and originator status.</li>
+              <li>Anchor central estimate to US ASP (single IRP anchor) — convert USD→KRW at <code>adt_sta_dd</code> month using FX series.</li>
+              <li>Project subject's KRW/DDD band: median, P25–P75, and 95% CI envelope.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">6 + cohort</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">strength</span>
+              <span class="ms-var">strength_unit</span>
+              <span class="ms-var">pack_unit</span>
+              <span class="ms-var">route_of_administration</span>
+              <span class="ms-var">form_name</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var backend">cohort weights (Launch · 01)</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">cont_qy</code> sits on the KR patent record (historical placement quirk). Strength normalisation handles it, but DDD calculation depends on the join.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 fields</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mx_cprc</code><code>adt_sta_dd</code>
+                <div class="ms-gap-note">The empirical component — historical listing prices for the analogue cohort, time-indexed. Without it the cohort regression is unfittable.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">US IRP Anchor · backend</div>
+                <code>US ASP / NADAC</code>
+                <div class="ms-gap-note">Single backend reference. The methodology's minimum viable IRP overlay. JP / AU / CN / SG explicitly out of scope.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">FX series</div>
+                <code>USD↔KRW · 2014–2026</code>
+                <div class="ms-gap-note">Monthly FX needed to convert US ASP into a KRW-comparable reference at each price-observation date.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner" style="border-left-color: var(--gold);">
         <div class="data-banner-label" style="color: var(--gold);">DATA STATUS · ILLUSTRATIVE</div>
@@ -5532,65 +5532,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP · LOE) ─── -->
-      <section class="method-summary top loe">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Universe construction: KR drugs with <code>is_originator = Y</code> + <code>expire_date</code> in the past + ≥ 1 <code>bio_approval_date</code> on the same ingredient.</li>
-              <li>For each LOE event, observe pre- and post-LOE utilisation from <code>msup_use_amt</code> and <code>tot_use_qty</code> over a ±36-month window.</li>
-              <li>Score each candidate against subject across 6 dimensions: class, form/route, indication, originator size, brand loyalty (constructed), chronic/acute (constructed).</li>
-              <li>Apply dimension confidence multipliers — constructed dimensions contribute 0 weight until classifier ships.</li>
-              <li>Rank by weighted similarity. Output cohort feeds Erosion Curve (Tool 03) and Revenue-at-Risk (Tool 04) downstream.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">8 fields · KR-only</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">item_seq</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">form_name</span>
-              <span class="ms-var">form_code</span>
-              <span class="ms-var">route_of_administration</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var backend">therapeutic_class_id (caveat)</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              <strong style="color: var(--text);">KR→KR by design.</strong> NHIS post-LOE pricing rules can't be inferred from US generic dynamics (US: competitive bidding, rapid erosion · KR: fixed 70%-step rule). Foreign analogues would actively mislead.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · 2 binding + 2 constructed</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Universe Filter · Binding</div>
-                <code>expire_date</code><code>bio_approval_date</code>
-                <div class="ms-gap-note">Both fields exist in <code>core.patent</code> / <code>core.bioequivalence</code> (EXISTS flags confirm). Shared unlock with Patent Position — bind once, cohort universe becomes constructable.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Brand Loyalty · Constructed</div>
-                <code>pre_loe_share_concentration</code>
-                <div class="ms-gap-note">Proposed proxy: HHI of <code>msup_use_amt</code> by manufacturer in the 24-month window before LOE. Construction rule is a query that doesn't exist yet, not a missing variable.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Chronic vs Acute · Constructed</div>
-                <code>sick_cd × usage_frequency</code>
-                <div class="ms-gap-note">Requires per-patient dispensing-cadence derivation. <code>sick_cd</code> is wired but not bound as a derived chronic/acute attribute. Weighted 0.10 in methodology.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR (LOE) ─── -->
       <div class="subject-bar loe">
@@ -6014,6 +5955,65 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY · LOE ─── -->
+      <section class="method-summary loe">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Universe construction: KR drugs with <code>is_originator = Y</code> + <code>expire_date</code> in the past + ≥ 1 <code>bio_approval_date</code> on the same ingredient.</li>
+              <li>For each LOE event, observe pre- and post-LOE utilisation from <code>msup_use_amt</code> and <code>tot_use_qty</code> over a ±36-month window.</li>
+              <li>Score each candidate against subject across 6 dimensions: class, form/route, indication, originator size, brand loyalty (constructed), chronic/acute (constructed).</li>
+              <li>Apply dimension confidence multipliers — constructed dimensions contribute 0 weight until classifier ships.</li>
+              <li>Rank by weighted similarity. Output cohort feeds Erosion Curve (Tool 03) and Revenue-at-Risk (Tool 04) downstream.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">8 fields · KR-only</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">form_name</span>
+              <span class="ms-var">form_code</span>
+              <span class="ms-var">route_of_administration</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var backend">therapeutic_class_id (caveat)</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <strong style="color: var(--text);">KR→KR by design.</strong> NHIS post-LOE pricing rules can't be inferred from US generic dynamics (US: competitive bidding, rapid erosion · KR: fixed 70%-step rule). Foreign analogues would actively mislead.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · 2 binding + 2 constructed</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Universe Filter · Binding</div>
+                <code>expire_date</code><code>bio_approval_date</code>
+                <div class="ms-gap-note">Both fields exist in <code>core.patent</code> / <code>core.bioequivalence</code> (EXISTS flags confirm). Shared unlock with Patent Position — bind once, cohort universe becomes constructable.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Brand Loyalty · Constructed</div>
+                <code>pre_loe_share_concentration</code>
+                <div class="ms-gap-note">Proposed proxy: HHI of <code>msup_use_amt</code> by manufacturer in the 24-month window before LOE. Construction rule is a query that doesn't exist yet, not a missing variable.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Chronic vs Acute · Constructed</div>
+                <code>sick_cd × usage_frequency</code>
+                <div class="ms-gap-note">Requires per-patient dispensing-cadence derivation. <code>sick_cd</code> is wired but not bound as a derived chronic/acute attribute. Weighted 0.10 in methodology.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner">
         <div class="data-banner-label">DATA STATUS · ILLUSTRATIVE COHORT</div>
@@ -6044,60 +6044,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP · LOE) ─── -->
-      <section class="method-summary top loe">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Resolve subject drug to its originator <code>item_seq</code> via <code>is_originator</code> and <code>core.bundle</code>.</li>
-              <li>Pull all Korean Green Book patents from <code>core.patent</code> by <code>item_seq</code> — substance, use, formulation, process, other.</li>
-              <li>Pull bioequivalence filings from <code>core.bioequivalence</code> — generic-entry intent signal, often years before LOE.</li>
-              <li>Layer regulatory exclusivities: <code>pms_end_date</code> (post-marketing surveillance) and <code>reexam_date</code>. Generic entry blocked until <code>max()</code> of all binding dates.</li>
-              <li>Render Gantt timeline; compute earliest meaningful LOE date and days-to-cliff for the originator.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">4 fields · EXISTS only</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">has_patent</span>
-              <span class="ms-var">has_bioequivalence</span>
-              <span class="ms-var">item_seq</span>
-              <span class="ms-var">is_originator</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              Only EXISTS flags are productised. The flags confirm <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.patent</code> and <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.bioequivalence</code> tables exist and are populated — <strong style="color: var(--text);">the data is already in the warehouse.</strong>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">11 fields · all unbound</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Patent detail · 7 fields</div>
-                <code>patent_no</code><code>expire_date</code><code>patent_gb_code</code><code>patent_invn_nm</code><code>patentee</code><code>patent_status</code><code>page_gb_nm</code>
-                <div class="ms-gap-note">Every detail field on <code>core.patent</code>. Mechanical UI binding lift — no new ingestion, no derived classifier, no business logic.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">BE detail · 3 fields</div>
-                <code>bio_approval_date</code><code>notification_no</code><code>amt</code>
-                <div class="ms-gap-note">Every detail field on <code>core.bioequivalence</code>. Same shape of lift as the patent fields.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Regulatory exclusivity · 2 fields</div>
-                <code>pms_end_date</code><code>reexam_date</code>
-                <div class="ms-gap-note">Post-marketing surveillance and re-examination windows — often the binding constraint, not the patent.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR (LOE) ─── -->
       <div class="subject-bar loe">
@@ -6379,6 +6325,60 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY · LOE ─── -->
+      <section class="method-summary loe">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Resolve subject drug to its originator <code>item_seq</code> via <code>is_originator</code> and <code>core.bundle</code>.</li>
+              <li>Pull all Korean Green Book patents from <code>core.patent</code> by <code>item_seq</code> — substance, use, formulation, process, other.</li>
+              <li>Pull bioequivalence filings from <code>core.bioequivalence</code> — generic-entry intent signal, often years before LOE.</li>
+              <li>Layer regulatory exclusivities: <code>pms_end_date</code> (post-marketing surveillance) and <code>reexam_date</code>. Generic entry blocked until <code>max()</code> of all binding dates.</li>
+              <li>Render Gantt timeline; compute earliest meaningful LOE date and days-to-cliff for the originator.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">4 fields · EXISTS only</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">has_patent</span>
+              <span class="ms-var">has_bioequivalence</span>
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">is_originator</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              Only EXISTS flags are productised. The flags confirm <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.patent</code> and <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.bioequivalence</code> tables exist and are populated — <strong style="color: var(--text);">the data is already in the warehouse.</strong>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">11 fields · all unbound</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Patent detail · 7 fields</div>
+                <code>patent_no</code><code>expire_date</code><code>patent_gb_code</code><code>patent_invn_nm</code><code>patentee</code><code>patent_status</code><code>page_gb_nm</code>
+                <div class="ms-gap-note">Every detail field on <code>core.patent</code>. Mechanical UI binding lift — no new ingestion, no derived classifier, no business logic.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">BE detail · 3 fields</div>
+                <code>bio_approval_date</code><code>notification_no</code><code>amt</code>
+                <div class="ms-gap-note">Every detail field on <code>core.bioequivalence</code>. Same shape of lift as the patent fields.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Regulatory exclusivity · 2 fields</div>
+                <code>pms_end_date</code><code>reexam_date</code>
+                <div class="ms-gap-note">Post-marketing surveillance and re-examination windows — often the binding constraint, not the patent.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER (the headline) ─── -->
       <div class="data-banner">
         <div class="data-banner-label">DATA STATUS · UI BINDING LIFT</div>
@@ -6409,65 +6409,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP · LOE) ─── -->
-      <section class="method-summary top loe">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <title>Inherit cohort + weights from LOE Analogue (9 KR LOE precedents · weighted ≥ 0.40).</title>
-              <li>Inherit cohort + weights from LOE Analogue (9 KR LOE precedents · weighted ≥ 0.40).</li>
-              <li>For each LOE event, build a ±36-month panel: <code>msup_use_amt</code>, <code>tot_use_qty</code>, <code>mx_cprc</code> by month, originator vs generic from <code>is_originator</code>.</li>
-              <li>Identify generic entry as first non-originator <code>item_permit_date</code> for the same <code>gnl_nm_cd</code>.</li>
-              <li>Apply NHIS post-LOE pricing rule overlay by era (2007 / 2012 reform / 2024) — versioned domain rule set, not a data variable.</li>
-              <li>Fit weighted regression on the cohort panel; project subject's volume / price / revenue retention with cohort envelope.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">6 + cohort</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">gnl_nm_cd</span>
-              <span class="ms-var">diag_ym</span>
-              <span class="ms-var">item_permit_date</span>
-              <span class="ms-var backend">cohort weights (LOE · 01)</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              <strong style="color: var(--text);">KR-only by design.</strong> US erosion patterns are competitive-bid (rapid early loss); KR is regulatory step-down (fixed 70% rule + gradual). Mixing would actively mislead.
-              <span style="display: block; margin-top: 6px; color: var(--text-dim); font-style: italic;">Verified against PHARMA.APAC v0.7 · <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">item_permit_date</code> live in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">kor_db.core.product</code> ("earliest-permit item_seq" join · Country Profile).</span>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · spine + rule overlay</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>mx_cprc</code><code>adt_sta_dd</code><code>chg_bf_mds_cd</code>
-                <div class="ms-gap-note">Same spine as Launch Pack timing/price + the rename-history field needed to reconstruct price-change events across reimbursement-code transitions.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">NHIS Rule Overlay · Engineering</div>
-                <code>era-versioned domain rules</code>
-                <div class="ms-gap-note">Not a data variable. Era-stamped business logic — 2007, 2012 reform, 2024 update. Must be encoded, versioned, and applied conditionally per cohort drug's LOE era.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">US Cross-Walk · Enrichment</div>
-                <code>indication_xwalk</code>
-                <div class="ms-gap-note">Optional. Inherited from Whitespace v2 gap — indication-level KR↔US mapping enables erosion-pattern comparison against US-side biosimilar / generic precedents.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR (LOE) ─── -->
       <div class="subject-bar loe">
@@ -6874,6 +6815,65 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY · LOE ─── -->
+      <section class="method-summary loe">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <title>Inherit cohort + weights from LOE Analogue (9 KR LOE precedents · weighted ≥ 0.40).</title>
+              <li>Inherit cohort + weights from LOE Analogue (9 KR LOE precedents · weighted ≥ 0.40).</li>
+              <li>For each LOE event, build a ±36-month panel: <code>msup_use_amt</code>, <code>tot_use_qty</code>, <code>mx_cprc</code> by month, originator vs generic from <code>is_originator</code>.</li>
+              <li>Identify generic entry as first non-originator <code>item_permit_date</code> for the same <code>gnl_nm_cd</code>.</li>
+              <li>Apply NHIS post-LOE pricing rule overlay by era (2007 / 2012 reform / 2024) — versioned domain rule set, not a data variable.</li>
+              <li>Fit weighted regression on the cohort panel; project subject's volume / price / revenue retention with cohort envelope.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">6 + cohort</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">gnl_nm_cd</span>
+              <span class="ms-var">diag_ym</span>
+              <span class="ms-var">item_permit_date</span>
+              <span class="ms-var backend">cohort weights (LOE · 01)</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <strong style="color: var(--text);">KR-only by design.</strong> US erosion patterns are competitive-bid (rapid early loss); KR is regulatory step-down (fixed 70% rule + gradual). Mixing would actively mislead.
+              <span style="display: block; margin-top: 6px; color: var(--text-dim); font-style: italic;">Verified against PHARMA.APAC v0.7 · <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">item_permit_date</code> live in <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-style: normal;">kor_db.core.product</code> ("earliest-permit item_seq" join · Country Profile).</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · spine + rule overlay</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mx_cprc</code><code>adt_sta_dd</code><code>chg_bf_mds_cd</code>
+                <div class="ms-gap-note">Same spine as Launch Pack timing/price + the rename-history field needed to reconstruct price-change events across reimbursement-code transitions.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">NHIS Rule Overlay · Engineering</div>
+                <code>era-versioned domain rules</code>
+                <div class="ms-gap-note">Not a data variable. Era-stamped business logic — 2007, 2012 reform, 2024 update. Must be encoded, versioned, and applied conditionally per cohort drug's LOE era.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">US Cross-Walk · Enrichment</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Optional. Inherited from Whitespace v2 gap — indication-level KR↔US mapping enables erosion-pattern comparison against US-side biosimilar / generic precedents.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner">
         <div class="data-banner-label">DATA STATUS · ILLUSTRATIVE</div>
@@ -6904,63 +6904,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP · LOE) ─── -->
-      <section class="method-summary top loe">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Pull current annual revenue: <code>mx_cprc</code> × <code>tot_use_qty</code> × <code>is_originator</code>, aggregated to NHI level via <code>insup_tp_cd</code>.</li>
-              <li>Extend pre-LOE baseline forward over the 60-month post-LOE horizon using class CAGR (Product Market) as the growth driver.</li>
-              <li>Pull LOE date from Patent Position (Tool 02) and erosion trajectory from Erosion Curve (Tool 03).</li>
-              <li>Multiply baseline × erosion trajectory; integrate the gap between baseline-extended and projected actual to get cumulative revenue at risk.</li>
-              <li>Run sensitivity on LOE-delay scenarios, price floor, volume floor, and BE-filing acceleration.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">4 fields · own</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">insup_tp_cd</span>
-              <span class="ms-var backend">cohort weights (LOE · 01)</span>
-              <span class="ms-var backend">LOE date (LOE · 02)</span>
-              <span class="ms-var backend">erosion curve (LOE · 03)</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              Own fields are KR-clean. <strong style="color: var(--text);">All material data dependencies are upstream</strong> — this tool's defensibility is the joint defensibility of LOE · 01, 02, and 03.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">inherited · 3 tiers</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Own · Revenue Base</div>
-                <code>mx_cprc · adt_sta_dd</code>
-                <div class="ms-gap-note">Current annual revenue requires <code>mx_cprc</code> × <code>tot_use_qty</code>. Pricing spine unwired — current baseline is illustrative.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Inherited · LOE · 02</div>
-                <code>expire_date · bio_approval_date</code>
-                <div class="ms-gap-note">LOE date is the temporal anchor for the entire projection. Unbound at the detail level on Patent Position.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Inherited · LOE · 03</div>
-                <code>erosion trajectory · NHIS rules</code>
-                <div class="ms-gap-note">Shape of the revenue curve post-LOE. Inherits Erosion Curve's pricing-spine gap + the era-versioned NHIS rule overlay engineering work.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── SUBJECT DRUG BAR (LOE) ─── -->
       <div class="subject-bar loe">
@@ -7332,6 +7275,63 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY · LOE ─── -->
+      <section class="method-summary loe">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Pull current annual revenue: <code>mx_cprc</code> × <code>tot_use_qty</code> × <code>is_originator</code>, aggregated to NHI level via <code>insup_tp_cd</code>.</li>
+              <li>Extend pre-LOE baseline forward over the 60-month post-LOE horizon using class CAGR (Product Market) as the growth driver.</li>
+              <li>Pull LOE date from Patent Position (Tool 02) and erosion trajectory from Erosion Curve (Tool 03).</li>
+              <li>Multiply baseline × erosion trajectory; integrate the gap between baseline-extended and projected actual to get cumulative revenue at risk.</li>
+              <li>Run sensitivity on LOE-delay scenarios, price floor, volume floor, and BE-filing acceleration.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">4 fields · own</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">insup_tp_cd</span>
+              <span class="ms-var backend">cohort weights (LOE · 01)</span>
+              <span class="ms-var backend">LOE date (LOE · 02)</span>
+              <span class="ms-var backend">erosion curve (LOE · 03)</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              Own fields are KR-clean. <strong style="color: var(--text);">All material data dependencies are upstream</strong> — this tool's defensibility is the joint defensibility of LOE · 01, 02, and 03.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">inherited · 3 tiers</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Own · Revenue Base</div>
+                <code>mx_cprc · adt_sta_dd</code>
+                <div class="ms-gap-note">Current annual revenue requires <code>mx_cprc</code> × <code>tot_use_qty</code>. Pricing spine unwired — current baseline is illustrative.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Inherited · LOE · 02</div>
+                <code>expire_date · bio_approval_date</code>
+                <div class="ms-gap-note">LOE date is the temporal anchor for the entire projection. Unbound at the detail level on Patent Position.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Inherited · LOE · 03</div>
+                <code>erosion trajectory · NHIS rules</code>
+                <div class="ms-gap-note">Shape of the revenue curve post-LOE. Inherits Erosion Curve's pricing-spine gap + the era-versioned NHIS rule overlay engineering work.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner">
         <div class="data-banner-label">DATA STATUS · MOST DEPENDENT TOOL</div>
@@ -7362,65 +7362,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY (TOP) ─── -->
-      <section class="method-summary top">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
-            <ol class="ms-steps">
-              <li>Pull KR trial records from <code>core.clinical_trial</code> (MFDS Clinical Trial Approval Notification).</li>
-              <li>Pull US trial records from AACT (Aggregate Analysis of ClinicalTrials.gov) using the same field set.</li>
-              <li>Cross-walk sponsors via canonical company entity table — handles transliteration (한미약품 ↔ Hanmi) and cooperative-group naming.</li>
-              <li>Aggregate by phase, sponsor, site, ATC class, and approval cadence over the selected window.</li>
-              <li>Render side-by-side activity views + sponsor leaderboard + KR site map + cross-market xwalk panel.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">8 fields · both sides</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">clnc_test_sn</span>
-              <span class="ms-var">trial_phase</span>
-              <span class="ms-var">sponsor_nm</span>
-              <span class="ms-var">approval_date</span>
-              <span class="ms-var">instt_nm</span>
-              <span class="ms-var">instt_addr</span>
-              <span class="ms-var">invstgtr_nm</span>
-              <span class="ms-var">appoint_date_trial</span>
-              <span class="ms-var backend">US AACT · same fields</span>
-            </div>
-            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
-              <strong style="color: var(--text);">Same field set wired on both sides</strong> — the wire's cleanest cross-market join. No proxy translation, no semantic gap.
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · enrichment</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Sponsor Cross-Walk</div>
-                <code>sponsor_canonical_table</code>
-                <div class="ms-gap-note">KR sponsor names have transliteration variation (한미약품 / Hanmi Pharm / Hanmi Pharmaceutical Co Ltd). Industry sponsors map cleanly; cooperative groups + academic consortia are messier. Disclose match-rate (currently ~88%).</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Indication Cross-Walk</div>
-                <code>indication_xwalk</code>
-                <div class="ms-gap-note">Indication-level KR↔US mapping is the same gap as Whitespace v2 — depends on parsing unstructured trial-protocol text. Class-level (ATC) cross-walk is clean.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">Results &amp; Enrollment</div>
-                <code>completion · enrolled_count</code>
-                <div class="ms-gap-note">KR doesn't publish post-trial results consistently. US AACT has results for ~36% of registered trials. Enrollment counts sparse on KR side.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- ─── FILTERS ─── -->
       <div class="filters">
@@ -7678,6 +7619,65 @@
         </div>
       </div>
 
+      <!-- ─── METHOD SUMMARY ─── -->
+      <section class="method-summary">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Pull KR trial records from <code>core.clinical_trial</code> (MFDS Clinical Trial Approval Notification).</li>
+              <li>Pull US trial records from AACT (Aggregate Analysis of ClinicalTrials.gov) using the same field set.</li>
+              <li>Cross-walk sponsors via canonical company entity table — handles transliteration (한미약품 ↔ Hanmi) and cooperative-group naming.</li>
+              <li>Aggregate by phase, sponsor, site, ATC class, and approval cadence over the selected window.</li>
+              <li>Render side-by-side activity views + sponsor leaderboard + KR site map + cross-market xwalk panel.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">8 fields · both sides</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var">sponsor_nm</span>
+              <span class="ms-var">approval_date</span>
+              <span class="ms-var">instt_nm</span>
+              <span class="ms-var">instt_addr</span>
+              <span class="ms-var">invstgtr_nm</span>
+              <span class="ms-var">appoint_date_trial</span>
+              <span class="ms-var backend">US AACT · same fields</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <strong style="color: var(--text);">Same field set wired on both sides</strong> — the wire's cleanest cross-market join. No proxy translation, no semantic gap.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 · enrichment</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Sponsor Cross-Walk</div>
+                <code>sponsor_canonical_table</code>
+                <div class="ms-gap-note">KR sponsor names have transliteration variation (한미약품 / Hanmi Pharm / Hanmi Pharmaceutical Co Ltd). Industry sponsors map cleanly; cooperative groups + academic consortia are messier. Disclose match-rate (currently ~88%).</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Indication Cross-Walk</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Indication-level KR↔US mapping is the same gap as Whitespace v2 — depends on parsing unstructured trial-protocol text. Class-level (ATC) cross-walk is clean.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Results &amp; Enrollment</div>
+                <code>completion · enrolled_count</code>
+                <div class="ms-gap-note">KR doesn't publish post-trial results consistently. US AACT has results for ~36% of registered trials. Enrollment counts sparse on KR side.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- ─── DATA STATUS BANNER ─── -->
       <div class="data-banner" style="border-left-color: var(--blue);">
         <div class="data-banner-label" style="color: var(--blue);">DATA STATUS · CLEANEST CROSS-MARKET JOIN</div>
