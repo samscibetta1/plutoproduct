@@ -1923,6 +1923,94 @@
     line-height: 1.5;
   }
 
+  /* Per-tool readiness · difficulty dots + gap-type tag */
+  .pack-tool-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 7px;
+    border-top: 1px dashed var(--line-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .diff-dots {
+    display: inline-flex;
+    gap: 3px;
+  }
+
+  .diff-dots .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(240, 232, 208, 0.10);
+    display: inline-block;
+  }
+
+  .diff-dots[data-level="1"] .dot.filled,
+  .diff-dots[data-level="2"] .dot.filled { background: var(--green); }
+  .diff-dots[data-level="3"] .dot.filled { background: var(--amber); }
+  .diff-dots[data-level="4"] .dot.filled,
+  .diff-dots[data-level="5"] .dot.filled { background: var(--coral); }
+
+  .diff-score {
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+
+  .gap-tag {
+    padding: 2px 7px;
+    border: 1px solid currentColor;
+    font-weight: 500;
+  }
+
+  .gap-tag.connect { color: var(--blue); }
+  .gap-tag.gather { color: var(--copper); }
+  .gap-tag.mixed { color: var(--gold); }
+
+  /* Rating legend on Overview */
+  .rating-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 26px;
+    padding: 18px 22px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line-soft);
+    border-left: 2px solid var(--text-soft);
+  }
+
+  .legend-block-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .legend-row-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--text-soft);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .legend-row-item:last-child { margin-bottom: 0; }
+
+  .legend-row-item code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text);
+  }
+
   .pack-card-status .status-line {
     display: flex;
     align-items: center;
@@ -2265,6 +2353,49 @@
         </div>
       </div>
 
+      <!-- ─── RATING LEGEND ─── -->
+      <div class="rating-legend">
+        <div>
+          <div class="legend-block-title">Difficulty · 1–5 dots</div>
+          <div class="legend-row-item">
+            <span class="diff-dots" data-level="1"><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+            <span><strong style="color: var(--text);">1</strong> — defensible today · minor enrichments only</span>
+          </div>
+          <div class="legend-row-item">
+            <span class="diff-dots" data-level="2"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+            <span><strong style="color: var(--text);">2</strong> — small bind · a few wired-but-unbound fields</span>
+          </div>
+          <div class="legend-row-item">
+            <span class="diff-dots" data-level="3"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>
+            <span><strong style="color: var(--text);">3</strong> — medium · multi-field bind + a classifier or rule</span>
+          </div>
+          <div class="legend-row-item">
+            <span class="diff-dots" data-level="4"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></span>
+            <span><strong style="color: var(--text);">4</strong> — large · spine-level bind + ingestion + engineering</span>
+          </div>
+          <div class="legend-row-item">
+            <span class="diff-dots" data-level="5"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></span>
+            <span><strong style="color: var(--text);">5</strong> — most dependent · inherits every upstream gap</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="legend-block-title">Gap Type · two categories</div>
+          <div class="legend-row-item">
+            <span class="gap-tag connect">Connect</span>
+            <span>Data exists in <code>kor_db</code> / openFDA · <strong style="color: var(--text);">UI binding lift</strong> · no new ingestion. Includes derived classifiers built on existing fields.</span>
+          </div>
+          <div class="legend-row-item" style="margin-top: 10px;">
+            <span class="gap-tag gather">Gather</span>
+            <span>Net-new data ingestion required · external source not in the warehouse yet · ingestion + schema work.</span>
+          </div>
+          <div class="legend-row-item" style="margin-top: 10px;">
+            <span class="gap-tag mixed">Mixed</span>
+            <span>Has both — some Connect lifts and some Gather work. Common for cross-market tools needing US-side ingestion.</span>
+          </div>
+        </div>
+      </div>
+
       <!-- ─── 3 PACK CARDS ─── -->
       <div class="pack-grid">
 
@@ -2284,6 +2415,12 @@
               <div>
                 <div class="pack-tool-name">Market Landscape</div>
                 <div class="pack-tool-desc">Class spend · manufacturer concentration · disease mix · payer split by TA</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="2"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">2 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">pay_tp_nm · mds_cd in HIRA · unbound</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2291,6 +2428,12 @@
               <div>
                 <div class="pack-tool-name">Whitespace Mapping</div>
                 <div class="pack-tool-desc">Disease burden × treatment density — gap-scored opportunities</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="3"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">3 / 5</span>
+                  <span class="gap-tag mixed">Mixed</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">HIRA bind + external prevalence ingestion</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2298,6 +2441,12 @@
               <div>
                 <div class="pack-tool-name">Safety &amp; Supply Signals</div>
                 <div class="pack-tool-desc">Shortages + label amendments + recalls · 3-signal surveillance feed</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="3"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">3 / 5</span>
+                  <span class="gap-tag gather">Gather</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">2 KR feeds pending ingestion</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2305,6 +2454,12 @@
               <div>
                 <div class="pack-tool-name">Clinical Trial Tracker</div>
                 <div class="pack-tool-desc">KR MFDS × US AACT · phase · sponsor · site · cleanest cross-market join</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="1"><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">1 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">defensible · enrichment only (sponsor xwalk 88%)</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2333,6 +2488,12 @@
               <div>
                 <div class="pack-tool-name">Launch Analogue</div>
                 <div class="pack-tool-desc">Cohort of US→KR launch precedents · 6-dimension similarity</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="3"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">3 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">mechanism + modality classifiers on wired data</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2340,6 +2501,12 @@
               <div>
                 <div class="pack-tool-name">Product Market</div>
                 <div class="pack-tool-desc">Class-scoped competitive landscape · narrower than Market Landscape</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="2"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">2 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">same 2-field HIRA bind as Market Landscape</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2347,6 +2514,12 @@
               <div>
                 <div class="pack-tool-name">Timing Forecast</div>
                 <div class="pack-tool-desc">Kaplan-Meier survival curve · MFDS filing → HIRA listing</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="4"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></span>
+                  <span class="diff-score">4 / 5</span>
+                  <span class="gap-tag mixed">Mixed</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">HIRA spine bind + US Drugs@FDA covariate</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2354,6 +2527,12 @@
               <div>
                 <div class="pack-tool-name">Price Forecast</div>
                 <div class="pack-tool-desc">KRW/DDD price band · cohort regression + US ASP IRP anchor</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="4"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></span>
+                  <span class="diff-score">4 / 5</span>
+                  <span class="gap-tag mixed">Mixed</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">HIRA spine + US ASP + FX series ingestion</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2381,6 +2560,12 @@
               <div>
                 <div class="pack-tool-name">LOE Analogue</div>
                 <div class="pack-tool-desc">KR LOE-event cohort · single-market by design</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="3"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">3 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">patent + BE bind + 2 constructed classifiers</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2388,6 +2573,12 @@
               <div>
                 <div class="pack-tool-name">Patent Position</div>
                 <div class="pack-tool-desc">KR Green Book patents + BE pipeline · Gantt timeline</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="2"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+                  <span class="diff-score">2 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">11 detail fields in warehouse · UI binding only</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2395,6 +2586,12 @@
               <div>
                 <div class="pack-tool-name">Erosion Curve</div>
                 <div class="pack-tool-desc">Volume + price erosion · NHIS rule overlay by era</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="4"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></span>
+                  <span class="diff-score">4 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">HIRA spine bind + NHIS rule-overlay engineering</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
@@ -2402,6 +2599,12 @@
               <div>
                 <div class="pack-tool-name">Revenue-at-Risk</div>
                 <div class="pack-tool-desc">5-yr integrated revenue exposure · defence-scenario sensitivity</div>
+                <div class="pack-tool-meta">
+                  <span class="diff-dots" data-level="5"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></span>
+                  <span class="diff-score">5 / 5</span>
+                  <span class="gap-tag connect">Connect</span>
+                  <span style="color: var(--text-dim); text-transform: none; letter-spacing: 0.04em; font-size: 9px;">inherits every upstream LOE-Pack gap</span>
+                </div>
               </div>
               <div class="pack-tool-arrow">→</div>
             </div>
