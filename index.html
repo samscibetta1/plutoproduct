@@ -596,15 +596,35 @@
   }
 
   /* ═══════════════════════════════════════════════════════ */
-  /* ─── METHOD SUMMARY (bottom of live tools) ─── */
+  /* ─── METHOD SUMMARY ─── */
   /* ═══════════════════════════════════════════════════════ */
   .method-summary {
     margin-top: 30px;
-    padding: 30px 34px 32px;
+    padding: 28px 32px 30px;
     background: var(--bg-card);
     border: 1px solid var(--line-soft);
     border-top: 2px solid var(--blue);
   }
+
+  /* Top-of-page placement (the prominent variant) */
+  .method-summary.top {
+    margin-top: 0;
+    margin-bottom: 28px;
+    padding: 26px 32px 28px;
+  }
+
+  .method-summary.top .ms-head {
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+  }
+
+  .method-summary.top .ms-head-title {
+    font-size: 19px;
+  }
+
+  /* Theme variants by Pack */
+  .method-summary.launch { border-top-color: var(--gold); }
+  .method-summary.loe { border-top-color: var(--copper); }
 
   .ms-head {
     display: flex;
@@ -938,6 +958,388 @@
     color: var(--text);
   }
 
+  /* ═══════════════════════════════════════════════════════ */
+  /* ─── SUBJECT DRUG CONTEXT BAR ─── */
+  /* ═══════════════════════════════════════════════════════ */
+  .subject-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 22px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line-soft);
+    border-left: 2px solid var(--gold);
+    margin-bottom: 22px;
+  }
+
+  .subject-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .subject-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .subject-name em {
+    font-style: italic;
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+
+  .subject-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--text-soft);
+  }
+
+  .subject-meta span code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: rgba(240, 232, 208, 0.05);
+    color: var(--text);
+    padding: 1px 5px;
+    margin-left: 4px;
+  }
+
+  .subject-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .stage-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: rgba(232, 184, 122, 0.08);
+    border: 1px solid var(--amber-line);
+    color: var(--gold);
+  }
+
+  .subject-anchor {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* ─── COHORT LIST (Launch Analogue) ─── */
+  /* ═══════════════════════════════════════════════════════ */
+  .cohort-list { display: flex; flex-direction: column; gap: 4px; }
+
+  .cohort-item {
+    display: grid;
+    grid-template-columns: 32px 1.4fr 1fr 70px;
+    gap: 14px;
+    padding: 13px 14px;
+    background: var(--bg-elev);
+    border-left: 2px solid transparent;
+    align-items: center;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+
+  .cohort-item:hover {
+    border-left-color: var(--gold);
+    background: rgba(232, 184, 122, 0.04);
+  }
+
+  .cohort-rank {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .cohort-info { min-width: 0; }
+
+  .cohort-name {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .cohort-name em {
+    font-style: italic;
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+
+  .cohort-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .cohort-dims {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .dim-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 2px 6px;
+    background: rgba(240, 232, 208, 0.04);
+    border: 1px solid var(--line-soft);
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .dim-chip.match {
+    background: var(--green-bg);
+    border-color: var(--green-line);
+    color: var(--green);
+  }
+
+  .dim-chip.partial {
+    background: var(--amber-bg);
+    border-color: var(--amber-line);
+    color: var(--amber);
+  }
+
+  .dim-chip.miss {
+    background: rgba(232, 122, 140, 0.05);
+    border-color: var(--coral-line);
+    color: var(--coral);
+    opacity: 0.7;
+  }
+
+  .cohort-score {
+    text-align: right;
+  }
+
+  .cohort-score-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .cohort-score-bar {
+    width: 60px;
+    height: 3px;
+    background: rgba(240, 232, 208, 0.06);
+    margin-top: 6px;
+    margin-left: auto;
+  }
+
+  .cohort-score-fill {
+    height: 100%;
+    background: var(--gold);
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* ─── DIMENSION WEIGHTS (Launch Analogue side) ─── */
+  /* ═══════════════════════════════════════════════════════ */
+  .dim-weight-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 50px;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .dim-weight-row:last-child { border-bottom: none; }
+
+  .dim-weight-label {
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'Fraunces', serif;
+  }
+
+  .dim-weight-label .dim-source {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .dim-weight-track {
+    height: 6px;
+    background: rgba(240, 232, 208, 0.05);
+    position: relative;
+  }
+
+  .dim-weight-fill {
+    height: 100%;
+    background: var(--gold);
+  }
+
+  .dim-weight-fill.pending {
+    background: var(--coral);
+    opacity: 0.55;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 3px,
+      rgba(0,0,0,0.25) 3px,
+      rgba(0,0,0,0.25) 5px
+    );
+  }
+
+  .dim-weight-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-soft);
+    text-align: right;
+  }
+
+  .dim-weight-value.pending { color: var(--coral); }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* ─── COVERAGE MATRIX (Launch Analogue bottom) ─── */
+  /* ═══════════════════════════════════════════════════════ */
+  .coverage-matrix {
+    overflow-x: auto;
+  }
+
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: 160px repeat(6, 1fr);
+    gap: 1px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+    min-width: 600px;
+  }
+
+  .cov-cell {
+    background: var(--bg-card);
+    padding: 8px 10px;
+    font-size: 11px;
+    color: var(--text-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cov-cell.head {
+    background: var(--bg-elev);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .cov-cell.row-label {
+    justify-content: flex-start;
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    color: var(--text);
+    background: var(--bg-elev);
+    padding: 10px 12px;
+  }
+
+  .cov-cell.full {
+    background: rgba(107, 203, 142, 0.18);
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .cov-cell.partial {
+    background: rgba(232, 184, 122, 0.16);
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .cov-cell.missing {
+    background: rgba(232, 122, 140, 0.10);
+    color: var(--coral);
+    font-family: 'JetBrains Mono', monospace;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(0,0,0,0.15) 4px,
+      rgba(0,0,0,0.15) 6px
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* ─── PRICE BAND BAR (Product Market) ─── */
+  /* ═══════════════════════════════════════════════════════ */
+  .price-band {
+    position: relative;
+    height: 60px;
+    margin: 28px 0 18px;
+  }
+
+  .price-band-track {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(240, 232, 208, 0.12);
+  }
+
+  .price-band-range {
+    position: absolute;
+    top: 22px;
+    height: 18px;
+    background: rgba(232, 184, 122, 0.12);
+    border: 1px solid var(--amber-line);
+  }
+
+  .price-band-dot {
+    position: absolute;
+    top: 24px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 1px solid var(--bg);
+  }
+
+  .price-band-dot.competitor { background: var(--blue); opacity: 0.85; }
+  .price-band-dot.subject { background: var(--gold); width: 18px; height: 18px; top: 22px; box-shadow: 0 0 12px rgba(232,184,122,0.5); }
+
+  .price-band-label {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    transform: translateX(-50%);
+  }
+
+  .price-band-label.top {
+    bottom: 44px;
+    color: var(--gold);
+  }
+
+  .price-band-label.bottom {
+    top: 44px;
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 1100px) {
     .app { grid-template-columns: 220px 1fr; }
@@ -980,12 +1382,12 @@
       <div class="nav-item" data-tool="launch-analogue">
         <span class="nav-dot"></span>
         <span class="nav-item-label">Launch Analogue</span>
-        <span class="nav-status-dot spec"></span>
+        <span class="nav-status-dot live"></span>
       </div>
       <div class="nav-item" data-tool="product-market">
         <span class="nav-dot"></span>
         <span class="nav-item-label">Product Market</span>
-        <span class="nav-status-dot spec"></span>
+        <span class="nav-status-dot live"></span>
       </div>
       <div class="nav-item" data-tool="timing-forecast">
         <span class="nav-dot"></span>
@@ -1051,6 +1453,60 @@
           <div class="mock-pill live">Illustrative · Full Data Wired</div>
         </div>
       </div>
+
+      <!-- ─── METHOD SUMMARY — Market Landscape (TOP) ─── -->
+      <section class="method-summary top">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
+            <ol class="ms-steps">
+              <li>Filter HIRA all-payer utilization records by ATC class within the selected TA, scoped to <code>diag_ym</code> window.</li>
+              <li>Aggregate <code>msup_use_amt</code> and <code>tot_use_qty</code> by month, class, manufacturer, and ICD-10 indication.</li>
+              <li>Compute originator/generic shares from <code>is_originator</code>, class CAGR from monthly time series, payer mix from <code>insup_tp_cd</code>.</li>
+              <li>Render time series, class rankings, manufacturer concentration, disease mix, and payer split.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">diag_ym</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">meft_div_no</span>
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">insup_tp_cd</span>
+              <span class="ms-var">cross_dim</span>
+              <span class="ms-var">rare_drug_yn</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">2 fields</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>pay_tp_nm</code>
+                <div class="ms-gap-note">Reimbursement status — covered / non-payable / arbitrary-not-allowed / payment-suspended. Needed to surface reimbursed vs non-reimbursed share at class level.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mds_cd</code>
+                <div class="ms-gap-note">Insurance billing code. Needed to count reimbursed drugs per class for competitive density view.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div class="filters">
         <div class="chip"><span class="chip-label">Country</span>Korea</div>
@@ -1241,60 +1697,6 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY — Market Landscape ─── -->
-      <section class="method-summary">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
-            <ol class="ms-steps">
-              <li>Filter HIRA all-payer utilization records by ATC class within the selected TA, scoped to <code>diag_ym</code> window.</li>
-              <li>Aggregate <code>msup_use_amt</code> and <code>tot_use_qty</code> by month, class, manufacturer, and ICD-10 indication.</li>
-              <li>Compute originator/generic shares from <code>is_originator</code>, class CAGR from monthly time series, payer mix from <code>insup_tp_cd</code>.</li>
-              <li>Render time series, class rankings, manufacturer concentration, disease mix, and payer split.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">msup_use_amt</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">diag_ym</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">meft_div_no</span>
-              <span class="ms-var">sick_cd</span>
-              <span class="ms-var">sick_nm</span>
-              <span class="ms-var">entp_eng_name</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">insup_tp_cd</span>
-              <span class="ms-var">cross_dim</span>
-              <span class="ms-var">rare_drug_yn</span>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">2 fields</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>pay_tp_nm</code>
-                <div class="ms-gap-note">Reimbursement status — covered / non-payable / arbitrary-not-allowed / payment-suspended. Needed to surface reimbursed vs non-reimbursed share at class level.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">HIRA Pricing Spine</div>
-                <code>mds_cd</code>
-                <div class="ms-gap-note">Insurance billing code. Needed to count reimbursed drugs per class for competitive density view.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
@@ -1312,6 +1714,67 @@
           <div class="mock-pill live">Illustrative · Full Data Wired</div>
         </div>
       </div>
+
+      <!-- ─── METHOD SUMMARY — Whitespace (TOP) ─── -->
+      <section class="method-summary top">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
+
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
+            <ol class="ms-steps">
+              <li>Aggregate treated patient volume per ICD-10 code (<code>sick_cd</code>) from HIRA utilization data — proxy for disease burden.</li>
+              <li>Count reimbursed therapy options per indication using ATC class plus reimbursement status; surface manufacturer concentration.</li>
+              <li>Compute gap score as a function of treated burden, treatment density, and class growth — weighted to highlight under-treated diseases.</li>
+              <li>Rank diseases by gap score; render bubble matrix and ranked opportunity list. Whitespace = high burden × low treatment density.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var backend">US Drugs@FDA (backend)</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · layered</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · KR Reimbursement Gap</div>
+                <code>pay_tp_nm</code><code>mds_cd</code>
+                <div class="ms-gap-note">Needed for full reimbursement-gap view — drugs MFDS-approved but HIRA non-reimbursed.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · US–KR Availability Gap</div>
+                <code>indication_xwalk</code>
+                <div class="ms-gap-note">Indication-level KR↔US cross-walk. Wire supports product-level mapping; indication mapping requires parsing unstructured <code>ee_doc_data</code> label text.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v3 · True Unmet Need</div>
+                <code>external_prevalence</code>
+                <div class="ms-gap-note">External disease prevalence dataset (KOSIS / WHO / Global Burden of Disease) to convert "treated volume" to "true prevalence" and surface under-diagnosed conditions.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v3 · Post-LOE Opportunity</div>
+                <code>expire_date</code>
+                <div class="ms-gap-note">Patent expiration — needed to flag classes where patents expired but few generics launched (regulatory/commercial barrier or opportunity).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div class="filters">
         <div class="chip"><span class="chip-label">Country</span>Korea</div>
@@ -1468,74 +1931,14 @@
         </div>
       </div>
 
-      <!-- ─── METHOD SUMMARY — Whitespace ─── -->
-      <section class="method-summary">
-        <div class="ms-head">
-          <div class="ms-head-title">How this tool works</div>
-          <div class="ms-head-sub">Method · Data · Gaps</div>
-        </div>
-
-        <div class="ms-grid">
-          <div class="ms-col methodology">
-            <div class="ms-col-label">Methodology <span class="ms-count">4 steps</span></div>
-            <ol class="ms-steps">
-              <li>Aggregate treated patient volume per ICD-10 code (<code>sick_cd</code>) from HIRA utilization data — proxy for disease burden.</li>
-              <li>Count reimbursed therapy options per indication using ATC class plus reimbursement status; surface manufacturer concentration.</li>
-              <li>Compute gap score as a function of treated burden, treatment density, and class growth — weighted to highlight under-treated diseases.</li>
-              <li>Rank diseases by gap score; render bubble matrix and ranked opportunity list. Whitespace = high burden × low treatment density.</li>
-            </ol>
-          </div>
-
-          <div class="ms-col data">
-            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
-            <div class="ms-vars">
-              <span class="ms-var">sick_cd</span>
-              <span class="ms-var">sick_nm</span>
-              <span class="ms-var">tot_use_qty</span>
-              <span class="ms-var">atc_code</span>
-              <span class="ms-var">entp_eng_name</span>
-              <span class="ms-var">is_originator</span>
-              <span class="ms-var">clnc_test_sn</span>
-              <span class="ms-var">trial_phase</span>
-              <span class="ms-var backend">US Drugs@FDA (backend)</span>
-            </div>
-          </div>
-
-          <div class="ms-col gaps">
-            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · layered</span></div>
-            <div class="ms-gap-list">
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v1 · KR Reimbursement Gap</div>
-                <code>pay_tp_nm</code><code>mds_cd</code>
-                <div class="ms-gap-note">Needed for full reimbursement-gap view — drugs MFDS-approved but HIRA non-reimbursed.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v2 · US–KR Availability Gap</div>
-                <code>indication_xwalk</code>
-                <div class="ms-gap-note">Indication-level KR↔US cross-walk. Wire supports product-level mapping; indication mapping requires parsing unstructured <code>ee_doc_data</code> label text.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v3 · True Unmet Need</div>
-                <code>external_prevalence</code>
-                <div class="ms-gap-note">External disease prevalence dataset (KOSIS / WHO / Global Burden of Disease) to convert "treated volume" to "true prevalence" and surface under-diagnosed conditions.</div>
-              </div>
-              <div class="ms-gap-item">
-                <div class="ms-gap-tier">v3 · Post-LOE Opportunity</div>
-                <code>expire_date</code>
-                <div class="ms-gap-note">Patent expiration — needed to flag classes where patents expired but few generics launched (regulatory/commercial barrier or opportunity).</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </section>
 
 
     <!-- ───────────────────────────────────────────────── -->
-    <!-- SPEC: LAUNCH ANALOGUE -->
+    <!-- LIVE: LAUNCH ANALOGUE -->
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-launch-analogue">
+
       <div class="tool-head">
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01</div>
@@ -1543,49 +1946,458 @@
           <p class="tool-sub">Cohort of US→KR launch precedents, weighted by similarity across class, indication, modality, mechanism, orphan status, and US-tier. Load-bearing for the rest of the Launch Pack.</p>
         </div>
         <div class="tool-meta">
-          <div class="mock-pill spec">Build Spec · UI Pending</div>
+          <div class="mock-pill live">Illustrative · 4 of 6 dims wired</div>
           <div class="tool-status-pill"><span class="status-dot amber"></span>Defensible w/ disclosure</div>
         </div>
       </div>
 
-      <div class="spec-question launch">Which drugs have made this <em>US→KR launch journey</em> before?</div>
+      <!-- ─── METHOD SUMMARY (TOP) ─── -->
+      <section class="method-summary top launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
 
-      <div class="tier tier-have">
-        <div class="tier-label">Have, wired clean <span class="tier-count">· 12 fields</span></div>
-        <div class="vars">
-          <span class="var-pill">item_seq</span><span class="var-pill">item_eng_name</span><span class="var-pill">main_ingr_eng</span><span class="var-pill">atc_code</span><span class="var-pill">is_originator</span><span class="var-pill">is_orphan_drug</span><span class="var-pill">mix_type</span><span class="var-pill">form_name</span><span class="var-pill">route_of_administration</span><span class="var-pill">narcotic_kind_code</span><span class="var-pill">trial_phase</span><span class="var-pill">clnc_test_sn</span>
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Anchor the subject drug to its US originator via Drugs@FDA <code>application_number</code> and KR <code>trust_item_seq</code> (backend join, never displayed).</li>
+              <li>Build candidate universe: all KR drugs with a US-originator anchor that completed MFDS filing 2014–present.</li>
+              <li>Score each candidate across 6 similarity dimensions — class, indication, modality, mechanism, orphan status, US-tier — with prior weights.</li>
+              <li>Apply dimension confidence multipliers (wired dims = 1.0; unwired dims = 0.0 contribution + flagged).</li>
+              <li>Rank by weighted similarity; surface top 14 with full dimension breakdown. Cohort feeds Timing &amp; Price forecasts downstream.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">12 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">item_seq</span>
+              <span class="ms-var">item_eng_name</span>
+              <span class="ms-var">main_ingr_eng</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">is_orphan_drug</span>
+              <span class="ms-var">mix_type</span>
+              <span class="ms-var">form_name</span>
+              <span class="ms-var">route_of_administration</span>
+              <span class="ms-var">narcotic_kind_code</span>
+              <span class="ms-var">trial_phase</span>
+              <span class="ms-var">clnc_test_sn</span>
+              <span class="ms-var backend">trust_item_seq (backend)</span>
+              <span class="ms-var backend">Drugs@FDA (backend)</span>
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">4 · staged</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · Mechanism Classifier</div>
+                <code>atc_5 + drugbank_xwalk</code>
+                <div class="ms-gap-note">Methodology weights mechanism at 0.20 — largest single hole. Needs ATC-5 + DrugBank/RxNorm hierarchy join. Cohort runs with 4 wired dims; mechanism dim greyed out.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v1 · Modality Classifier</div>
+                <code>material_name + induty_type</code>
+                <div class="ms-gap-note">Small-mol / biologic / cell-gene derivation rule. <code>material_name</code> wired, <code>induty_type</code> not. Need to author + validate classifier against manual sample.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · US-Tier Backend</div>
+                <code>submission_class_code</code><code>Exclusivity_Code</code>
+                <div class="ms-gap-note">Drugs@FDA NCE / 505(b)(2) / Priority Review / Breakthrough flags. Backend prior only — never user-visible. Weighted 0.05.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">v2 · Indication for New Drug</div>
+                <code>ee_doc_data parse</code>
+                <div class="ms-gap-note">For a drug with no usage history, indication has to come from the unstructured label text. Currently disclosed as a manual input.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SUBJECT DRUG BAR ─── -->
+      <div class="subject-bar">
+        <div>
+          <div class="subject-label">Subject Drug · MFDS pre-submission</div>
+          <div class="subject-name">Tirzepatide <em>(Mounjaro)</em></div>
+          <div class="subject-meta">
+            <span>Class<code>A10BX16</code></span>
+            <span>Modality<code>peptide · injectable</code></span>
+            <span>Originator<code>Eli Lilly</code></span>
+            <span>Indication<code>T2D · obesity</code></span>
+            <span>US Approval<code>2022-05-13</code></span>
+          </div>
+        </div>
+        <div class="subject-stage">
+          <div class="stage-pill">MFDS Stage 2 · pending</div>
+          <div class="subject-anchor">Drugs@FDA anchor · NDA #215866</div>
         </div>
       </div>
 
-      <div class="tier tier-caveat">
-        <div class="tier-label">Have, with caveats <span class="tier-count">· 3 fields · backend only</span></div>
-        <ul class="var-list">
-          <li><code>manufacturer_name</code> US-side returns labeler, not actual manufacturer — affects modality similarity for contract-manufactured generics</li>
-          <li><code>therapeutic_class_id</code> KR HIRA class number vs US NDF-RT NUI — different code systems, implicit translation not yet built</li>
-          <li><code>is_orphan_drug</code> over-attributes at ingredient level on US side (OOPD is per-indication)</li>
-        </ul>
+      <!-- ─── KPI STRIP ─── -->
+      <div class="kpi-strip">
+        <div class="kpi">
+          <div class="kpi-label">Cohort Size</div>
+          <div class="kpi-value">14</div>
+          <div class="kpi-delta">US→KR analogues · weighted ≥ 0.40</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Weighted Similarity (mean)</div>
+          <div class="kpi-value">0.71</div>
+          <div class="kpi-delta">on 4 wired dimensions of 6</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Best Match</div>
+          <div class="kpi-value">0.89</div>
+          <div class="kpi-delta">Semaglutide · A10BJ06 · Ozempic</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Dimensions Wired</div>
+          <div class="kpi-value">4<span class="unit">/ 6</span></div>
+          <div class="kpi-delta down">Mechanism · Modality pending build</div>
+        </div>
       </div>
 
-      <div class="tier tier-missing">
-        <div class="tier-label">Missing or unwired <span class="tier-count">· 4 gaps</span></div>
-        <ul class="var-list">
-          <li><strong>Mechanism classifier</strong> — methodology weights this at 0.20; requires ATC-5 + DrugBank/RxNorm join, not yet built. Largest hole in the Analogue.</li>
-          <li><strong>Modality classifier</strong> — derives small-molecule / biologic / cell-gene from <code>material_name</code> + <code>induty_type</code>; rule not yet written</li>
-          <li><strong>US-tier fields</strong> (backend) — Drugs@FDA <code>submission_class_code</code>, <code>Exclusivity_Code</code> not wired</li>
-          <li><strong>Indication for the subject drug</strong> — no clean structured source for new drugs; must parse from <code>ee_doc_data</code> label text</li>
-        </ul>
+      <!-- ─── MAIN GRID ─── -->
+      <div class="grid-main-side">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Cohort · Ranked by Weighted Similarity</div>
+            <div class="card-sub">14 analogues · A10/A08 classes · MFDS-listed since 2014</div>
+          </div>
+          <div class="cohort-list">
+
+            <div class="cohort-item">
+              <div class="cohort-rank">01</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Semaglutide <em>(Ozempic / Wegovy)</em></div>
+                <div class="cohort-meta">A10BJ06 · Novo Nordisk · MFDS 2018 · NDA 209637</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip match">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip partial">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.89</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 89%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">02</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Dulaglutide <em>(Trulicity)</em></div>
+                <div class="cohort-meta">A10BJ05 · Eli Lilly · MFDS 2016 · BLA 125469</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip match">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip match">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.86</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 86%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">03</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Liraglutide <em>(Victoza / Saxenda)</em></div>
+                <div class="cohort-meta">A10BJ02 · Novo Nordisk · MFDS 2013 · NDA 022341</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip match">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip partial">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.82</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 82%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">04</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Empagliflozin <em>(Jardiance)</em></div>
+                <div class="cohort-meta">A10BK03 · Boehringer + Eli Lilly · MFDS 2015 · NDA 204629</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip partial">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip match">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.76</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 76%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">05</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Dapagliflozin <em>(Forxiga)</em></div>
+                <div class="cohort-meta">A10BK01 · AstraZeneca · MFDS 2014 · NDA 202293</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip partial">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip match">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.73</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 73%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">06</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Sitagliptin <em>(Januvia)</em></div>
+                <div class="cohort-meta">A10BH01 · MSD · MFDS 2008 · NDA 021995</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip match">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip partial">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip match">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.68</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 68%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">07</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Naltrexone-Bupropion <em>(Contrave)</em></div>
+                <div class="cohort-meta">A08AA62 · Currax / Kwangdong · MFDS 2016 · NDA 200063</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip partial">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip partial">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip partial">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.58</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 58%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item">
+              <div class="cohort-rank">08</div>
+              <div class="cohort-info">
+                <div class="cohort-name">Orlistat <em>(Xenical)</em></div>
+                <div class="cohort-meta">A08AB01 · Roche · MFDS 1999 · NDA 020766</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip partial">CLASS</span>
+                <span class="dim-chip match">INDIC</span>
+                <span class="dim-chip partial">MODAL</span>
+                <span class="dim-chip match">ORPH</span>
+                <span class="dim-chip partial">US-TIER</span>
+                <span class="dim-chip miss">MECH</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value">0.52</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 52%;"></div></div>
+              </div>
+            </div>
+
+            <div class="cohort-item" style="opacity: 0.75;">
+              <div class="cohort-rank">09</div>
+              <div class="cohort-info">
+                <div class="cohort-name">+ 6 lower-scored analogues</div>
+                <div class="cohort-meta">Insulin glargine · linagliptin · canagliflozin · phentermine · lorcaserin · ertugliflozin</div>
+              </div>
+              <div class="cohort-dims">
+                <span class="dim-chip">range 0.40–0.49</span>
+              </div>
+              <div class="cohort-score">
+                <div class="cohort-score-value" style="color: var(--text-soft);">0.44</div>
+                <div class="cohort-score-bar"><div class="cohort-score-fill" style="width: 44%; background: var(--text-soft);"></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Similarity Weights</div>
+            <div class="card-sub">6 dimensions · methodology priors</div>
+          </div>
+          <div style="margin-top: 4px;">
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">Therapeutic class
+                <span class="dim-source">atc_code · meft_div_no</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill" style="width: 100%;"></div></div>
+              <div class="dim-weight-value">0.25</div>
+            </div>
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">Mechanism
+                <span class="dim-source">atc-5 + drugbank · pending</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill pending" style="width: 80%;"></div></div>
+              <div class="dim-weight-value pending">0.20*</div>
+            </div>
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">Indication
+                <span class="dim-source">sick_cd join · partial</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill" style="width: 80%;"></div></div>
+              <div class="dim-weight-value">0.20</div>
+            </div>
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">Modality
+                <span class="dim-source">material_name + induty_type · pending</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill pending" style="width: 60%;"></div></div>
+              <div class="dim-weight-value pending">0.15*</div>
+            </div>
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">Orphan status
+                <span class="dim-source">rare_drug_yn</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill" style="width: 60%;"></div></div>
+              <div class="dim-weight-value">0.15</div>
+            </div>
+            <div class="dim-weight-row">
+              <div class="dim-weight-label">US-tier
+                <span class="dim-source">Drugs@FDA · backend</span>
+              </div>
+              <div class="dim-weight-track"><div class="dim-weight-fill" style="width: 20%;"></div></div>
+              <div class="dim-weight-value">0.05</div>
+            </div>
+          </div>
+          <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-dim); line-height: 1.5;">
+            <strong style="color: var(--coral);">*</strong> Pending classifiers — 0.35 of total weight contributes 0 until built. Defensible reading: similarity is a lower bound.
+          </div>
+        </div>
       </div>
 
-      <div class="unlock launch">
-        <div class="unlock-icon">Build unlock</div>
-        <div class="unlock-body">Build and validate mechanism + modality classifiers against a manual sample. Wire US <code>submission_class_code</code> + <code>Exclusivity_Code</code> as backend prior. Move to <strong>🟢 defensible</strong>.</div>
+      <!-- ─── COVERAGE MATRIX ─── -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Dimension Coverage Across Top 8</div>
+          <div class="card-sub">Full = exact match · Partial = adjacent class/modality · Pending = classifier unbuilt</div>
+        </div>
+        <div class="coverage-matrix">
+          <div class="coverage-grid">
+            <div class="cov-cell head row-label">Analogue</div>
+            <div class="cov-cell head">Class</div>
+            <div class="cov-cell head">Indication</div>
+            <div class="cov-cell head">Modality</div>
+            <div class="cov-cell head">Orphan</div>
+            <div class="cov-cell head">US-Tier</div>
+            <div class="cov-cell head">Mechanism</div>
+
+            <div class="cov-cell row-label">Semaglutide</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Dulaglutide</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Liraglutide</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Empagliflozin</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Dapagliflozin</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Sitagliptin</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Naltrexone-Bup.</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell missing">⊘</div>
+
+            <div class="cov-cell row-label">Orlistat</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell full">●</div>
+            <div class="cov-cell partial">◐</div>
+            <div class="cov-cell missing">⊘</div>
+          </div>
+        </div>
+        <div style="margin-top: 16px; display: flex; gap: 28px; font-size: 11px; color: var(--text-soft); flex-wrap: wrap;">
+          <span><span style="color: var(--green);">● Full</span> · exact dimension match</span>
+          <span><span style="color: var(--amber);">◐ Partial</span> · adjacent class or alternate modality</span>
+          <span><span style="color: var(--coral);">⊘ Pending</span> · classifier unbuilt — counts as 0 until v1 build ships</span>
+        </div>
       </div>
+
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
     <!-- SPEC: PRODUCT MARKET -->
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-product-market">
+
       <div class="tool-head">
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02</div>
@@ -1593,39 +2405,340 @@
           <p class="tool-sub">The class-specific competitive landscape where the molecule will enter — narrower than Market Landscape, scoped to the analogue cohort's class universe.</p>
         </div>
         <div class="tool-meta">
-          <div class="mock-pill spec">Build Spec · UI Pending</div>
+          <div class="mock-pill live">Illustrative · KR-clean</div>
           <div class="tool-status-pill"><span class="status-dot amber"></span>Defensible w/ disclosure</div>
         </div>
       </div>
 
-      <div class="spec-question launch">Where specifically in Korea is this drug entering — the <em>class context</em> for the dossier?</div>
+      <!-- ─── METHOD SUMMARY (TOP) ─── -->
+      <section class="method-summary top launch">
+        <div class="ms-head">
+          <div class="ms-head-title">How this tool works</div>
+          <div class="ms-head-sub">Method · Data · Gaps</div>
+        </div>
 
-      <div class="tier tier-have">
-        <div class="tier-label">Have, wired clean <span class="tier-count">· 9 fields</span></div>
-        <div class="vars">
-          <span class="var-pill">msup_use_amt</span><span class="var-pill">tot_use_qty</span><span class="var-pill">entp_eng_name</span><span class="var-pill">atc_code</span><span class="var-pill">is_originator</span><span class="var-pill">sick_nm</span><span class="var-pill">sick_cd</span><span class="var-pill">diag_ym (monthly)</span><span class="var-pill">insup_tp_cd</span>
+        <div class="ms-grid">
+          <div class="ms-col methodology">
+            <div class="ms-col-label">Methodology <span class="ms-count">5 steps</span></div>
+            <ol class="ms-steps">
+              <li>Take subject drug + its analogue cohort from Launch Analogue; derive the relevant class universe (ATC-4 + adjacent ATC-5 codes).</li>
+              <li>Pull all HIRA-utilized drugs in the class universe, scoped to the indication's ICD-10 set (<code>sick_cd</code>).</li>
+              <li>Aggregate <code>msup_use_amt</code> by month and originator/generic status; compute class CAGR and concentration.</li>
+              <li>Position the subject drug's projected price band against current incumbents using HIRA <code>mx_cprc</code> distribution (when wired).</li>
+              <li>Render class trajectory, top incumbents, indication mix, payer mix, and price-band positioning — all class-scoped.</li>
+            </ol>
+          </div>
+
+          <div class="ms-col data">
+            <div class="ms-col-label">Data Inputs · Wired <span class="ms-count">9 fields</span></div>
+            <div class="ms-vars">
+              <span class="ms-var">msup_use_amt</span>
+              <span class="ms-var">tot_use_qty</span>
+              <span class="ms-var">entp_eng_name</span>
+              <span class="ms-var">atc_code</span>
+              <span class="ms-var">is_originator</span>
+              <span class="ms-var">sick_nm</span>
+              <span class="ms-var">sick_cd</span>
+              <span class="ms-var">diag_ym</span>
+              <span class="ms-var">insup_tp_cd</span>
+            </div>
+            <div style="margin-top: 12px; font-size: 10px; color: var(--text-dim); line-height: 1.5;">
+              KR-only scope resolves the wire's cross-market 🔴 flags on <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">diag_ym</code> granularity and <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">insup_tp_cd</code> scope. Korea HIRA all-payer monthly is the entire view.
+            </div>
+          </div>
+
+          <div class="ms-col gaps">
+            <div class="ms-col-label">Open Gaps <span class="ms-count">3 fields</span></div>
+            <div class="ms-gap-list">
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>pay_tp_nm</code>
+                <div class="ms-gap-note">Reimbursement status — required to split competitors into covered / non-payable / arbitrary-not-allowed. Shared blocker with Market Landscape — fix once, ship twice.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">HIRA Pricing Spine</div>
+                <code>mds_cd</code>
+                <div class="ms-gap-note">Insurance billing code. Required to count competitors with non-null reimbursement at the class level.</div>
+              </div>
+              <div class="ms-gap-item">
+                <div class="ms-gap-tier">Price Positioning</div>
+                <code>mx_cprc · adt_sta_dd</code>
+                <div class="ms-gap-note">Inherited from the unwired HIRA pricing data spine. Without it the price-band positioning is illustrative — current view uses cohort regression rather than realized prices.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── SUBJECT DRUG BAR ─── -->
+      <div class="subject-bar">
+        <div>
+          <div class="subject-label">Subject Drug · Class Context</div>
+          <div class="subject-name">Tirzepatide <em>(Mounjaro)</em></div>
+          <div class="subject-meta">
+            <span>Class<code>A10BX16 · GLP-1/GIP RA</code></span>
+            <span>Adjacent<code>A10BJ · GLP-1</code></span>
+            <span>Class universe<code>27 drugs</code></span>
+            <span>Indication<code>E11 T2D · E66 Obesity</code></span>
+            <span>Cohort N<code>14 analogues</code></span>
+          </div>
+        </div>
+        <div class="subject-stage">
+          <div class="stage-pill">Class A10BJ + A10BX + A08</div>
+          <div class="subject-anchor">Inherited from Launch Analogue</div>
         </div>
       </div>
 
-      <div class="tier tier-caveat">
-        <div class="tier-label">Have, with caveats <span class="tier-count">· 0 fields · cross-market flags resolved</span></div>
-        <ul class="var-list">
-          <li style="color: var(--text-dim);">Under KR-only scope, the wire's cross-market 🔴 flags on <code>diag_ym</code> granularity and <code>insup_tp_cd</code> scope do not apply.</li>
-        </ul>
+      <!-- ─── FILTERS ─── -->
+      <div class="filters">
+        <div class="chip"><span class="chip-label">Country</span>Korea</div>
+        <div class="chip active"><span class="chip-label">Class universe</span>A10BJ + A10BX + A08</div>
+        <div class="chip"><span class="chip-label">Period</span>Last 36 months</div>
+        <div class="chip"><span class="chip-label">Payer</span>All</div>
       </div>
 
-      <div class="tier tier-missing">
-        <div class="tier-label">Missing or unwired <span class="tier-count">· 2 gaps</span></div>
-        <ul class="var-list">
-          <li><strong><code>pay_tp_nm</code></strong> — reimbursement status (covered / non-payable / arbitrary-not-allowed / payment-suspended)</li>
-          <li><strong><code>mds_cd</code></strong> — insurance billing code, used to count competitors with non-null reimbursement</li>
-        </ul>
+      <!-- ─── KPI STRIP ─── -->
+      <div class="kpi-strip">
+        <div class="kpi">
+          <div class="kpi-label">Class Spend (KR · annualized)</div>
+          <div class="kpi-value">₩612<span class="unit">B</span></div>
+          <div class="kpi-delta up">↑ +48% YoY · class CAGR 35%</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Competing Drugs in Class</div>
+          <div class="kpi-value">27</div>
+          <div class="kpi-delta">3 originators · 24 generics + licensees</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Originator Share</div>
+          <div class="kpi-value">71<span class="unit">%</span></div>
+          <div class="kpi-delta">class is patent-protected · low erosion</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Indication Concentration</div>
+          <div class="kpi-value">94<span class="unit">%</span></div>
+          <div class="kpi-delta">E11 + E66 · narrow ICD footprint</div>
+        </div>
       </div>
 
-      <div class="unlock launch">
-        <div class="unlock-icon">Build unlock</div>
-        <div class="unlock-body">Wire <code>pay_tp_nm</code> and <code>mds_cd</code> from HIRA pricing data spine. Shares the same two-field unlock as Market Landscape — <strong>fix once, ship twice</strong>.</div>
+      <!-- ─── CLASS SPEND TRAJECTORY ─── -->
+      <div class="card" style="margin-bottom: 22px;">
+        <div class="card-head">
+          <div class="card-title">Class Spend Trajectory · 36 months</div>
+          <div class="card-sub">KRW billions monthly · A10BJ + A10BX · GLP-1 family</div>
+        </div>
+
+        <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block;">
+          <line x1="60" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="60" y1="240" x2="1060" y2="240" stroke="rgba(240,232,208,0.18)"/>
+
+          <text x="50" y="44" class="axis-label" text-anchor="end">₩65B</text>
+          <text x="50" y="104" class="axis-label" text-anchor="end">₩48B</text>
+          <text x="50" y="164" class="axis-label" text-anchor="end">₩32B</text>
+          <text x="50" y="224" class="axis-label" text-anchor="end">₩16B</text>
+          <text x="50" y="244" class="axis-label" text-anchor="end">0</text>
+
+          <g id="pm-bars"></g>
+
+          <text x="80" y="262" class="axis-label">Jun '23</text>
+          <text x="240" y="262" class="axis-label">Dec '23</text>
+          <text x="400" y="262" class="axis-label">Jun '24</text>
+          <text x="560" y="262" class="axis-label">Dec '24</text>
+          <text x="720" y="262" class="axis-label">Jun '25</text>
+          <text x="880" y="262" class="axis-label">Dec '25</text>
+          <text x="1020" y="262" class="axis-label">May '26</text>
+
+          <text x="900" y="56" class="axis-label" fill="var(--gold)" font-size="10" letter-spacing="1">SUBJECT ENTRY (PROJ.)</text>
+          <line x1="990" y1="62" x2="990" y2="240" stroke="var(--gold)" stroke-dasharray="3 3" stroke-width="1" opacity="0.6"/>
+        </svg>
+
+        <script>
+          (function() {
+            var g = document.getElementById('pm-bars');
+            var months = 36;
+            var xStart = 70, xEnd = 1050;
+            var width = (xEnd - xStart) / months;
+            var barW = width * 0.78;
+            for (var i = 0; i < months; i++) {
+              var x = xStart + i * width;
+              var growth = 1 + Math.pow(i / months, 1.6) * 3.2;
+              var v_glp1 = 6 * growth;
+              var v_gip = 0.5 * Math.pow((i+1) / months, 3) * 18;
+              var v_dpp4 = 12 * (1 + (i/months) * 0.05);
+              var v_sglt2 = 9 * (1 + (i/months) * 0.45);
+              var scale = 200 / 65;
+              var y = 240;
+              var h = v_glp1 * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e8b87a" opacity="0.9"/>';
+              h = v_gip * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#e87a8c" opacity="0.85"/>';
+              h = v_dpp4 * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#7dc8e8" opacity="0.7"/>';
+              h = v_sglt2 * scale; y -= h;
+              g.innerHTML += '<rect x="' + (x + (width-barW)/2) + '" y="' + y + '" width="' + barW + '" height="' + h + '" fill="#b5a0e0" opacity="0.7"/>';
+            }
+          })();
+        </script>
+
+        <div class="split-legend" style="margin-top: 14px;">
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>A10BJ · GLP-1 RA</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e87a8c;"></span>A10BX · GLP-1/GIP · <em style="color: var(--coral); font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 10px;">new sub-class</em></div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8; opacity: 0.7;"></span>A10BH · DPP-4 (substitution risk)</div>
+          <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0; opacity: 0.7;"></span>A10BK · SGLT2 (adjacent)</div>
+        </div>
       </div>
+
+      <!-- ─── TOP INCUMBENTS + INDICATION MIX ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Top Class Incumbents</div>
+            <div class="card-sub">By class spend · last 12 mo · all-payer</div>
+          </div>
+          <div class="bar-row"><div class="bar-label">Semaglutide <em style="font-style: italic; color: var(--text-soft);">(Ozempic)</em></div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: var(--gold);"></div></div><div class="bar-value">₩186B</div></div>
+          <div class="bar-row"><div class="bar-label">Dulaglutide <em style="font-style: italic; color: var(--text-soft);">(Trulicity)</em></div><div class="bar-track"><div class="bar-fill" style="width: 64%; background: var(--gold);"></div></div><div class="bar-value">₩119B</div></div>
+          <div class="bar-row"><div class="bar-label">Liraglutide <em style="font-style: italic; color: var(--text-soft);">(Victoza)</em></div><div class="bar-track"><div class="bar-fill" style="width: 38%; background: var(--gold);"></div></div><div class="bar-value">₩71B</div></div>
+          <div class="bar-row"><div class="bar-label">Sitagliptin <em style="font-style: italic; color: var(--text-soft);">(Januvia)</em></div><div class="bar-track"><div class="bar-fill" style="width: 32%; background: var(--blue); opacity: 0.7;"></div></div><div class="bar-value">₩60B</div></div>
+          <div class="bar-row"><div class="bar-label">Empagliflozin <em style="font-style: italic; color: var(--text-soft);">(Jardiance)</em></div><div class="bar-track"><div class="bar-fill" style="width: 28%; background: var(--violet); opacity: 0.7;"></div></div><div class="bar-value">₩52B</div></div>
+          <div class="bar-row"><div class="bar-label">Naltrexone-Bup. <em style="font-style: italic; color: var(--text-soft);">(Contrave)</em></div><div class="bar-track"><div class="bar-fill" style="width: 14%; background: var(--gold); opacity: 0.5;"></div></div><div class="bar-value">₩26B</div></div>
+          <div class="bar-row"><div class="bar-label">Orlistat <em style="font-style: italic; color: var(--text-soft);">(Xenical)</em></div><div class="bar-track"><div class="bar-fill" style="width: 8%; background: var(--text-soft); opacity: 0.5;"></div></div><div class="bar-value">₩15B</div></div>
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 11px; color: var(--text-soft);">
+            Top 3 hold <strong style="color: var(--text);">61%</strong> of class spend · all GLP-1 RAs · all originator.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Indication Mix Within Class</div>
+            <div class="card-sub">ICD-10 distribution · % of class volume</div>
+          </div>
+          <div class="bar-row"><div class="bar-label">E11 T2 Diabetes</div><div class="bar-track"><div class="bar-fill" style="width: 100%; background: var(--blue);"></div></div><div class="bar-value">74%</div></div>
+          <div class="bar-row"><div class="bar-label">E66 Obesity</div><div class="bar-track"><div class="bar-fill" style="width: 28%; background: var(--coral);"></div></div><div class="bar-value">20%</div></div>
+          <div class="bar-row"><div class="bar-label">E78 Lipid disorders</div><div class="bar-track"><div class="bar-fill" style="width: 6%; background: var(--blue); opacity: 0.6;"></div></div><div class="bar-value">4%</div></div>
+          <div class="bar-row"><div class="bar-label">I50 Heart failure</div><div class="bar-track"><div class="bar-fill" style="width: 3%; background: var(--blue); opacity: 0.5;"></div></div><div class="bar-value">2%</div></div>
+          <div style="margin-top: 22px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px;">Subject indication overlap</div>
+            <div class="split-bar">
+              <div class="split-segment" style="background: var(--gold); width: 94%;">94%</div>
+              <div class="split-segment" style="background: var(--text-dim); width: 6%; opacity: 0.6;"></div>
+            </div>
+            <div style="font-size: 11px; color: var(--text-soft);">
+              94% of class volume lands in the subject's planned indication set (E11 + E66). Narrow ICD footprint = focused dossier scope.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PRICE BAND POSITIONING + PAYER MIX + ORIGINATOR/GENERIC ─── -->
+      <div class="grid-3">
+        <div class="card" style="grid-column: span 2;">
+          <div class="card-head">
+            <div class="card-title">Projected Price-Band Position</div>
+            <div class="card-sub">KRW per DDD · vs class incumbents · cohort-regressed (mx_cprc gap)</div>
+          </div>
+
+          <div class="price-band">
+            <div class="price-band-track"></div>
+            <div class="price-band-range" style="left: 16%; width: 62%;"></div>
+
+            <div class="price-band-dot competitor" style="left: 18%;"></div>
+            <div class="price-band-label bottom" style="left: 18%;">Orlistat ₩580</div>
+
+            <div class="price-band-dot competitor" style="left: 32%;"></div>
+            <div class="price-band-label bottom" style="left: 32%;">Sitagliptin ₩1.2k</div>
+
+            <div class="price-band-dot competitor" style="left: 52%;"></div>
+            <div class="price-band-label bottom" style="left: 52%;">Liraglutide ₩4.8k</div>
+
+            <div class="price-band-dot competitor" style="left: 64%;"></div>
+            <div class="price-band-label bottom" style="left: 64%;">Dulaglutide ₩6.9k</div>
+
+            <div class="price-band-dot competitor" style="left: 74%;"></div>
+            <div class="price-band-label bottom" style="left: 74%;">Semaglutide ₩9.4k</div>
+
+            <div class="price-band-dot subject" style="left: 86%;"></div>
+            <div class="price-band-label top" style="left: 86%;">SUBJECT · ₩11.2k–14.8k (proj.)</div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.1em; margin-top: 6px;">
+            <span>₩0</span><span>₩4k</span><span>₩8k</span><span>₩12k</span><span>₩16k</span>
+          </div>
+
+          <div style="margin-top: 20px; padding: 14px 16px; background: var(--coral-bg); border: 1px dashed var(--coral-line); border-left: 2px solid var(--coral); font-size: 12px; color: var(--text-soft); line-height: 1.5;">
+            <strong style="color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em;">DISCLOSURE ·</strong>
+            Subject projection uses analogue-cohort regression (cohort N=14) — <strong style="color: var(--text);">not</strong> realized HIRA <code>mx_cprc</code> values. Realized price-band view unlocks once HIRA pricing spine (<code>mx_cprc</code> · <code>adt_sta_dd</code>) is bound to the warehouse.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Originator vs Generic</div>
+            <div class="card-sub">Class spend share</div>
+          </div>
+          <div class="donut-wrap" style="margin-top: 18px;">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(240,232,208,0.05)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#e8b87a" stroke-width="18" stroke-dasharray="214 301.6" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="#7dc8e8" stroke-width="18" stroke-dasharray="87.5 301.6" stroke-dashoffset="-214" transform="rotate(-90 60 60)" opacity="0.65"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-value">71%</div>
+              <div class="donut-label">Originator share</div>
+            </div>
+          </div>
+          <div class="split-legend" style="margin-top: 14px;">
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>Originator · 71%</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8; opacity: 0.65;"></span>Generic · 29%</div>
+          </div>
+          <div style="margin-top: 12px; font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+            Class is patent-protected — generic share concentrated in older sub-classes (DPP-4). Low erosion risk for subject at launch.
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAYER MIX + REIMBURSEMENT GAP CALLOUT ─── -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Payer Mix</div>
+            <div class="card-sub">insup_tp_cd · class spend</div>
+          </div>
+          <div class="split-bar" style="margin-top: 16px;">
+            <div class="split-segment" style="background: var(--blue); width: 89%;">89%</div>
+            <div class="split-segment" style="background: var(--gold); width: 9%; opacity: 0.85;">9%</div>
+            <div class="split-segment" style="background: var(--violet); width: 2%; opacity: 0.85;"></div>
+          </div>
+          <div class="split-legend">
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #7dc8e8;"></span>NHI · 89%</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #e8b87a;"></span>Medical Aid · 9%</div>
+            <div class="split-legend-item"><span class="split-legend-swatch" style="background: #b5a0e0;"></span>Veterans · 2%</div>
+          </div>
+          <div style="margin-top: 14px; font-size: 11px; color: var(--text-soft);">
+            NHI-dominant — HIRA submission is the only reimbursement path that matters at launch.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">Class Reimbursement Status</div>
+            <div class="card-sub">pay_tp_nm · UNWIRED</div>
+          </div>
+          <div style="padding: 18px 20px; background: var(--coral-bg); border: 1px dashed var(--coral-line); border-left: 2px solid var(--coral); margin-top: 8px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--coral); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;">View unavailable — gap</div>
+            <div style="font-size: 12.5px; color: var(--text); line-height: 1.55; margin-bottom: 12px;">
+              The class-level reimbursement split (<code style="font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(240,232,208,0.05); padding: 1px 5px;">pay_tp_nm</code>) is not wired to any UI page. Without it, we can't separate <em>covered</em> from <em>non-payable / arbitrary-not-allowed</em> at class level.
+            </div>
+            <div style="font-size: 11px; color: var(--text-soft); line-height: 1.5;">
+              <strong style="color: var(--coral); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em;">UNLOCK ·</strong>
+              Binding <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">pay_tp_nm</code> + <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">mds_cd</code> from <code style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">core.pricing</code> ships both Market Landscape and Product Market with reimbursement views. Same lift, two tools unlocked.
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ───────────────────────────────────────────────── -->
