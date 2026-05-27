@@ -51,6 +51,10 @@
     display: grid;
     grid-template-columns: 260px 1fr;
     min-height: 100vh;
+    transition: grid-template-columns 0.28s ease;
+  }
+  .app.sidebar-collapsed {
+    grid-template-columns: 0px 1fr;
   }
 
   /* ─── SIDEBAR ─── */
@@ -62,6 +66,55 @@
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    overflow-x: hidden;
+    transition: opacity 0.2s ease, transform 0.28s ease;
+  }
+  .app.sidebar-collapsed .sidebar {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-12px);
+  }
+
+  /* ─── SIDEBAR TOGGLE BUTTON ─── */
+  .sidebar-toggle {
+    position: fixed;
+    top: 18px;
+    left: 260px;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    color: var(--text-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    user-select: none;
+  }
+  .sidebar-toggle:hover {
+    background: var(--bg-elev);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+  .app.sidebar-collapsed .sidebar-toggle {
+    left: 16px;
+    transform: translateX(0);
+  }
+  .sidebar-toggle-icon {
+    display: inline-block;
+    transition: transform 0.22s ease;
+    line-height: 1;
+  }
+  .app.sidebar-collapsed .sidebar-toggle-icon {
+    transform: rotate(180deg);
   }
 
   .brand {
@@ -3600,11 +3653,307 @@
     .thread-flow { grid-template-columns: repeat(2, 1fr); }
     .inheritance-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /* PRODUCT OVERVIEW · scoped platform-architecture page             */
+  /* ═══════════════════════════════════════════════════════════════ */
+  #screen-product-overview {
+    /* Cancel main padding so the overview fills viewport edge-to-edge */
+    margin: -32px -44px -60px;
+    --po-header-bg: #061026;
+    --po-platform-bg: #0a172d;
+    --po-platform-border: rgba(125, 200, 232, 0.18);
+    --po-layer-03-bg: #0a152e;
+    --po-layer-03-tile: #0e1c3a;
+    --po-layer-03-border: rgba(125, 200, 232, 0.25);
+    --po-layer-02-bg: #1c4d82;
+    --po-layer-02-tile: #235999;
+    --po-layer-02-border: rgba(255, 255, 255, 0.22);
+    --po-layer-01-bg: #e3edf8;
+    --po-layer-01-bg-exclusive: #c9d8ec;
+    --po-layer-01-tile: #ffffff;
+    --po-layer-01-tile-exclusive: #eaf0f9;
+    --po-layer-01-border: #c4d5ea;
+    --po-layer-01-border-exclusive: #8fa7c8;
+    --po-layer-01-text: #0a1530;
+    --po-layer-01-text-soft: #4a5a72;
+    --po-footer-bg: #d1deec;
+  }
+  #screen-product-overview .platform-page { max-width: 1600px; margin: 0 auto; }
+
+  #screen-product-overview .platform-header {
+    background: var(--po-header-bg);
+    padding: 14px 56px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 40px;
+    border-bottom: 1px solid rgba(125, 200, 232, 0.12);
+  }
+  #screen-product-overview .header-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  #screen-product-overview .header-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 1100px;
+  }
+  #screen-product-overview .header-title em {
+    font-style: italic;
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+  #screen-product-overview .header-logo { width: 68px; height: 68px; position: relative; flex-shrink: 0; }
+  #screen-product-overview .header-logo .planet {
+    position: absolute; inset: 8px; border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #e0c4a0 0%, #a78050 35%, #6b4a2a 65%, #2a1810 100%);
+    box-shadow: inset -4px -4px 10px rgba(0,0,0,0.55);
+  }
+  #screen-product-overview .header-logo .orbit {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px solid var(--gold); opacity: 0.7;
+  }
+  #screen-product-overview .header-logo .particle {
+    position: absolute; background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 4px rgba(232, 184, 122, 0.8);
+  }
+  #screen-product-overview .header-logo .p1 { top: -2px; right: 12px; width: 8px; height: 8px; }
+  #screen-product-overview .header-logo .p2 { top: 10px; right: 0px; width: 4px; height: 4px; }
+  #screen-product-overview .header-logo .p3 { top: 20px; right: -3px; width: 3px; height: 3px; opacity: 0.7; }
+
+  #screen-product-overview .body-stack { padding: 12px 56px 4px; }
+  #screen-product-overview .platform-wrap {
+    background: var(--po-platform-bg);
+    border: 1px solid var(--po-platform-border);
+    border-radius: 2px; padding: 8px 14px 10px; position: relative;
+  }
+  #screen-product-overview .platform-wrap-label {
+    position: absolute; top: -8px; left: 24px;
+    background: var(--bg); padding: 0 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--blue);
+  }
+  #screen-product-overview .layer {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 14px; align-items: center; padding: 2px 0;
+  }
+  #screen-product-overview .layer-label {
+    border: 1px solid; padding: 8px 10px; text-align: left;
+    min-height: 62px; display: flex; flex-direction: column; justify-content: center;
+  }
+  #screen-product-overview .layer-03 .layer-label {
+    background: #1a3060; border-color: var(--po-layer-03-border); color: var(--text);
+  }
+  #screen-product-overview .layer-02 .layer-label {
+    background: #194571; border-color: rgba(255,255,255,0.3); color: #ffffff;
+  }
+  #screen-product-overview .layer-01 .layer-label {
+    background: var(--po-footer-bg); border-color: var(--po-layer-01-border);
+    color: var(--po-layer-01-text); min-height: 146px;
+  }
+  #screen-product-overview .layer-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em; opacity: 0.75; margin-bottom: 3px;
+  }
+  #screen-product-overview .layer-name {
+    font-family: 'Fraunces', serif;
+    font-size: 14px; font-weight: 500; line-height: 1.15; margin-bottom: 2px;
+  }
+  #screen-product-overview .layer-sub {
+    font-size: 9.5px; opacity: 0.75; letter-spacing: 0.02em; line-height: 1.3;
+  }
+  #screen-product-overview .layer-principle {
+    margin-top: 5px; padding-top: 5px; border-top: 1px solid;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 10px; line-height: 1.3;
+    display: flex; gap: 4px; align-items: flex-start;
+  }
+  #screen-product-overview .layer-03 .layer-principle,
+  #screen-product-overview .layer-02 .layer-principle {
+    border-top-color: rgba(255, 255, 255, 0.18); color: rgba(255, 255, 255, 0.88);
+  }
+  #screen-product-overview .layer-01 .layer-principle {
+    border-top-color: rgba(10, 21, 48, 0.2); color: var(--po-layer-01-text-soft);
+  }
+  #screen-product-overview .layer-principle::before {
+    content: '✦'; color: var(--gold);
+    font-style: normal; font-size: 9px; line-height: 1.5;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  #screen-product-overview .flow-indicator {
+    display: flex; justify-content: center; align-items: center; padding: 4px 0 2px;
+  }
+  #screen-product-overview .flow-indicator-data { padding: 5px 0 3px; }
+  #screen-product-overview .layer-tiles { display: grid; gap: 7px; padding: 8px 12px; }
+  #screen-product-overview .layer-03 .layer-tiles {
+    background: var(--po-layer-03-bg);
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--po-layer-03-border);
+  }
+  #screen-product-overview .layer-02 .layer-tiles {
+    background: var(--po-layer-02-bg);
+    grid-template-columns: repeat(5, 1fr);
+  }
+  #screen-product-overview .layer-01 .layer-tiles {
+    grid-template-columns: 3.2fr 1fr; gap: 10px;
+    padding: 0; background: transparent;
+  }
+  #screen-product-overview .tile {
+    padding: 9px 12px 8px; border: 1px solid;
+    min-height: 60px; position: relative;
+  }
+  #screen-product-overview .layer-03 .tile {
+    background: var(--po-layer-03-tile); border-color: var(--po-layer-03-border);
+    color: var(--text); padding-right: 12px; padding-top: 18px;
+  }
+  #screen-product-overview .layer-03 .tile.ai-agent {
+    background: linear-gradient(135deg, #1a2545 0%, #2a2030 100%);
+    border-color: rgba(232, 184, 122, 0.5);
+    box-shadow: inset 0 0 0 1px rgba(232, 184, 122, 0.05), 0 0 12px rgba(232, 184, 122, 0.08);
+  }
+  #screen-product-overview .layer-02 .tile {
+    background: var(--po-layer-02-tile); border-color: var(--po-layer-02-border); color: #ffffff;
+  }
+  #screen-product-overview .tile-name {
+    font-family: 'Fraunces', serif;
+    font-size: 12.5px; font-weight: 500; margin-bottom: 2px; line-height: 1.2;
+  }
+  #screen-product-overview .ai-agent .tile-name {
+    color: var(--gold); display: flex; align-items: center; gap: 6px;
+  }
+  #screen-product-overview .ai-agent .tile-name::before {
+    content: '✦'; color: var(--gold); font-size: 14px; line-height: 1;
+  }
+  #screen-product-overview .tile-desc { font-size: 9.5px; opacity: 0.72; line-height: 1.35; }
+  #screen-product-overview .tile-status {
+    position: absolute; top: 5px; right: 7px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 1px 5px; border: 1px solid;
+  }
+  #screen-product-overview .tile-status.live   { color: #6bcb8e; border-color: rgba(107, 203, 142, 0.4); background: rgba(107, 203, 142, 0.08); }
+  #screen-product-overview .tile-status.mvp    { color: #8ec3b0; border-color: rgba(142, 195, 176, 0.55); background: rgba(142, 195, 176, 0.12); }
+  #screen-product-overview .tile-status.coming { color: var(--gold); border-color: rgba(232, 184, 122, 0.35); background: rgba(232, 184, 122, 0.06); }
+  #screen-product-overview .tile-status.design { color: var(--blue); border-color: rgba(125, 200, 232, 0.32); background: rgba(125, 200, 232, 0.08); }
+  #screen-product-overview .tile-status.ai     { color: var(--gold); border-color: rgba(232, 184, 122, 0.55); background: rgba(232, 184, 122, 0.12); }
+
+  #screen-product-overview .data-zone { padding: 8px 12px 10px; border: 1px solid; position: relative; }
+  #screen-product-overview .data-zone.public    { background: var(--po-layer-01-bg); border-color: var(--po-layer-01-border); }
+  #screen-product-overview .data-zone.exclusive { background: var(--po-layer-01-bg-exclusive); border-color: var(--po-layer-01-border-exclusive); }
+  #screen-product-overview .data-zone-label {
+    position: absolute; top: -8px; left: 14px;
+    background: var(--bg); padding: 0 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500;
+  }
+  #screen-product-overview .data-zone.exclusive .data-zone-label { color: var(--gold); }
+  #screen-product-overview .data-tiles-public { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding-top: 2px; }
+  #screen-product-overview .data-tiles-exclusive { display: grid; grid-template-columns: 1fr; gap: 6px; padding-top: 2px; }
+  #screen-product-overview .data-tile {
+    background: var(--po-layer-01-tile); border: 1px solid var(--po-layer-01-border);
+    padding: 7px 10px 8px; color: var(--po-layer-01-text); min-height: 58px;
+  }
+  #screen-product-overview .data-zone.exclusive .data-tile {
+    background: var(--po-layer-01-tile-exclusive); border-color: var(--po-layer-01-border-exclusive);
+  }
+  #screen-product-overview .data-tile-name {
+    font-family: 'Fraunces', serif;
+    font-size: 11.5px; font-weight: 500; line-height: 1.15; margin-bottom: 2px; color: var(--po-layer-01-text);
+  }
+  #screen-product-overview .data-tile-sources {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: 0.04em; color: var(--po-layer-01-text-soft);
+    margin-bottom: 2px; line-height: 1.35;
+  }
+  #screen-product-overview .data-tile-purpose {
+    font-size: 9px; color: var(--po-layer-01-text-soft); line-height: 1.3; font-style: italic;
+  }
+  #screen-product-overview .markets-strip {
+    background: var(--po-footer-bg); color: var(--po-layer-01-text);
+    padding: 8px 36px 10px; border-top: 1px solid var(--po-layer-01-border);
+    margin: 6px 56px 8px;
+  }
+  #screen-product-overview .markets-groups { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0 20px; align-items: center; }
+  #screen-product-overview .markets-divider {
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    padding: 0 10px; border-left: 1px solid var(--po-layer-01-border); border-right: 1px solid var(--po-layer-01-border);
+    text-align: center;
+  }
+  #screen-product-overview .markets-divider-text {
+    font-family: 'Fraunces', serif; font-size: 11px; line-height: 1.35;
+    color: var(--po-layer-01-text); font-style: italic; max-width: 130px;
+  }
+  #screen-product-overview .markets-divider-text em {
+    font-style: normal; color: var(--po-layer-02-bg); font-weight: 600;
+  }
+  #screen-product-overview .market-group {
+    display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
+  }
+  #screen-product-overview .market-group-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--po-layer-01-text); font-weight: 500; white-space: nowrap;
+  }
+  #screen-product-overview .market-group-label .status-note {
+    font-weight: 400; color: var(--po-layer-01-text-soft);
+    letter-spacing: 0.08em; text-transform: none; font-size: 9px; margin-left: 3px;
+  }
+  #screen-product-overview .market-flag-box {
+    background: rgba(255, 255, 255, 0.55); border: 1px solid #a8bdda;
+    padding: 6px 14px; display: inline-flex; gap: 14px; align-items: center;
+    line-height: 1; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  #screen-product-overview .market-stat {
+    display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 34px;
+  }
+  #screen-product-overview .m-flag { font-size: 20px; line-height: 1; margin-bottom: 1px; }
+  #screen-product-overview .m-size {
+    font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 500;
+    color: var(--po-layer-01-text); letter-spacing: 0.02em; line-height: 1;
+  }
+  #screen-product-overview .m-innov {
+    font-family: 'JetBrains Mono', monospace; font-size: 8px;
+    color: var(--po-layer-01-text-soft); letter-spacing: 0.02em; line-height: 1;
+  }
+  #screen-product-overview .market-flag-box .more-dots {
+    font-size: 18px; color: var(--po-layer-01-text-soft); letter-spacing: 3px;
+    line-height: 1; padding-left: 4px; opacity: 0.7; align-self: center;
+  }
+  #screen-product-overview .markets-legend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--po-layer-01-text-soft); margin-top: 3px; font-weight: 400; font-style: normal;
+  }
+  #screen-product-overview .markets-legend .legend-key {
+    color: var(--po-layer-02-bg); font-weight: 600; margin-right: 2px;
+  }
+  #screen-product-overview .markets-legend .legend-dot { margin: 0 6px; opacity: 0.5; }
+  #screen-product-overview .market-explainer {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 10.5px; line-height: 1.35;
+    color: var(--po-layer-01-text-soft); max-width: 440px; margin-top: 0;
+  }
 </style>
 </head>
 <body>
 
-<div class="app">
+<div class="app" id="app">
+
+  <!-- ═════════════════ SIDEBAR TOGGLE ═════════════════ -->
+  <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Toggle sidebar" title="Toggle sidebar (open / close)">
+    <span class="sidebar-toggle-icon">◂</span>
+  </button>
 
   <!-- ═════════════════ SIDEBAR ═════════════════ -->
   <aside class="sidebar">
@@ -3614,9 +3963,18 @@
       <div class="brand-tag">Pack Line · Preview</div>
     </div>
 
+    <div class="nav-section overview">
+      <div class="nav-section-label">Product Overview</div>
+      <div class="nav-item active" data-tool="product-overview">
+        <span class="nav-dot"></span>
+        <span class="nav-item-label">Platform</span>
+        <span class="nav-status-dot live"></span>
+      </div>
+    </div>
+
     <div class="nav-section launch">
-      <div class="nav-section-label">Launch Pack</div>
-      <div class="nav-item active" data-tool="launch-context">
+      <div class="nav-section-label">Launch Pack MVP Concept</div>
+      <div class="nav-item" data-tool="launch-context">
         <span class="nav-dot"></span>
         <span class="nav-item-label">Launch Landscape</span>
         <span class="nav-status-dot live"></span>
@@ -3738,11 +4096,292 @@
     <!-- ───────────────────────────────────────────────── -->
     <!-- LIVE: LAUNCH ANALOGUE -->
     <!-- ───────────────────────────────────────────────── -->
-    <section class="tool-screen active" id="screen-launch-context">
+    <!-- ───────────────────────────────────────────────── -->
+    <!-- PRODUCT OVERVIEW · platform architecture landing -->
+    <!-- ───────────────────────────────────────────────── -->
+    <section class="tool-screen active" id="screen-product-overview">
+
+      <div class="platform-page">
+
+        <!-- ─── HEADER ─── -->
+        <header class="platform-header">
+          <div>
+            <div class="header-eyebrow">The Platform</div>
+            <h1 class="header-title">Data and methods you can <em>trust</em> — for the trickiest middle markets.</h1>
+          </div>
+          <div class="header-logo">
+            <div class="orbit"></div>
+            <div class="planet"></div>
+            <div class="particle p1"></div>
+            <div class="particle p2"></div>
+            <div class="particle p3"></div>
+          </div>
+        </header>
+
+        <div class="body-stack">
+
+          <!-- PLATFORM WRAPPER · Insight + Action grouped together -->
+          <div class="platform-wrap">
+            <div class="platform-wrap-label">Pluto Platform · Analytics &amp; Action</div>
+
+            <!-- LAYER 03 · ACTION -->
+            <div class="layer layer-03">
+              <div class="layer-label">
+                <div class="layer-num">03</div>
+                <div class="layer-name">Action Layer</div>
+                <div class="layer-sub">Packs &amp; AI Agent</div>
+                <div class="layer-principle">Relentless about your team's workflow</div>
+              </div>
+              <div class="layer-tiles">
+                <div class="tile">
+                  <span class="tile-status mvp">🇰🇷 MVP Demo</span>
+                  <div class="tile-name">Launch Pack MVP Concept</div>
+                  <div class="tile-desc">End-to-end APAC launch plan, from analogues to playbook</div>
+                </div>
+                <div class="tile">
+                  <span class="tile-status design">In Design</span>
+                  <div class="tile-name">LOE Defense Pack</div>
+                  <div class="tile-desc">Defend revenue as patent exclusivity ends, market by market</div>
+                </div>
+                <div class="tile">
+                  <span class="tile-status design">In Design</span>
+                  <div class="tile-name">Commercial Excellence Pack</div>
+                  <div class="tile-desc">Sales force structure, channel mix, and KOL engagement across markets</div>
+                </div>
+                <div class="tile">
+                  <span class="tile-status design">In Design</span>
+                  <div class="tile-name">Supply Chain Optimizer</div>
+                  <div class="tile-desc">Match supply to demand across launches moving at different speeds</div>
+                </div>
+                <div class="tile ai-agent">
+                  <span class="tile-status design">In Design</span>
+                  <div class="tile-name">AI Agent</div>
+                  <div class="tile-desc">Ad-hoc questions, deterministic answers — grounded in the data &amp; methodologies</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flow: Insight → Action -->
+            <div class="flow-indicator">
+              <svg viewBox="0 0 32 16" width="32" height="16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 16 2 L 28 14 L 4 14 Z"
+                      fill="rgba(125, 200, 232, 0.18)"
+                      stroke="rgba(125, 200, 232, 0.65)"
+                      stroke-width="1.4"
+                      stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- LAYER 02 · INSIGHT -->
+            <div class="layer layer-02">
+              <div class="layer-label">
+                <div class="layer-num">02</div>
+                <div class="layer-name">Insight Layer</div>
+                <div class="layer-sub">Analytical engines</div>
+                <div class="layer-principle">Relentless about picking the right method</div>
+              </div>
+              <div class="layer-tiles">
+                <div class="tile">
+                  <div class="tile-name">Forecasting Methods</div>
+                  <div class="tile-desc">Time-to-listing, price band, volume uptake, LOE erosion</div>
+                </div>
+                <div class="tile">
+                  <div class="tile-name">Cohort Selection</div>
+                  <div class="tile-desc">Adjustable, transparent analogue scoring</div>
+                </div>
+                <div class="tile">
+                  <div class="tile-name">Landscape Mapping</div>
+                  <div class="tile-desc">Regulatory pathway, payer environment, standard of care</div>
+                </div>
+                <div class="tile">
+                  <div class="tile-name">Interactive Visualisations</div>
+                  <div class="tile-desc">Move parameters, see the model react in real time</div>
+                </div>
+                <div class="tile">
+                  <div class="tile-name">Signal Tracking</div>
+                  <div class="tile-desc">Live monitoring of policy, listing, and price changes</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Flow: Data → Insight -->
+          <div class="flow-indicator flow-indicator-data">
+            <svg viewBox="0 0 32 16" width="32" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 16 2 L 28 14 L 4 14 Z"
+                    fill="rgba(125, 200, 232, 0.18)"
+                    stroke="rgba(125, 200, 232, 0.65)"
+                    stroke-width="1.4"
+                    stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- LAYER 01 · DATA -->
+          <div class="layer layer-01">
+            <div class="layer-label">
+              <div class="layer-num">01</div>
+              <div class="layer-name">Data Layer</div>
+              <div class="layer-sub">10 markets<br>40+ sources</div>
+              <div class="layer-principle">Relentless about source reliability</div>
+            </div>
+            <div class="layer-tiles">
+
+              <!-- PUBLIC zone -->
+              <div class="data-zone public">
+                <div class="data-zone-label">Publicly Available · Hard to Access</div>
+                <div class="data-tiles-public">
+                  <div class="data-tile">
+                    <div class="data-tile-name">Regulatory Filings</div>
+                    <div class="data-tile-sources">PMDA · MFDS · NMPA · TGA · HSA</div>
+                    <div class="data-tile-purpose">Approvals &amp; pathways</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">HTA &amp; Reimbursement</div>
+                    <div class="data-tile-sources">HIRA · PBAC · ACE · HITAP · CDE</div>
+                    <div class="data-tile-purpose">Decisions, coverage, listings</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Pricing Databases</div>
+                    <div class="data-tile-sources">National DBs · IRP feeds</div>
+                    <div class="data-tile-purpose">Ex-factory, net &amp; IRP</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Clinical Trials</div>
+                    <div class="data-tile-sources">CT.gov · JapicCTI · CRiS · ChiCTR</div>
+                    <div class="data-tile-purpose">Trials, labels, efficacy</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Epidemiology</div>
+                    <div class="data-tile-sources">WHO · IHME · national stats</div>
+                    <div class="data-tile-purpose">Disease burden &amp; pools</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Economic Indicators</div>
+                    <div class="data-tile-sources">OECD · World Bank · national</div>
+                    <div class="data-tile-purpose">GDP, health spend benchmarks</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Real-World Evidence</div>
+                    <div class="data-tile-sources">Claims · registries · utilisation</div>
+                    <div class="data-tile-purpose">Patterns of actual use</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Historical Launches</div>
+                    <div class="data-tile-sources">Regulator archives · public records</div>
+                    <div class="data-tile-purpose">Outcomes &amp; learnings</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EXCLUSIVE zone -->
+              <div class="data-zone exclusive">
+                <div class="data-zone-label">Exclusive · Proprietary</div>
+                <div class="data-tiles-exclusive">
+                  <div class="data-tile">
+                    <div class="data-tile-name">Market Research</div>
+                    <div class="data-tile-sources">IQVIA · custom panels · KOL networks</div>
+                    <div class="data-tile-purpose">Payer views &amp; physician sentiment</div>
+                  </div>
+                  <div class="data-tile">
+                    <div class="data-tile-name">Internal Client Data</div>
+                    <div class="data-tile-sources">Sales · prescriptions · field intel</div>
+                    <div class="data-tile-purpose">Bring your own data</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ─── MARKETS STRIP ─── -->
+        <div class="markets-strip">
+          <div class="markets-groups">
+            <div class="market-group">
+              <div class="market-group-label">
+                Asia-Pacific <span class="status-note">(starting point)</span>
+              </div>
+              <div class="market-flag-box">
+                <div class="market-stat">
+                  <span class="m-flag" title="South Korea">🇰🇷</span>
+                  <span class="m-size">$22B</span>
+                  <span class="m-innov">65%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Australia">🇦🇺</span>
+                  <span class="m-size">$15B</span>
+                  <span class="m-innov">75%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Taiwan">🇹🇼</span>
+                  <span class="m-size">$7B</span>
+                  <span class="m-innov">55%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Thailand">🇹🇭</span>
+                  <span class="m-size">$5B</span>
+                  <span class="m-innov">30%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Singapore">🇸🇬</span>
+                  <span class="m-size">$1.5B</span>
+                  <span class="m-innov">70%</span>
+                </div>
+                <span class="more-dots">⋯</span>
+              </div>
+              <div class="market-explainer">
+                Built first — full pack coverage and cross-market comparison for pharma teams launching here.
+              </div>
+            </div>
+            <div class="markets-divider">
+              <div class="markets-divider-text">Starting with <em>middle markets</em> — hard to navigate, and significant to get right</div>
+              <div class="markets-legend"><span class="legend-key">$</span> pharma market size <span class="legend-dot">·</span> <span class="legend-key">%</span> innovative drug share</div>
+            </div>
+            <div class="market-group">
+              <div class="market-group-label">
+                Rest of World <span class="status-note">(to come)</span>
+              </div>
+              <div class="market-flag-box">
+                <div class="market-stat">
+                  <span class="m-flag" title="Saudi Arabia">🇸🇦</span>
+                  <span class="m-size">$8B</span>
+                  <span class="m-innov">55%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="United Arab Emirates">🇦🇪</span>
+                  <span class="m-size">$4B</span>
+                  <span class="m-innov">60%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Brazil">🇧🇷</span>
+                  <span class="m-size">$32B</span>
+                  <span class="m-innov">40%</span>
+                </div>
+                <div class="market-stat">
+                  <span class="m-flag" title="Türkiye">🇹🇷</span>
+                  <span class="m-size">$9B</span>
+                  <span class="m-innov">35%</span>
+                </div>
+                <span class="more-dots">⋯</span>
+              </div>
+              <div class="market-explainer">
+                Expanding next as the platform matures — same depth, brought to each new market.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="tool-screen" id="screen-launch-context">
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01</div>
           <h1 class="tool-h1">Launch <em>Landscape</em></h1>
           <p class="tool-sub">Three inputs that anchor every downstream view: the molecule, the market, and the primary indication. Selections propagate to Standard of Care, Payer Environment, Analogue Cohort, Timing Forecast, and Price Forecast.</p>
         </div>
@@ -3756,7 +4395,7 @@
             <div class="ps-eyebrow">Input 01 · Subject Drug</div>
             <div class="ps-title">Which molecule are you <em>launching</em>?</div>
           </div>
-          <div class="ps-help">Selection updates the subject anchor + drives variable propagation across the Launch Pack.</div>
+          <div class="ps-help">Selection updates the subject anchor + drives variable propagation across the Launch Pack MVP Concept.</div>
         </div>
 
         <div class="ps-dropdown-row">
@@ -3765,10 +4404,11 @@
             <select class="ps-dropdown js-product-select" id="ps-select">
               <option value="rhapsido" selected>Rhapsido — L04AA · first-in-class oral BTK inhibitor for CSU · NCE</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro) — A10BX16 · GLP-1/GIP RA · injectable</option>
+              <option value="oveporexton">Oveporexton (TAK-861) — N07XX · first-in-class oral OX2R agonist for NT1 · NCE</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
-          <span class="ps-dropdown-note">demo · 2 molecules · variables propagate</span>
+          <span class="ps-dropdown-note">demo · 3 molecules · variables propagate</span>
         </div>
 
         <div class="ps-active-detail" id="ps-active-detail">
@@ -3859,7 +4499,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Standard of <em>Care</em></h1>
           <p class="tool-sub">Existing treatment landscape for <span data-cond-display>Type 2 Diabetes</span> in <span data-country-display>Korea</span> — patient volume, clinical guidelines, marketed therapies + market size. Reflects the inputs set in Launch Landscape.</p>
         </div>
@@ -3873,6 +4513,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -3972,7 +4613,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Patient <em>Baseline</em></h1>
           <p class="tool-sub">The demand-side baseline. Treated population from HIRA claims (<code>sick_cd × tot_use_qty</code>), eligible-population funnel by line of therapy, regional distribution. This is the foundation for the Patient Demand forecast downstream.</p>
         </div>
@@ -3986,6 +4627,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -4120,6 +4762,41 @@
             <circle cx="980" cy="30" r="10" fill="none" stroke="#e8b87a" stroke-opacity="0.5"/>
           </svg>
         </div>
+
+        <!-- Oveporexton / NT1 trend chart (small rare-disease scale · 2.7k → 4.3k · +12.2% CAGR) -->
+        <div class="pb-trend-chart" data-pb-subject="oveporexton" style="display: none;">
+          <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block; margin-top: 8px;">
+            <line x1="80" y1="40"  x2="1060" y2="40"  stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.18)"/>
+            <line x1="80" y1="40"  x2="80"   y2="220" stroke="rgba(240,232,208,0.18)"/>
+
+            <!-- Y-axis labels (NT1 patients · 0 → 6k) -->
+            <text x="72" y="44"  class="axis-label" text-anchor="end">6k</text>
+            <text x="72" y="104" class="axis-label" text-anchor="end">4k</text>
+            <text x="72" y="164" class="axis-label" text-anchor="end">2k</text>
+            <text x="72" y="224" class="axis-label" text-anchor="end">0</text>
+
+            <!-- X-axis years -->
+            <text x="180" y="240" class="axis-label" text-anchor="middle">2020</text>
+            <text x="380" y="240" class="axis-label" text-anchor="middle">2021</text>
+            <text x="580" y="240" class="axis-label" text-anchor="middle">2022</text>
+            <text x="780" y="240" class="axis-label" text-anchor="middle">2023</text>
+            <text x="980" y="240" class="axis-label" text-anchor="middle">2024</text>
+            <text x="22" y="130" class="axis-title" text-anchor="middle" transform="rotate(-90 22 130)">Diagnosed patients</text>
+
+            <!-- Line: NT1 diagnosed population 2.7k → 3.0k → 3.4k → 3.8k → 4.3k (+12.2% CAGR) -->
+            <polyline fill="none" stroke="#e8b87a" stroke-width="2.5" points="180,139 380,130 580,118 780,106 980,91"/>
+
+            <circle cx="180" cy="139" r="5" fill="#e8b87a"/><text x="180" y="131" fill="rgba(232,184,122,0.85)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle">2.7k</text>
+            <circle cx="380" cy="130" r="5" fill="#e8b87a"/><text x="380" y="122" fill="rgba(232,184,122,0.85)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle">3.0k</text>
+            <circle cx="580" cy="118" r="5" fill="#e8b87a"/><text x="580" y="110" fill="rgba(232,184,122,0.85)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle">3.4k</text>
+            <circle cx="780" cy="106" r="5" fill="#e8b87a"/><text x="780" y="98"  fill="rgba(232,184,122,0.85)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle">3.8k</text>
+            <circle cx="980" cy="91"  r="6" fill="#e8b87a"/><text x="980" y="81"  fill="var(--gold)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" font-weight="500">4.3k</text>
+            <circle cx="980" cy="91" r="10" fill="none" stroke="#e8b87a" stroke-opacity="0.5"/>
+          </svg>
+        </div>
       </div>
 
       <!-- ─── LINE OF THERAPY FUNNEL + REGIONAL DISTRIBUTION ─── -->
@@ -4173,7 +4850,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>KOL &amp; Institution <em>Map</em></h1>
           <p class="tool-sub">Ranked list of advocacy targets for the launch. Built by joining <code>core.clinical_trial</code> (sponsor / institution / PI fields) to HIRA provider-volume data. Surfaces which Korean centers and clinicians the launch team needs to engage pre-listing.</p>
         </div>
@@ -4187,6 +4864,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -4344,7 +5022,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Regulatory <em>Pathway</em></h1>
           <p class="tool-sub">Institutional flow from MFDS filing through HIRA pharmacoeconomic review, NHIS price negotiation, and positive-list listing. Median timing benchmarks reflect 5-year cohort of MFDS approvals where reimbursement was pursued.</p>
         </div>
@@ -4358,6 +5036,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -4583,6 +5262,15 @@
             <circle cx="540" cy="170" r="10" fill="none" stroke="#e8b87a" stroke-opacity="0.5"/>
           </g>
 
+          <!-- Oveporexton marker · pre-FDA + pre-MFDS (earliest stage · FDA PDUFA Q3 2026 pending) -->
+          <g class="rp-subject-marker" data-subject="oveporexton" style="display: none;">
+            <line x1="140" y1="80" x2="140" y2="460" stroke="#e8b87a" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <rect x="148" y="46" width="158" height="22" fill="var(--bg-elev)" stroke="#e8b87a" stroke-width="1" rx="2"/>
+            <text x="227" y="61" fill="var(--gold)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle" font-weight="600" letter-spacing="0.06em">OVEPOREXTON · PRE-MFDS</text>
+            <circle cx="140" cy="109" r="6" fill="#e8b87a"/>
+            <circle cx="140" cy="109" r="10" fill="none" stroke="#e8b87a" stroke-opacity="0.5"/>
+          </g>
+
           <!-- Rhapsido marker · pre-filing (positioned at T+0 boundary, callout to right of y-axis) -->
           <g class="rp-subject-marker" data-subject="rhapsido">
             <line x1="140" y1="80" x2="140" y2="460" stroke="#e8b87a" stroke-width="1.5" stroke-dasharray="4 3"/>
@@ -4698,7 +5386,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Payer <em>Environment</em></h1>
           <p class="tool-sub">Macro payer landscape for <span data-country-display>Korea</span> · drawn from WHO Global Health Expenditure Database (Dec 2025) overlaid with NHIS co-pay structure. Sets the budget envelope + patient-burden geometry the analogue + price + share machinery downstream operates within.</p>
         </div>
@@ -4712,6 +5400,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -5235,7 +5924,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 01 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>Pipeline <em>Pressure</em></h1>
           <p class="tool-sub">What's coming. KR + US trial-registry data filtered to the indication, projected to land during the launch window. Tells the team that the SoC two years from now isn't the SoC today.</p>
         </div>
@@ -5249,6 +5938,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -5379,6 +6069,50 @@
           </svg>
         </div>
 
+        <!-- Oveporexton / NT1 density chart (sparse pipeline · OX2R class just emerging) -->
+        <div class="pp-density-chart" data-pp-subject="oveporexton">
+          <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block; margin-top: 8px;">
+            <line x1="80" y1="40"  x2="1060" y2="40"  stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.18)"/>
+            <line x1="80" y1="40"  x2="80"   y2="220" stroke="rgba(240,232,208,0.18)"/>
+
+            <text x="72" y="44"  class="axis-label" text-anchor="end">4</text>
+            <text x="72" y="104" class="axis-label" text-anchor="end">3</text>
+            <text x="72" y="164" class="axis-label" text-anchor="end">2</text>
+            <text x="72" y="224" class="axis-label" text-anchor="end">0</text>
+
+            <text x="180" y="240" class="axis-label" text-anchor="middle">2027</text>
+            <text x="340" y="240" class="axis-label" text-anchor="middle">2028</text>
+            <text x="500" y="240" class="axis-label" text-anchor="middle">2029</text>
+            <text x="660" y="240" class="axis-label" text-anchor="middle">2030</text>
+            <text x="820" y="240" class="axis-label" text-anchor="middle">2031</text>
+            <text x="980" y="240" class="axis-label" text-anchor="middle">2032</text>
+            <text x="22" y="130" class="axis-title" text-anchor="middle" transform="rotate(-90 22 130)">Entrants / yr</text>
+
+            <!-- Launch window shading (2029-2031) -->
+            <rect x="420" y="40" width="400" height="180" fill="rgba(232, 184, 122, 0.08)" stroke="rgba(232, 184, 122, 0.3)" stroke-dasharray="3 3"/>
+            <text x="620" y="58" fill="rgba(232,184,122,0.9)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="0.1em" font-weight="600">LAUNCH WINDOW · 2029–2031</text>
+
+            <!-- Subject drug position marker (Oveporexton at 2030) -->
+            <line x1="660" y1="40" x2="660" y2="220" stroke="#e8b87a" stroke-width="2"/>
+            <circle cx="660" cy="42" r="5" fill="#e8b87a"/>
+            <text x="660" y="32" fill="var(--gold)" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="middle" font-weight="600">OVEPOREXTON</text>
+
+            <!-- 2029: 1 entrant (Pitolisant re-entry · adjacent) -->
+            <rect x="465" y="190" width="70" height="30" fill="#e8b87a" opacity="0.65"/>
+
+            <!-- 2030: 1 entrant (Lumryz · adjacent) -->
+            <rect x="625" y="190" width="70" height="30" fill="#e8b87a" opacity="0.65"/>
+
+            <!-- 2031: 2 entrants (Eisai E2086 direct + TAK-925 distant) -->
+            <rect x="785" y="130" width="70" height="90" fill="#e89682" opacity="0.85"/>
+
+            <text x="565" y="266" class="axis-title" text-anchor="middle">Projected launch year (KR)</text>
+          </svg>
+        </div>
+
         <!-- Tirzepatide / T2D density chart (heavier pipeline) -->
         <div class="pp-density-chart" data-pp-subject="tirzepatide">
           <svg viewBox="0 0 1080 280" style="width: 100%; height: auto; display: block; margin-top: 8px;">
@@ -5488,7 +6222,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub</div>
           <h1 class="tool-h1">Cohort <em>Composition</em></h1>
           <p class="tool-sub">Who's in your cohort. Weighted analogues + similarity scores + source US drugs. Cohort of US→KR launch precedents anchored to the subject drug selected on Launch Landscape.</p>
         </div>
@@ -5668,7 +6402,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02</div>
           <h1 class="tool-h1">Launch Analogues &amp; <em>Forecast</em></h1>
           <p class="tool-sub">A single section where the analogue work and the predictive outputs sit together. The visual hand-off from "here's what the comparator set tells us" to "here's what that implies for you."</p>
         </div>
@@ -5737,7 +6471,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub · Cohort</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Cohort</div>
           <h1 class="tool-h1">Time-to-<em>Listing</em></h1>
           <p class="tool-sub">For each cohort drug: observed MFDS filing → HIRA listing duration broken into MFDS lag (filing → MA) and HIRA lag (MA → listing). The raw data behind the Kaplan-Meier fit on the Timing Forecast page.</p>
         </div>
@@ -5751,6 +6485,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -5839,7 +6574,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub · Cohort</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Cohort</div>
           <h1 class="tool-h1">Price &amp; RSA <em>Precedents</em></h1>
           <p class="tool-sub">For each cohort drug: listed KRW/DDD price + whether an RSA was used (structure, discount band). Merged because price and RSA are the same negotiation, not two.</p>
         </div>
@@ -5853,6 +6588,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -5941,7 +6677,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub · Forecast</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">The Timing <em>Forecast</em></h1>
           <p class="tool-sub">Weighted Kaplan-Meier survival fit on the analogue cohort's filing-to-listing observations. Produces a probability distribution over the HIRA listing date.</p>
         </div>
@@ -6198,7 +6934,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub · Forecast</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">The Price <em>Forecast</em></h1>
           <p class="tool-sub">Cohort regression on analogue NHIS listing prices, anchored to US ASP. Returns a KRW-per-DDD price band with a central estimate.</p>
         </div>
@@ -6417,6 +7153,76 @@
         </svg>
         </div>
 
+        <!-- ─── OVEPOREXTON cohort scatter (narcolepsy / rare CNS / sleep drugs) ─── -->
+        <div class="pf-cohort-chart" data-cohort="oveporexton">
+        <svg viewBox="0 0 1080 340" style="width: 100%; height: auto; display: block;">
+
+          <line x1="80" y1="40" x2="1060" y2="40" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="80" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="80" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="80" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+          <line x1="80" y1="280" x2="1060" y2="280" stroke="rgba(240,232,208,0.18)"/>
+          <line x1="80" y1="40" x2="80" y2="280" stroke="rgba(240,232,208,0.18)"/>
+
+          <!-- Y-axis labels (KRW per DDD · rare-disease / specialty range) -->
+          <text x="70" y="44" class="axis-label" text-anchor="end">₩60k</text>
+          <text x="70" y="104" class="axis-label" text-anchor="end">₩45k</text>
+          <text x="70" y="164" class="axis-label" text-anchor="end">₩30k</text>
+          <text x="70" y="224" class="axis-label" text-anchor="end">₩15k</text>
+          <text x="70" y="284" class="axis-label" text-anchor="end">₩0</text>
+
+          <text x="180" y="300" class="axis-label" text-anchor="middle">2003–2010</text>
+          <text x="360" y="300" class="axis-label" text-anchor="middle">2011–2015</text>
+          <text x="540" y="300" class="axis-label" text-anchor="middle">2016–2020</text>
+          <text x="720" y="300" class="axis-label" text-anchor="middle">2021–2025</text>
+          <text x="900" y="300" class="axis-label" text-anchor="middle">SUBJECT</text>
+
+          <text x="565" y="322" class="axis-title" text-anchor="middle">Listing era · subject projected to 2030 Q1</text>
+          <text x="22" y="160" class="axis-title" text-anchor="middle" transform="rotate(-90 22 160)">KRW per DDD</text>
+
+          <!-- Regression fit line -->
+          <line x1="120" y1="268" x2="940" y2="136" stroke="#e8b87a" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7"/>
+          <text x="940" y="130" fill="#e8b87a" font-size="9" font-family="JetBrains Mono, monospace" letter-spacing="2" text-anchor="end" opacity="0.8">Cohort fit · r² = 0.68</text>
+
+          <!-- US ASP anchor line (oveporexton US est. ~₩50k) -->
+          <line x1="80" y1="54" x2="1060" y2="54" stroke="#7dc8e8" stroke-dasharray="3 5" stroke-width="1" opacity="0.6"/>
+          <text x="86" y="48" fill="#7dc8e8" font-size="9" font-family="JetBrains Mono, monospace" letter-spacing="2" opacity="0.85">US ASP anchor (FX-norm) · ₩50k</text>
+
+          <!-- Cohort data points -->
+          <!-- Modafinil (~2003) · ₩0.8k · very low (generic-tier) -->
+          <circle cx="150" cy="276" r="5" fill="#e8b87a" opacity="0.6"/>
+          <text x="158" y="272" fill="rgba(240,232,208,0.5)" font-size="10" font-family="DM Sans">Modafinil</text>
+
+          <!-- Lacosamide (2013) · ₩28k → y=280-(28/60)*240=280-112=168 -->
+          <circle cx="330" cy="168" r="7" fill="#e8b87a" opacity="0.8"/>
+          <text x="340" y="164" fill="rgba(240,232,208,0.65)" font-size="10" font-family="DM Sans">Lacosamide · ₩28k</text>
+
+          <!-- Fingolimod (2014) · ₩42k → y=280-(42/60)*240=280-168=112 -->
+          <circle cx="380" cy="112" r="8" fill="#e8b87a" opacity="0.85"/>
+          <text x="390" y="108" fill="var(--text)" font-size="10" font-family="DM Sans">Fingolimod · ₩42k</text>
+
+          <!-- Pitolisant (2022) · ₩18.5k → y=280-(18.5/60)*240=280-74=206 · withdrawn marker -->
+          <circle cx="700" cy="206" r="6" fill="#e89682" opacity="0.8"/>
+          <text x="710" y="202" fill="rgba(232,150,130,0.8)" font-size="10" font-family="DM Sans">Pitolisant ₩18.5k (✕ withdrawn)</text>
+
+          <!-- Siponimod (2022) · ₩55k → y=280-(55/60)*240=280-220=60 -->
+          <circle cx="740" cy="60" r="8" fill="#e8b87a" opacity="0.85"/>
+          <text x="750" y="56" fill="var(--text)" font-size="10" font-family="DM Sans">Siponimod · ₩55k</text>
+
+          <!-- Subject projected band · median ₩35k (y=140) · P25 ₩28k (y=168) · P75 ₩48k (y=88) -->
+          <rect x="870" y="88" width="60" height="80" fill="#e8b87a" opacity="0.15" stroke="#e8b87a" stroke-opacity="0.6" stroke-dasharray="3 3"/>
+          <line x1="870" y1="140" x2="930" y2="140" stroke="#e8b87a" stroke-width="2"/>
+
+          <circle cx="900" cy="140" r="9" fill="#e8b87a" opacity="0.95"/>
+          <circle cx="900" cy="140" r="13" fill="none" stroke="#e8b87a" stroke-width="1" opacity="0.4"/>
+
+          <text x="900" y="72" fill="#e8b87a" font-size="10" font-family="JetBrains Mono, monospace" letter-spacing="1" text-anchor="middle" font-weight="500">SUBJECT</text>
+          <text x="900" y="190" fill="rgba(232,184,122,0.85)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle">P25–P75 ₩28–48k</text>
+          <text x="900" y="206" fill="var(--gold)" font-size="11" font-family="DM Sans" text-anchor="middle" font-weight="500">Median ₩35k · orphan tier</text>
+
+        </svg>
+        </div>
+
         <div class="scatter-legend" style="margin-top: 16px;">
           <div class="scatter-legend-item"><span style="width: 10px; height: 10px; background: #e8b87a; border-radius: 50%;"></span>Cohort observation · larger = higher weight</div>
           <div class="scatter-legend-item"><span style="width: 14px; height: 2px; background: #e8b87a; display: inline-block;"></span>Weighted regression fit</div>
@@ -6538,7 +7344,7 @@
 
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 02 · Sub · Forecast</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">Demand &amp; Revenue <em>Forecast</em></h1>
           <p class="tool-sub">Patient demand curve × price × share, with confidence bands. The integrated financial output — pulls Patient Baseline from the Landscape cluster and ramp curves from Cohort Composition.</p>
         </div>
@@ -6552,6 +7358,7 @@
             <select class="ps-dropdown js-product-select">
               <option value="rhapsido" selected>Rhapsido</option>
               <option value="tirzepatide">Tirzepatide (Mounjaro)</option>
+              <option value="oveporexton">Oveporexton (TAK-861)</option>
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
@@ -6663,6 +7470,51 @@
           </svg>
         </div>
 
+        <!-- Oveporexton (NT1) — rare-disease small scale; peak ₩35B; wide CI due to pricing uncertainty -->
+        <div class="dr-revenue-chart" data-dr-subject="oveporexton" style="display: none;">
+          <svg viewBox="0 0 1080 320" style="width: 100%; height: auto; display: block; margin-top: 8px;">
+            <line x1="80" y1="40"  x2="1060" y2="40"  stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="100" x2="1060" y2="100" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="160" x2="1060" y2="160" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="220" x2="1060" y2="220" stroke="rgba(240,232,208,0.06)"/>
+            <line x1="80" y1="260" x2="1060" y2="260" stroke="rgba(240,232,208,0.18)"/>
+            <line x1="80" y1="40"  x2="80"   y2="260" stroke="rgba(240,232,208,0.18)"/>
+
+            <text x="72" y="44"  class="axis-label" text-anchor="end">₩70B</text>
+            <text x="72" y="104" class="axis-label" text-anchor="end">₩52.5B</text>
+            <text x="72" y="164" class="axis-label" text-anchor="end">₩35B</text>
+            <text x="72" y="224" class="axis-label" text-anchor="end">₩17.5B</text>
+            <text x="72" y="264" class="axis-label" text-anchor="end">₩0</text>
+
+            <text x="220" y="280" class="axis-label" text-anchor="middle">Yr 1</text>
+            <text x="360" y="280" class="axis-label" text-anchor="middle">Yr 2</text>
+            <text x="500" y="280" class="axis-label" text-anchor="middle">Yr 3</text>
+            <text x="640" y="280" class="axis-label" text-anchor="middle">Yr 4 · Peak</text>
+            <text x="780" y="280" class="axis-label" text-anchor="middle">Yr 5</text>
+            <text x="920" y="280" class="axis-label" text-anchor="middle">Yr 6 · E2086</text>
+            <text x="1060" y="280" class="axis-label" text-anchor="middle">Yr 7</text>
+            <text x="22" y="150" class="axis-title" text-anchor="middle" transform="rotate(-90 22 150)">KR revenue · ₩B annual</text>
+
+            <!-- Upper CI envelope (P90 · ₩58B) = 260-(58/70)*220 = 260-182 = 78 -->
+            <polyline fill="rgba(232,184,122,0.10)" stroke="none" points="80,260 220,255 360,235 500,190 640,78 780,82 920,98 1060,118 1060,260"/>
+            <!-- Lower CI envelope (P10 · ₩22B) = 260-(22/70)*220 = 260-69 = 191 -->
+            <polyline fill="rgba(20,20,20,0.6)" stroke="none" points="80,260 220,258 360,250 500,230 640,191 780,195 920,208 1060,222 1060,260"/>
+
+            <!-- Central estimate line (P50 · peak ₩35B → y=260-(35/70)*220=260-110=150) -->
+            <polyline fill="none" stroke="#e8b87a" stroke-width="2.5" points="80,260 220,247 360,222 500,181 640,150 780,153 920,166 1060,178"/>
+
+            <circle cx="220" cy="247" r="4" fill="#e8b87a"/>
+            <circle cx="500" cy="181" r="4" fill="#e8b87a"/>
+            <circle cx="640" cy="150" r="6" fill="#e8b87a"/>
+            <circle cx="640" cy="150" r="10" fill="none" stroke="#e8b87a" stroke-opacity="0.5"/>
+            <text x="640" y="138" fill="var(--gold)" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle" font-weight="600">PEAK ₩35B</text>
+            <text x="640" y="304" fill="rgba(232,184,122,0.7)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle">CI: ₩22B – ₩58B · pricing risk dominant driver</text>
+
+            <line x1="80" y1="40" x2="80" y2="260" stroke="rgba(107,203,142,0.5)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="86" y="52" fill="rgba(107,203,142,0.85)" font-size="9" font-family="JetBrains Mono, monospace" letter-spacing="0.08em">LISTED · YR 0</text>
+          </svg>
+        </div>
+
         <!-- Tirzepatide (T2D) — mass-market scale -->
         <div class="dr-revenue-chart" data-dr-subject="tirzepatide" style="display: none;">
           <svg viewBox="0 0 1080 320" style="width: 100%; height: auto; display: block; margin-top: 8px;">
@@ -6765,7 +7617,7 @@
     <section class="tool-screen" id="screen-the-strategy">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · To Come</div>
           <h1 class="tool-h1">The <em>Strategy</em></h1>
           <p class="tool-sub">Translates the locked cohort + quantitative forecasts into a defensible commercial play. Five sub-tools: <em>Indication Sequencing</em>, <em>Stakeholder &amp; Channel</em>, <em>Pre-Listing Readiness</em>, <em>Franchise Protection</em>, <em>HIRA Negotiation Playbook</em>.</p>
         </div>
@@ -6786,7 +7638,7 @@
     <section class="tool-screen" id="screen-indication-sequencing">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · Sub · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Indication Sequencing <em>Plan</em></h1>
           <p class="tool-sub">Which indication to file first, and the label-expansion roadmap. Sequencing decisions framed against cohort precedents (e.g., omalizumab CSU-first vs asthma-first) and the Demand &amp; Revenue trajectory of each indication path.</p>
         </div>
@@ -6804,7 +7656,7 @@
     <section class="tool-screen" id="screen-stakeholder-channel">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · Sub · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Stakeholder &amp; Channel <em>Plan</em></h1>
           <p class="tool-sub">How to mobilise KOLs, payers, prescribers, and patients. MSL coverage, sales force sizing, KAM model, patient-services design. Built off the KOL &amp; Institution Map's Tier 1/2/3 engagement structure.</p>
         </div>
@@ -6822,7 +7674,7 @@
     <section class="tool-screen" id="screen-pre-listing-readiness">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · Sub · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Pre-Listing Readiness <em>Checklist</em></h1>
           <p class="tool-sub">What needs to be in place before HIRA listing. Evidence-package readiness, advisory boards, manufacturing capacity, supply chain, regulatory submissions — all tied to the Timing Forecast milestones.</p>
         </div>
@@ -6840,7 +7692,7 @@
     <section class="tool-screen" id="screen-franchise-protection">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · Sub · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Franchise Protection <em>Plan</em></h1>
           <p class="tool-sub">How to defend share against the Pipeline Pressure entrants. Lifecycle management, indication expansion, IP strategy, real-world-evidence build, formulation extensions — sequenced against the projected entry dates of each competitor.</p>
         </div>
@@ -6858,7 +7710,7 @@
     <section class="tool-screen" id="screen-hira-negotiation-playbook">
       <div class="tool-head">
         <div>
-          <div class="tool-eyebrow launch">Pack 02 · Launch Pack · Tool 03 · Sub · To Come</div>
+          <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">HIRA Negotiation <em>Playbook</em></h1>
           <p class="tool-sub">Tactical guide to the HIRA price-negotiation rounds. Comparator selection, evidence positioning, RSA structuring (drawn from Price &amp; RSA Precedents), fallback positions by round. The actual play-by-play, not a generic process diagram.</p>
         </div>
@@ -6895,6 +7747,15 @@
       activateTool(this.getAttribute('data-tool'));
     });
   });
+
+  /* ─── Sidebar collapse toggle ─── */
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  var appEl = document.getElementById('app');
+  if (sidebarToggle && appEl) {
+    sidebarToggle.addEventListener('click', function() {
+      appEl.classList.toggle('sidebar-collapsed');
+    });
+  }
 
   /* ─── Launch Pack · Product Selector ─── */
   /* Subject data — values propagate to all [data-svar] elements across Launch Analogue,
@@ -6971,6 +7832,29 @@
         {name: 'Pioglitazone', brand: '(off-label TZD use)', manufacturer: 'Multiple (generic)', type: 'generic', cost: '$0.30 / 30mg tab', claims: '~0.5M / yr', market: '~₩8B · ~$6M off-label'},
         {name: 'Lifestyle / weight loss', brand: '(primary recommendation)', manufacturer: '—', type: 'na', cost: '—', claims: '—', market: '—'},
         {name: '— (no KR-approved NASH drug)', brand: '(Rezdiffra US-2024 · not yet in MFDS)', manufacturer: '— (Madrigal Pharma · US only)', type: 'na', cost: '—', claims: '—', market: '—'}
+      ]
+    },
+    nt1: {
+      name: 'Narcolepsy Type 1',
+      icd: 'G47.4',
+      incidence: '~700 / yr · KR new diagnoses · G47.4 specialist-confirmed',
+      prevalence: '~4,300 diagnosed adults · 8.4 per 100,000 KR population',
+      market_total: '~₩3B · ~$2.2M',
+      guidelines: {
+        steps: [
+          {label: 'Wakefulness (1L)', detail: 'Modafinil 100–400 mg/day as first-line for excessive daytime sleepiness (EDS). Schedule II in Korea but available for confirmed narcolepsy. Target ESS < 10. Split dosing AM/noon to reduce insomnia.'},
+          {label: 'Wakefulness (2L/adjunct)', detail: 'Methylphenidate 10–60 mg/day if modafinil fails or poorly tolerated. Use under strict MFDS narcolepsy-specific prescription rules. Monitor cardiovascular status monthly.'},
+          {label: 'Cataplexy / REM-control', detail: 'Venlafaxine 75–225 mg/day or Clomipramine 10–75 mg/day — both off-label in Korea for cataplexy suppression. No NHIS reimbursement. Sodium oxybate (Xyrem/Xywav) not available in Korea. Pitolisant (Wakix) voluntarily withdrawn Sep 2024 following HIRA pricing dispute — active treatment gap.'},
+          {label: 'Sleep hygiene (adjunct)', detail: 'Scheduled naps 15–20 min once or twice daily. Strict sleep schedule. Avoid shift work. Safety counselling for driving and hazardous activity. Patient-society referral (KAASM).'}
+        ],
+        source: 'Korean Academy of Sleep Medicine (KAASM) / Korean Neurological Association guidelines · 2022 · aligned with AASM ICSD-3 and ESRS 2021 European Narcolepsy Guidelines'
+      },
+      treatments: [
+        {name: 'Modafinil', brand: '(Modiodal / generic · Schedule II)', manufacturer: 'Multiple (generic)', type: 'generic', cost: '$2.50 / 200 mg tab', claims: '~3.0k / yr', market: '~₩1.5B · ~$1.1M'},
+        {name: 'Methylphenidate', brand: '(Ritalin · stimulant · restricted Rx)', manufacturer: 'Multiple (generic)', type: 'generic', cost: '$0.40 / 10 mg tab', claims: '~600 / yr', market: '~₩0.2B · ~$0.1M'},
+        {name: 'Pitolisant', brand: '(Wakix · H3R antagonist · WITHDRAWN Sep 2024)', manufacturer: 'Harmony / Bioprojet', type: 'innovator', cost: '— (withdrawn)', claims: '— (withdrawn)', market: '₩0 · voluntarily withdrawn'},
+        {name: 'Venlafaxine', brand: '(off-label · cataplexy suppression)', manufacturer: 'Multiple (generic)', type: 'generic', cost: '$0.30 / 75 mg cap', claims: '~400 / yr (off-label)', market: '~₩0.2B · off-label'},
+        {name: 'Sodium oxybate', brand: '(Xyrem / Xywav · not available in KR)', manufacturer: 'Jazz Pharmaceuticals', type: 'na', cost: '—', claims: '—', market: '— (not available in Korea)'}
       ]
     },
     csu: {
@@ -7128,6 +8012,25 @@
       { tail: true, label: '+ 4 lower-scored analogues',
         meta: 'Zanubrutinib · Tralokinumab · Mepolizumab · Risankizumab',
         chipLabel: 'range 0.40–0.50', score: 0.45 }
+    ],
+    oveporexton: [
+      { name: 'Pitolisant', brand: '(Wakix)', meta: 'N07XX · Bioprojet / Harmony · MFDS 2022 (withdrawn Sep 2024) · H3R inverse agonist', score: 0.86,
+        chips: [['CLASS','partial'],['INDIC','match'],['MODAL','match'],['ORPH','match'],['US-TIER','match'],['MECH','partial']] },
+      { name: 'Solriamfetol', brand: '(Sunosi)', meta: 'N06BA14 · Jazz / SK Biopharm · US 2019 · not yet in KR · DNRI · EDS in narcolepsy', score: 0.79,
+        chips: [['CLASS','partial'],['INDIC','match'],['MODAL','match'],['ORPH','miss'],['US-TIER','match'],['MECH','miss']] },
+      { name: 'Modafinil', brand: '(Provigil / Modiodal)', meta: 'N06BA07 · Cephalon / generic · MFDS ~2003 · wakefulness agent · narcolepsy', score: 0.68,
+        chips: [['CLASS','partial'],['INDIC','match'],['MODAL','match'],['ORPH','miss'],['US-TIER','miss'],['MECH','miss']] },
+      { name: 'Sodium oxybate', brand: '(Xyrem)', meta: 'N01AX · Jazz Pharmaceuticals · US 2002 · not in KR · GABA-B agonist · cataplexy', score: 0.64,
+        chips: [['CLASS','miss'],['INDIC','match'],['MODAL','miss'],['ORPH','match'],['US-TIER','miss'],['MECH','miss']] },
+      { name: 'Fingolimod', brand: '(Gilenya)', meta: 'L04AA27 · Novartis · MFDS 2012 · oral · S1P modulator · rare CNS (MS)', score: 0.55,
+        chips: [['CLASS','miss'],['INDIC','miss'],['MODAL','match'],['ORPH','partial'],['US-TIER','match'],['MECH','miss']] },
+      { name: 'Lacosamide', brand: '(Vimpat)', meta: 'N03AX14 · UCB · MFDS 2011 · oral · rare CNS (focal epilepsy) · orphan-adjacent', score: 0.50,
+        chips: [['CLASS','miss'],['INDIC','miss'],['MODAL','match'],['ORPH','partial'],['US-TIER','partial'],['MECH','miss']] },
+      { name: 'Siponimod', brand: '(Mayzent)', meta: 'L04AA42 · Novartis · MFDS 2022 · oral · rare CNS (SPMS) · specialty pricing', score: 0.46,
+        chips: [['CLASS','miss'],['INDIC','miss'],['MODAL','match'],['ORPH','partial'],['US-TIER','partial'],['MECH','miss']] },
+      { tail: true, label: '+ 3 lower-scored analogues',
+        meta: 'Xywav (low-Na oxybate) · Armodafinil (Nuvigil) · Lumryz (FT-218)',
+        chipLabel: 'range 0.38–0.44', score: 0.41 }
     ]
   };
 
@@ -7152,6 +8055,14 @@
       { name: 'Baricitinib', brand: '(Olumiant)', primary: 'Rheumatoid Arthritis', secondary: 'Alopecia areata · AD', krApproved: '2019', krReimbursed: '2020', status: 'innovator' },
       { name: 'Apremilast', brand: '(Otezla)', primary: 'Psoriasis', secondary: 'Psoriatic arthritis', krApproved: '2014', krReimbursed: 'non-reimbursed', status: 'innovator' },
       { name: 'Dupilumab', brand: '(Dupixent)', primary: 'Atopic Dermatitis', secondary: 'Asthma · CRSwNP · CSU (US 2024)', krApproved: '2017', krReimbursed: '2019', status: 'innovator' }
+    ],
+    oveporexton: [
+      { name: 'Pitolisant', brand: '(Wakix)', primary: 'Narcolepsy Type 1', secondary: 'Cataplexy', krApproved: '2022', krReimbursed: 'withdrawn Sep 2024', status: 'innovator' },
+      { name: 'Solriamfetol', brand: '(Sunosi)', primary: 'EDS · Narcolepsy', secondary: 'Obstructive Sleep Apnea', krApproved: '—', krReimbursed: '— (not filed)', status: 'innovator' },
+      { name: 'Modafinil', brand: '(Modiodal)', primary: 'Narcolepsy · EDS', secondary: 'Shift-work sleep disorder', krApproved: '~2003', krReimbursed: '~2004', status: 'generic' },
+      { name: 'Sodium oxybate', brand: '(Xyrem)', primary: 'Narcolepsy (cataplexy + EDS)', secondary: '—', krApproved: '—', krReimbursed: 'non-reimbursed', status: 'innovator' },
+      { name: 'Fingolimod', brand: '(Gilenya)', primary: 'Multiple Sclerosis', secondary: '—', krApproved: '2012', krReimbursed: '2014', status: 'innovator' },
+      { name: 'Lacosamide', brand: '(Vimpat)', primary: 'Focal Epilepsy', secondary: '—', krApproved: '2011', krReimbursed: '2013', status: 'innovator' }
     ]
   };
 
@@ -7247,6 +8158,14 @@
       { name: 'Baricitinib',   brand: '(Olumiant)',   us: '2018-05', kr: '2019-04', reimb: '2020-09' },
       { name: 'Apremilast',    brand: '(Otezla)',     us: '2014-03', kr: '2014-11', reimb: 'non-reimbursed' },
       { name: 'Dupilumab',     brand: '(Dupixent)',   us: '2017-03', kr: '2017-09', reimb: '2019-05' }
+    ],
+    oveporexton: [
+      { name: 'Pitolisant',     brand: '(Wakix)',           us: '2019-08', kr: '2022-03', reimb: 'withdrawn 2024-09' },
+      { name: 'Solriamfetol',   brand: '(Sunosi)',          us: '2019-03', kr: '—',       reimb: '—' },
+      { name: 'Modafinil',      brand: '(Modiodal)',        us: '1998-12', kr: '~2003',   reimb: '~2004' },
+      { name: 'Sodium oxybate', brand: '(Xyrem)',           us: '2002-07', kr: '—',       reimb: '—' },
+      { name: 'Fingolimod',     brand: '(Gilenya)',         us: '2010-09', kr: '2012-04', reimb: '2014-03' },
+      { name: 'Lacosamide',     brand: '(Vimpat)',          us: '2008-10', kr: '2011-05', reimb: '2013-03' }
     ]
   };
 
@@ -7293,6 +8212,13 @@
       { name: 'Baricitinib',   brand: '(Olumiant)',     unit: 'tab',     price: '₩18,500',  krw: '₩24B',  usd: '$18M' },
       { name: 'Apremilast',    brand: '(Otezla)',       unit: 'tab',     price: '₩2,100',   krw: '₩9B',   usd: '$7M'  },
       { name: 'Dupilumab',     brand: '(Dupixent)',     unit: 'syringe', price: '₩685,000', krw: '₩120B', usd: '$89M' }
+    ],
+    oveporexton: [
+      { name: 'Pitolisant',      brand: '(Wakix · withdrawn Sep 2024)',    unit: 'tab', price: '₩18,500',  krw: '₩0',      usd: '$0 (withdrawn)' },
+      { name: 'Modafinil',       brand: '(Modiodal / generic)',            unit: 'tab', price: '₩800',     krw: '~₩1.5B',  usd: '~$1.1M' },
+      { name: 'Methylphenidate', brand: '(generic · narcolepsy-restricted)', unit: 'tab', price: '₩400', krw: '~₩0.2B',  usd: '~$0.1M' },
+      { name: 'Sodium oxybate',  brand: '(Xyrem · not available in KR)',   unit: '—',   price: '—',        krw: '₩0',      usd: '$0 (unavailable)' },
+      { name: 'Solriamfetol',    brand: '(Sunosi · not yet filed in KR)',  unit: '—',   price: '—',        krw: '₩0',      usd: '$0 (not filed)' }
     ]
   };
 
@@ -7312,6 +8238,13 @@
       rsa:       { status: 'secondary',      badge: 'Secondary',   note: 'Viable backup if HIRA flags first-in-class budget-impact uncertainty — preserves list price via confidential rebate.' },
       essential: { status: 'not-applicable', badge: 'N/A',         note: 'Omalizumab (Xolair) is already listed for CSU — therapeutic alternative exists, so Essential pathway is unavailable.' },
       orphan:    { status: 'not-applicable', badge: 'N/A',         note: 'CSU prevalence ~0.5–1% of population — above KR orphan-designation threshold.' },
+      cancer:    { status: 'not-applicable', badge: 'N/A',         note: 'Non-oncology indication — Cancer Drug Committee track does not apply.' }
+    },
+    oveporexton: {
+      standard:  { status: 'secondary',      badge: 'Secondary',   note: 'Standard track available but suboptimal — NT1 is a rare disease with no adequate KR alternative since pitolisant withdrawal. Orphan pathway provides stronger negotiating position.' },
+      rsa:       { status: 'secondary',      badge: 'Secondary',   note: 'Viable given first-in-class premium pricing and HIRA budget uncertainty. Pitolisant withdrawal precedent (₩18.5k/tab → below floor) makes an RSA structure politically important for HIRA confidence in sustainable listing.' },
+      essential: { status: 'secondary',      badge: 'Secondary',   note: 'Potentially applicable: no KR-reimbursed alternative for NT1 exists since pitolisant withdrawal Sep 2024. "No therapeutic alternative" criterion may be satisfied — subject to DREC determination.' },
+      orphan:    { status: 'recommended',    badge: 'Recommended', note: 'NT1 prevalence ~8.4 per 100,000 in Korea — well below the 1-in-10,000 orphan threshold. Orphan Drug Designation fast-tracks MFDS review and strengthens the HIRA cost-effectiveness argument for a small, clearly defined treatment population with genuine unmet need.' },
       cancer:    { status: 'not-applicable', badge: 'N/A',         note: 'Non-oncology indication — Cancer Drug Committee track does not apply.' }
     }
   };
@@ -7376,6 +8309,25 @@
         { region: 'Other regions', pct: 25, count: '22k' }
       ]
     },
+    oveporexton: {
+      total: '4.3k', total_delta: 'HIRA · G47.4 claims · annual unique-patient count',
+      claims: '3.8k', claims_delta: '<code>sick_cd × tot_use_qty</code> · 2024 rolling',
+      cagr: '+12.2%', cagr_delta: '2018 → 2024 · diagnostic penetration accelerating',
+      capture: '~70%', capture_delta: '~6,100 estimated prevalent KR · 30% gap = undiagnosed',
+      funnel: [
+        { line: '1L · Modafinil (wakefulness)', count: '2.2k', pct: 51, color: 'var(--blue)', treatments: 'Modafinil · generic + Modiodal · Schedule II · EDS management' },
+        { line: '2L · Methylphenidate (adjunct)', count: '700', pct: 16, color: 'var(--gold)', treatments: 'Methylphenidate · restricted Rx · used when modafinil fails or intolerable' },
+        { line: 'Cataplexy gap (no KR drug available)', count: '1.4k', pct: 33, color: 'var(--coral)', treatments: 'Pitolisant withdrawn · Xyrem unavailable · off-label venlafaxine only option' }
+      ],
+      funnel_takeaway: 'Oveporexton addresses both EDS and cataplexy. All 4.3k diagnosed NT1 patients are potential candidates — direct unmet need, no adequate alternative.',
+      regional: [
+        { region: 'Seoul', pct: 38, count: '1.6k' },
+        { region: 'Gyeonggi', pct: 22, count: '950' },
+        { region: 'Busan / Ulsan', pct: 12, count: '520' },
+        { region: 'Daegu / Incheon', pct: 10, count: '430' },
+        { region: 'Other regions', pct: 18, count: '775' }
+      ]
+    },
     tirzepatide: {
       total: '3.4M', total_delta: 'HIRA · E11 + E66 claims · annual unique-patient count',
       claims: '24M', claims_delta: '<code>sick_cd × tot_use_qty</code> · 2024 rolling (multi-Rx)',
@@ -7413,6 +8365,21 @@
         { drug: 'Baricitinib · Olumiant',     filed: '2018-08', ma: '2019-04', listed: '2020-09', mfds: '8mo',  hira: '17mo', total: '25mo', censored: false },
         { drug: 'Apremilast · Otezla',        filed: '2014-04', ma: '2014-11', listed: '— (not reimb.)', mfds: '7mo',  hira: 'censored', total: 'censored', censored: true },
         { drug: 'Dupilumab · Dupixent',       filed: '2016-12', ma: '2017-09', listed: '2019-05', mfds: '9mo',  hira: '20mo', total: '29mo', censored: false }
+      ]
+    },
+    oveporexton: {
+      median: '28', median_delta: 'P10 18mo · P90 44mo',
+      mfds_median: '11', mfds_delta: 'rare CNS · orphan-track MFDS review',
+      hira_median: '17', hira_delta: 'first-in-class orphan · extended DREC + pricing scrutiny',
+      censored: '2', censored_delta: 'Solriamfetol + Sodium oxybate · not in KR · right-censored',
+      rows: [
+        { drug: 'Pitolisant · Wakix',    filed: '2021-06', ma: '2022-03', listed: '2022-07 (withdrawn 2024)', mfds: '9mo',  hira: '4mo',  total: '13mo', censored: false },
+        { drug: 'Modafinil · Modiodal',  filed: '2002-06', ma: '~2003',   listed: '~2004',                   mfds: '~12mo', hira: '~12mo', total: '~24mo', censored: false },
+        { drug: 'Lacosamide · Vimpat',   filed: '2010-07', ma: '2011-05', listed: '2013-03',                 mfds: '10mo', hira: '22mo', total: '32mo', censored: false },
+        { drug: 'Fingolimod · Gilenya',  filed: '2011-08', ma: '2012-04', listed: '2014-03',                 mfds: '8mo',  hira: '23mo', total: '31mo', censored: false },
+        { drug: 'Siponimod · Mayzent',   filed: '2021-04', ma: '2022-01', listed: '2023-09',                 mfds: '9mo',  hira: '20mo', total: '29mo', censored: false },
+        { drug: 'Solriamfetol · Sunosi', filed: '—',       ma: '—',       listed: '— (not filed)',           mfds: 'censored', hira: 'censored', total: 'censored', censored: true },
+        { drug: 'Sodium oxybate · Xyrem', filed: '—',      ma: '—',       listed: '— (not in KR)',           mfds: 'censored', hira: 'censored', total: 'censored', censored: true }
       ]
     },
     tirzepatide: {
@@ -7477,6 +8444,20 @@
         { drug: 'Baricitinib · Olumiant',      krw: '₩18.5k', us: '₩26k', ratio: '0.71', rsa: 'no',  structure: '—',                                rebate: '—' },
         { drug: 'Apremilast · Otezla',         krw: '₩4.2k',  us: '₩6.0k', ratio: '0.70', rsa: 'no',  structure: '— (not reimbursed)',              rebate: '—' },
         { drug: 'Dupilumab · Dupixent',        krw: '₩48k',   us: '₩68k', ratio: '0.71', rsa: 'yes', structure: 'Hybrid · cap + outcomes',          rebate: '~28%' }
+      ]
+    },
+    oveporexton: {
+      median: '35.0',          median_delta: 'P25–P75: ₩28k – ₩48k · rare-disease premium · wide band',
+      us_discount: '−30%',     us_discount_delta: 'cohort-mean vs FX-norm US ASP · wider discount for orphan drug KR',
+      rsa_pct: '67%',          rsa_pct_delta: '4 of 6 analogues used or expected to use RSA',
+      rsa_rebate: '~25%',      rsa_rebate_delta: 'estimated from public reports · pitolisant floor precedent: no RSA → pricing unsustainable',
+      rows: [
+        { drug: 'Pitolisant · Wakix',     krw: '₩18.5k', us: '₩28k',  ratio: '0.66', rsa: 'no',  structure: '— (floor too low → withdrew 2024)',    rebate: '—' },
+        { drug: 'Modafinil · Modiodal',   krw: '₩0.8k',  us: '₩1.2k', ratio: '0.67', rsa: 'no',  structure: '— (generic erosion)',                  rebate: '—' },
+        { drug: 'Lacosamide · Vimpat',    krw: '₩28k',   us: '₩38k',  ratio: '0.74', rsa: 'no',  structure: '—',                                    rebate: '—' },
+        { drug: 'Fingolimod · Gilenya',   krw: '₩42k',   us: '₩62k',  ratio: '0.68', rsa: 'yes', structure: 'Outcomes-based · relapse gate',         rebate: '~22%' },
+        { drug: 'Siponimod · Mayzent',    krw: '₩55k',   us: '₩82k',  ratio: '0.67', rsa: 'yes', structure: 'Financial · indication-cap',            rebate: '~20%' },
+        { drug: 'Sodium oxybate · Xyrem', krw: '—',       us: '₩290k', ratio: '—',   rsa: 'no',  structure: '— (not in KR)',                         rebate: '—' }
       ]
     },
     tirzepatide: {
@@ -7549,6 +8530,32 @@
         { driver: 'Listing date (Timing Forecast)',  swing: '±10%',  bar: 50, color: 'var(--blue)' },
         { driver: 'Treatment compliance',             swing: '±8%',   bar: 40, color: 'var(--green)' },
         { driver: 'Eligible-population estimate',     swing: '±6%',   bar: 30, color: 'var(--coral)' }
+      ]
+    },
+    oveporexton: {
+      peak_revenue: '35', peak_revenue_delta: 'CI: ₩22B – ₩58B · 80% confidence band · pricing risk dominant',
+      peak_share: '70',   peak_share_delta: '~3.0k captured · ~4.3k diagnosed NT1 pool',
+      peak_patients: '3.0k', peak_patients_delta: 'full NT1 indication: EDS + cataplexy (no active KR alternative)',
+      ttp: '3.5',         ttp_delta: 'post-listing · orphan disease · rapid adoption from treatment gap',
+      funnel: [
+        { stage: 'Diagnosed NT1 pool (HIRA)',            count: '4.3k', pct: 100, color: 'var(--blue)' },
+        { stage: 'Eligible · OX2R agonist candidates',   count: '4.3k', pct: 100, color: 'var(--gold)' },
+        { stage: 'Reachable · Tier-1/2 sleep KOLs',      count: '3.4k', pct: 79,  color: 'var(--violet)' },
+        { stage: 'Captured · Peak Yr 3.5',               count: '3.0k', pct: 70,  color: 'var(--green)' }
+      ],
+      decomp: [
+        { label: 'Patients captured (peak)',  value: '3,000 patients' },
+        { label: '× Treatment days / yr',     value: '× 365 days' },
+        { label: '× KRW / DDD (median)',      value: '× ₩35,000' },
+        { label: '× Treatment compliance',    value: '× 0.90' },
+        { label: '= Peak annual revenue',     value: '₩35B / yr' }
+      ],
+      sensitivity: [
+        { driver: 'HIRA listing price (Price Forecast)',   swing: '±38%',  bar: 100, color: 'var(--gold)' },
+        { driver: 'Reimbursement outcome (yes vs no)',     swing: '±35%',  bar: 92,  color: 'var(--coral)' },
+        { driver: 'Peak capture share (S-curve)',          swing: '±18%',  bar: 47,  color: 'var(--violet)' },
+        { driver: 'MFDS listing date (Timing Forecast)',   swing: '±12%',  bar: 32,  color: 'var(--blue)' },
+        { driver: 'Eligible population estimate',          swing: '±8%',   bar: 21,  color: 'var(--green)' }
       ]
     },
     tirzepatide: {
@@ -7671,6 +8678,27 @@
         { molecule: 'Tezepelumab',   sponsor: 'Amgen / AstraZeneca', mech: 'TSLP mAb · injectable',     phase: 'Ph II (CSU exploratory)', launch: '2030 Q2', notes: 'Asthma-led · CSU label expansion',     threat: 'distant' }
       ]
     },
+    oveporexton: {
+      target_year: '2030',
+      window_label: '2029 → 2031',
+      entrants_n: '4',
+      entrants_delta: 'sparse pipeline · OX2R class just emerging globally',
+      direct_threat: '1',
+      direct_delta: 'Eisai E2086 OX2R agonist · same mechanism',
+      soc_shift: 'Moderate',
+      soc_shift_delta: 'OX2R class establishing; few imminent APAC rivals',
+      kr_trials: '2',
+      kr_trials_delta: 'active sleep / narcolepsy Ph II+ with KR sites',
+      density: '+100%',
+      density_delta: 'vs 2020-2025 baseline (1 entrant / 5yr: pitolisant)',
+      soc_narrative: 'By <strong>2031</strong>, the NT1 landscape will see <strong>Eisai\'s E2086</strong> (OX2R agonist, Japan Orphan Designation 2026) as the most credible same-class rival in APAC. Pipeline is sparse — oveporexton has a <strong>3–4 year window of first-mover OX2R exclusivity</strong> before direct competition. The <em>pitolisant re-entry scenario</em> (Aculys Japan NDA filed 2025 → KR licensing possible 2029) is the nearer-term competitive threat, but carries a different mechanism and the KR pricing withdrawal precedent weakens its threat level substantially.',
+      entrants: [
+        { molecule: 'Eisai E2086',          sponsor: 'Eisai',                  mech: 'OX2R agonist · oral',          phase: 'Phase 2 · Japan ODD 2026',    launch: '2031 Q4 (est.)', notes: 'Same class · Japan-first · APAC follow',        threat: 'direct' },
+        { molecule: 'Pitolisant (re-entry)', sponsor: 'Aculys / Bioprojet',    mech: 'H3R inverse agonist · oral',    phase: 'Japan NDA filed 2025',         launch: '2029 Q2 (KR est.)', notes: 'KR re-entry via Aculys Japan approval path',   threat: 'adjacent' },
+        { molecule: 'Lumryz (FT-218)',       sponsor: 'Avadel',                 mech: 'once-nightly Na-oxybate · oral', phase: 'US approved 2023',             launch: '2030 Q4 (est.)', notes: 'Cataplexy-focused · premium KR pricing hurdle', threat: 'adjacent' },
+        { molecule: 'TAK-925',              sponsor: 'Takeda',                  mech: 'OX2R agonist · IV infusion',    phase: 'Phase 2 (hospital acute use)',  launch: '2031+ (uncertain)', notes: 'Takeda pipeline · IV only · hospital segment', threat: 'distant' }
+      ]
+    },
     tirzepatide: {
       target_year: '2025',
       window_label: '2024 → 2026 (live)',
@@ -7765,6 +8793,35 @@
         { name: 'Prof. Han',   inst: 'Korea Univ. Anam · Derm.',    specialty: 'Inflammatory derm',   trials: 2, influence: 'JID 2024 author',                    status: 'aware' },
         { name: 'Prof. Yoon',  inst: 'Hanyang · Allergy',           specialty: 'Urticaria',           trials: 1, influence: 'BJD 2023 co-author',                 status: 'aware' },
         { name: 'Prof. Cho',   inst: 'Pusan NUH · Dermatology',     specialty: 'Allergic derm',       trials: 1, influence: 'Regional KOL · 부산권 lead',         status: 'aware' }
+      ]
+    },
+    oveporexton: {
+      centers_n: '8',   centers_delta: 'cover ~82% of diagnosed KR NT1 patients',
+      kols_n: '18',     kols_delta: 'sleep neurologists + rare disease specialists',
+      trials_n: '6',    trials_delta: 'narcolepsy / orexin / rare CNS sleep · 2019–2024',
+      engaged_pct: '22%', engaged_delta: 'narrow specialty — deep pre-launch relationships achievable',
+      tier1_count: '4 KOLs',  tier1_note: 'Lead sleep medicine PIs at top Seoul tertiary centers with NT1 registry leadership. Engage now during pre-MFDS window — critical 24-month pre-filing horizon for orphan drug.',
+      tier2_count: '8 KOLs',  tier2_note: 'Neurology KOLs at regional academic centers (Busan, Daegu). Sleep medicine sits within neurology at non-Seoul centers. KAASM symposia + ICSD-3 education package recommended.',
+      tier3_count: '6 KOLs',  tier3_note: 'General neurologists seeing narcolepsy referrals post-diagnosis. Activate post-MFDS approval. Given the small total NT1 population, tier-3 KOLs disproportionately drive total patient capture.',
+      institutions: [
+        { name: 'Seoul National University Hospital', dept: 'Neurology · Sleep Medicine',       region: 'Seoul', volume: '840 pts', trials: 3, score: 92 },
+        { name: 'Samsung Medical Center',             dept: 'Neurology',                        region: 'Seoul', volume: '720 pts', trials: 2, score: 88 },
+        { name: 'Asan Medical Center',                dept: 'Neurology · Sleep Clinic',         region: 'Seoul', volume: '680 pts', trials: 2, score: 84 },
+        { name: 'Severance Hospital · Yonsei',        dept: 'Neurology',                        region: 'Seoul', volume: '580 pts', trials: 2, score: 78 },
+        { name: 'Seoul St. Mary\'s · Catholic Univ.', dept: 'Neurology',                        region: 'Seoul', volume: '420 pts', trials: 1, score: 66 },
+        { name: 'Korea University Anam Hospital',     dept: 'Neurology',                        region: 'Seoul', volume: '310 pts', trials: 1, score: 56 },
+        { name: 'Pusan National University Hospital', dept: 'Neurology · Sleep Medicine',       region: 'Busan', volume: '240 pts', trials: 1, score: 48 },
+        { name: 'Kyungpook National Univ. Hospital',  dept: 'Neurology',                        region: 'Daegu', volume: '200 pts', trials: 0, score: 40 }
+      ],
+      kols: [
+        { name: 'Prof. Jung',  inst: 'SNUH · Sleep Medicine',       specialty: 'Narcolepsy · hypersomnia',      trials: 3, influence: 'KAASM past-president · NT1 registry lead', status: 'engaged' },
+        { name: 'Prof. Kim',   inst: 'SMC · Neurology',              specialty: 'Sleep disorders · rare CNS',    trials: 2, influence: 'KSRS exec · AASM affiliate author',         status: 'engaged' },
+        { name: 'Prof. Lee',   inst: 'AMC · Sleep Clinic',           specialty: 'Narcolepsy · cataplexy',        trials: 2, influence: 'Sleep Medicine journal reviewer',           status: 'target' },
+        { name: 'Prof. Park',  inst: 'Severance · Neurology',        specialty: 'Rare neurological conditions',  trials: 2, influence: 'JCN Korea editorial board',               status: 'target' },
+        { name: 'Prof. Choi',  inst: 'Seoul St. Mary\'s · Neuro',    specialty: 'Sleep-wake disorders',          trials: 1, influence: 'KAASM member · 4 publications',            status: 'target' },
+        { name: 'Prof. Yoon',  inst: 'Korea Univ. Anam · Neuro',     specialty: 'Hypersomnia · rare CNS',        trials: 1, influence: 'Korean Epilepsy Society sleep section',    status: 'aware' },
+        { name: 'Prof. Han',   inst: 'Pusan NUH · Sleep Medicine',   specialty: 'Narcolepsy',                    trials: 1, influence: 'Regional KOL · 부산권 sleep lead',          status: 'aware' },
+        { name: 'Prof. Kang',  inst: 'Kyungpook NUH · Neurology',    specialty: 'CNS rare disease',              trials: 0, influence: 'Emerging KOL · 대구권 regional',           status: 'aware' }
       ]
     },
     tirzepatide: {
@@ -8127,6 +9184,109 @@
       pf_blended: '10.1',
       pf_cohort_obs: '8',
       pf_cohort_obs_delta: '₩2.1k (apremilast) – ₩28k (acalabrutinib)'
+    },
+
+    oveporexton: {
+      /* Identity */
+      name: 'Oveporexton',
+      name_html: 'Oveporexton <em>(TAK-861)</em>',
+      name_html_short: 'Oveporexton',
+      class: 'N07XX',
+      mfds_stage: 'Pre-MFDS · FDA NDA under Priority Review',
+      us_approval: '2026-09 (est.)',
+
+      /* Active detail block */
+      ps_detail: '<strong>Active</strong> Oveporexton (TAK-861) — N07XX · first-in-class oral OX2R agonist for Narcolepsy Type 1 (NT1) · NCE · twice-daily tablet. <strong>Stage</strong> FDA NDA under Priority Review (filed Feb 2026 · PDUFA est. Q3 2026) · Japan Sakigake + Orphan designation · MFDS submission not yet filed. <strong>US anchor</strong> est. 2026-09 (PDUFA target). <strong>Cohort feeds</strong> 6 KR analogues · weighted ≥ 0.40 · closest match Pitolisant 0.86 — note Pitolisant voluntarily withdrew from KR reimbursement Sep 2024 (pricing dispute), creating active NT1 treatment gap.',
+
+      /* Launch pathway timeline · only US pending; all KR milestones not yet filed */
+      lt_us_circle: 'lt-circle pending',
+      lt_kr_sub_circle: 'lt-circle pending',
+      lt_kr_app_circle: 'lt-circle pending',
+      lt_kr_rmb_circle: 'lt-circle pending',
+      lt_us_date: '2026-09 (est.)',
+      lt_kr_sub_date: '—',
+      lt_kr_app_date: '—',
+      lt_kr_rmb_date: '—',
+
+      /* Condition dropdown options + primary indication */
+      condition_options: ['nt1'],
+      primary_condition: 'nt1',
+
+      /* Launch Analogue KPIs */
+      la_cohort_size: '6',
+      la_cohort_size_delta: 'US→KR analogues · rare CNS · weighted ≥ 0.40',
+      la_weighted_sim: '0.58',
+      la_weighted_sim_delta: 'on 4 wired dimensions · novel mechanism lowers mean',
+      la_best_match_score: '0.86',
+      la_best_match_drug: 'Pitolisant · N07XX · Wakix',
+      la_dims_wired: '4',
+
+      /* Product Market */
+      pm_class_full: 'N07XX · Other nervous system agents',
+      pm_adjacent: 'N07 · Other nervous system',
+      pm_universe_count: '4 drugs',
+      pm_indication_meta: 'G47.4 Narcolepsy Type 1',
+      pm_cohort_n: '6 analogues',
+      pm_class_universe: 'N07XX · G47 sleep disorders',
+      pm_class_spend: '₩3',
+      pm_class_spend_delta: '↑ +12% YoY · rare disease · small base',
+      pm_competing: '3',
+      pm_competing_delta: '2 active originators · Pitolisant withdrawn · Sodium oxybate unavailable KR',
+      pm_originator_share: '88',
+      pm_originator_share_delta: 'originator-only market · no generics yet',
+      pm_indication_conc: '100',
+      pm_indication_conc_delta: 'G47.4 only · single-indication class',
+
+      /* Timing Forecast */
+      tf_cohort_label: '6 analogues',
+      tf_mfds_filing: '2027 Q4 (est.)',
+      tf_us_lag: '~14 mo (est.)',
+      tf_median: '28.0',
+      tf_median_delta: 'rare CNS orphan cohort · slower than mainstream launches',
+      tf_p10_p90: '18 – 40',
+      tf_p10_p90_delta: '80% interval · orphan designation may accelerate · pricing risk may delay',
+      tf_forecast_window: '2030 Q1',
+      tf_forecast_window_delta: 'central · 2029-Q3 → 2031-Q1 P10–P90',
+      tf_sample: '6',
+      tf_sample_unit: '/ 4 obs',
+      tf_sample_delta: '2 right-censored · Pitolisant withdrawal complicates precedent',
+
+      /* Forecast pathway timeline */
+      tf_lt_us_circle: 'lt-circle pending',
+      tf_lt_us_date: '2026-09 (est.)',
+      tf_lt_us_ci: 'est. · FDA PDUFA target Q3 2026',
+      tf_lt_us_ci_class: 'lt-ci predicted',
+      tf_lt_sub_circle: 'lt-circle pending',
+      tf_lt_sub_date: '2027 Q4 (est.)',
+      tf_lt_sub_ci: 'CI 2027 Q3 → 2028 Q1',
+      tf_lt_sub_ci_class: 'lt-ci predicted',
+      tf_lt_app_circle: 'lt-circle pending',
+      tf_lt_app_date: '2029 Q1 (est.)',
+      tf_lt_app_ci: 'CI 2028 Q3 → 2029 Q3',
+      tf_lt_app_ci_class: 'lt-ci predicted',
+      tf_lt_rmb_circle: 'lt-circle pending',
+      tf_lt_rmb_date: '2030 Q1 (est.)',
+      tf_lt_rmb_ci: 'CI 2029 Q3 → 2031 Q1 · orphan pathway preferred',
+      tf_lt_rmb_ci_class: 'lt-ci predicted',
+
+      /* Price Forecast */
+      pf_strength: '1 mg / 2 mg',
+      pf_form: 'tablet · oral',
+      pf_pack: '60 tabs / bottle',
+      pf_dosing: 'twice daily (BID)',
+      pf_ddd: '2 mg / day',
+      pf_days: '30 days',
+      pf_cohort_label: '6 analogues',
+      pf_projected_median: '35.0',
+      pf_projected_delta: 'rare CNS premium · orphan pricing basis · per-DDD anchor',
+      pf_p25_p75: '28.0 – 48.0',
+      pf_p25_p75_delta: '50% interval · per DDD · pricing risk wide (Pitolisant precedent)',
+      pf_us_asp: '50.0',
+      pf_us_asp_usd: '36.96',
+      pf_us_asp_delta: '↔ $36.96 ASP est. · 1,353 KRW/USD May \'26 · KR ~70% US anchor',
+      pf_blended: '37.5',
+      pf_cohort_obs: '6',
+      pf_cohort_obs_delta: '₩8k (modafinil) – ₩55k (siponimod) · rare CNS range'
     }
   };
 
