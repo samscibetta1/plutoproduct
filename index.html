@@ -3745,8 +3745,11 @@
   }
   #screen-product-overview .layer {
     display: grid; grid-template-columns: 120px 1fr;
-    gap: 14px; align-items: center; padding: 2px 0;
+    gap: 14px; align-items: stretch; padding: 2px 0;
   }
+  /* Layer 01 sits outside .platform-wrap — match its 1px border + 14px padding so the
+     three layer-label boxes align vertically with Layers 02 and 03. */
+  #screen-product-overview .layer-01 { margin: 0 15px; }
   #screen-product-overview .layer-label {
     border: 1px solid; padding: 8px 10px; text-align: left;
     min-height: 62px; display: flex; flex-direction: column; justify-content: center;
@@ -3810,11 +3813,22 @@
   }
   #screen-product-overview .tile {
     padding: 9px 12px 8px; border: 1px solid;
-    min-height: 60px; position: relative;
+    position: relative;
+    display: flex; flex-direction: column; justify-content: flex-start;
   }
+  /* Equal tile heights across Insight and Action layers so the two layer rows align */
+  #screen-product-overview .layer-03 .tile,
+  #screen-product-overview .layer-02 .tile { min-height: 86px; }
   #screen-product-overview .layer-03 .tile {
     background: var(--po-layer-03-tile); border-color: var(--po-layer-03-border);
-    color: var(--text); padding-right: 12px; padding-top: 18px;
+    color: var(--text); padding-right: 12px; padding-top: 22px;
+  }
+  /* Packs · sage/teal accent ties them to the MVP Demo badge color and visually
+     groups the four Packs apart from the gold-accented AI Agent tile. */
+  #screen-product-overview .layer-03 .tile:not(.ai-agent) {
+    background: linear-gradient(180deg, rgba(142, 195, 176, 0.07) 0%, var(--po-layer-03-tile) 70%);
+    border-color: rgba(142, 195, 176, 0.38);
+    box-shadow: inset 0 1px 0 rgba(142, 195, 176, 0.08);
   }
   #screen-product-overview .layer-03 .tile.ai-agent {
     background: linear-gradient(135deg, #1a2545 0%, #2a2030 100%);
@@ -3891,8 +3905,8 @@
     text-align: center;
   }
   #screen-product-overview .markets-divider-text {
-    font-family: 'Fraunces', serif; font-size: 11px; line-height: 1.35;
-    color: var(--po-layer-01-text); font-style: italic; max-width: 130px;
+    font-family: 'Fraunces', serif; font-size: 13px; line-height: 1.35;
+    color: var(--po-layer-01-text); font-style: italic; max-width: 220px;
   }
   #screen-product-overview .markets-divider-text em {
     font-style: normal; color: var(--po-layer-02-bg); font-weight: 600;
@@ -3917,7 +3931,7 @@
   #screen-product-overview .market-stat {
     display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 34px;
   }
-  #screen-product-overview .m-flag { font-size: 20px; line-height: 1; margin-bottom: 1px; }
+  #screen-product-overview .m-flag { font-size: 24px; line-height: 1; margin-bottom: 2px; }
   #screen-product-overview .m-size {
     font-family: 'JetBrains Mono', monospace; font-size: 8.5px; font-weight: 500;
     color: var(--po-layer-01-text); letter-spacing: 0.02em; line-height: 1;
@@ -4297,6 +4311,16 @@
         </div>
 
         <!-- ─── MARKETS STRIP ─── -->
+        <!--
+          Pharma market size $ values are domestic/retail consumption in USD billions, latest available (2023-2024).
+          "Innovative drug share" = originator/protected drug share by value (vs generics + branded generics + biosimilars).
+          Validated against: IQVIA MIDAS, IQVIA MEA Pharmaceutical Market Insights Q1 2024, IEIS 2024 Turkish Pharma Report,
+          Interfarma, KPBMA, Statista Outlook, Mordor Intelligence, IMARC, PwC Taiwan Health Industries Guide 2024.
+          Notes on scope:
+            - Australia $15B reflects IQVIA Audited retail; broader market incl. hospital ~$25B.
+            - Singapore $1.5B reflects domestic consumption (excludes manufacturing/export hub activity ~$7B).
+            - Türkiye/Brazil figures FX-sensitive — use latest USD conversion from IEIS / Interfarma.
+        -->
         <div class="markets-strip">
           <div class="markets-groups">
             <div class="market-group">
@@ -4305,27 +4329,32 @@
               </div>
               <div class="market-flag-box">
                 <div class="market-stat">
-                  <span class="m-flag" title="South Korea">🇰🇷</span>
+                  <!-- KR · ~$22B IQVIA / Mordor 2024 · innov ~55% (KPBMA · originator share by value, PMC study) -->
+                  <span class="m-flag" title="South Korea · $22B market · 55% innovative · IQVIA / KPBMA 2024">🇰🇷</span>
                   <span class="m-size">$22B</span>
-                  <span class="m-innov">65%</span>
+                  <span class="m-innov">55%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Australia">🇦🇺</span>
+                  <!-- AU · $15B IQVIA Audited retail (broader PBS + hospital ~$25B) · innov ~75% (PBS originator-skewed) -->
+                  <span class="m-flag" title="Australia · $15B retail (IQVIA Audited; total ~$25B incl. hospital) · 75% innovative">🇦🇺</span>
                   <span class="m-size">$15B</span>
                   <span class="m-innov">75%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Taiwan">🇹🇼</span>
-                  <span class="m-size">$7B</span>
+                  <!-- TW · ~$5-7B Statista Outlook / PwC Taiwan Health Industries Guide 2024 · innov ~55% (NHI originator share) -->
+                  <span class="m-flag" title="Taiwan · ~$6B (Statista / PwC 2024) · 55% innovative">🇹🇼</span>
+                  <span class="m-size">$6B</span>
                   <span class="m-innov">55%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Thailand">🇹🇭</span>
-                  <span class="m-size">$5B</span>
+                  <!-- TH · ~$6B Statista 2023 (212B THB) · innov ~30% (multinational/imported share) -->
+                  <span class="m-flag" title="Thailand · ~$6B (Statista 2023) · 30% innovative">🇹🇭</span>
+                  <span class="m-size">$6B</span>
                   <span class="m-innov">30%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Singapore">🇸🇬</span>
+                  <!-- SG · $1.5B domestic consumption (excl. mfg/export hub ~$7B MarketLine) · innov ~70% (originator-heavy) -->
+                  <span class="m-flag" title="Singapore · $1.5B domestic (excl. mfg/export) · 70% innovative">🇸🇬</span>
                   <span class="m-size">$1.5B</span>
                   <span class="m-innov">70%</span>
                 </div>
@@ -4345,24 +4374,28 @@
               </div>
               <div class="market-flag-box">
                 <div class="market-stat">
-                  <span class="m-flag" title="Saudi Arabia">🇸🇦</span>
-                  <span class="m-size">$8B</span>
+                  <!-- SA · $11.6B IQVIA MEA Pharmaceutical Market Insights Q1 2024 · innov ~55% (originator share by value) -->
+                  <span class="m-flag" title="Saudi Arabia · $11.6B (IQVIA MEA Q1 2024) · 55% innovative">🇸🇦</span>
+                  <span class="m-size">$12B</span>
                   <span class="m-innov">55%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="United Arab Emirates">🇦🇪</span>
+                  <!-- AE · ~$4.2B IMARC / Research & Markets 2024 · innov ~60% (GCC originator pattern) -->
+                  <span class="m-flag" title="United Arab Emirates · ~$4.2B (IMARC 2024) · 60% innovative">🇦🇪</span>
                   <span class="m-size">$4B</span>
                   <span class="m-innov">60%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Brazil">🇧🇷</span>
-                  <span class="m-size">$32B</span>
-                  <span class="m-innov">40%</span>
+                  <!-- BR · $33.6B Market Research Future / Interfarma 2024 · innov ~50% (Interfarma · originator share, excl. branded generics ~10%) -->
+                  <span class="m-flag" title="Brazil · $33.6B (Interfarma / MRFR 2024) · 50% innovative (originator share, Interfarma)">🇧🇷</span>
+                  <span class="m-size">$34B</span>
+                  <span class="m-innov">50%</span>
                 </div>
                 <div class="market-stat">
-                  <span class="m-flag" title="Türkiye">🇹🇷</span>
-                  <span class="m-size">$9B</span>
-                  <span class="m-innov">35%</span>
+                  <!-- TR · $11.5B IEIS 2024 Turkish Pharma Report (USD) · innov ~60% (IEIS originator 203.3B TRY / 324B TRY total = 63%) -->
+                  <span class="m-flag" title="Türkiye · $11.5B (IEIS 2024) · 60% innovative (IEIS originator share by value)">🇹🇷</span>
+                  <span class="m-size">$12B</span>
+                  <span class="m-innov">60%</span>
                 </div>
                 <span class="more-dots">⋯</span>
               </div>
