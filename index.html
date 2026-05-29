@@ -123,6 +123,28 @@
     margin-bottom: 18px;
   }
 
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand-logo svg,
+  .brand-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
   .brand-mark {
     font-family: 'Fraunces', serif;
     font-size: 22px;
@@ -138,6 +160,30 @@
     color: var(--text-dim);
     text-transform: uppercase;
     margin-top: 4px;
+  }
+
+  .brand-disclaimer {
+    margin-top: 12px;
+    padding: 8px 10px;
+    background: var(--amber-bg);
+    border-left: 2px solid var(--gold);
+    border-radius: 2px;
+  }
+  .brand-disclaimer-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .brand-disclaimer-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--text-soft);
   }
 
   .nav-section { margin-bottom: 20px; }
@@ -341,6 +387,17 @@
     border-bottom: 1px solid var(--line-soft);
     margin-bottom: 28px;
   }
+
+  /* ─── PAGE LOGO · top-right of every screen ─── */
+  .page-logo {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    order: 9;            /* always render to the far right of a flex header */
+    opacity: 0.9;
+  }
+  .page-logo use { pointer-events: none; }
 
   .tool-eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -3837,6 +3894,7 @@
   }
   #screen-product-overview .layer-02 .tile {
     background: var(--po-layer-02-tile); border-color: var(--po-layer-02-border); color: #ffffff;
+    justify-content: center;
   }
   #screen-product-overview .tile-name {
     font-family: 'Fraunces', serif;
@@ -3958,6 +4016,261 @@
     font-size: 10.5px; line-height: 1.35;
     color: var(--po-layer-01-text-soft); max-width: 440px; margin-top: 0;
   }
+
+  /* ═════════════════ DATA SUMMARY · KR ↔ US ONE-PAGE ═════════════════ */
+  /* All colors and typography reuse the app-level design tokens declared on :root
+     (--bg-card, --text, --gold, --blue, --green, --line, etc.) so this tab matches
+     the rest of the app. KR uses --green, US uses --blue, shared uses --gold. */
+  #screen-kr-us-summary .ds-page {
+    max-width: 1040px; margin: 0 auto; padding: 30px 34px 26px;
+    background: var(--bg-card); color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+    border: 1px solid var(--line); border-radius: 4px;
+  }
+  #screen-kr-us-summary .ds-top {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
+    border-bottom: 1px solid var(--line); padding-bottom: 14px;
+  }
+  #screen-kr-us-summary .ds-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 7px;
+  }
+  #screen-kr-us-summary .ds-h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 400; letter-spacing: -.015em; line-height: 1.1;
+    color: var(--text);
+  }
+  #screen-kr-us-summary .ds-h1 em {
+    font-style: italic; font-weight: 300; color: var(--gold);
+  }
+  /* Footer KPI row inside the table — aligns with KR / spine / US columns */
+  #screen-kr-us-summary .ds-table tfoot td {
+    padding: 22px 10px 8px;
+    border-bottom: none;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    vertical-align: top;
+  }
+  #screen-kr-us-summary .ds-table tfoot .cat-kpi {
+    border-top-color: transparent;
+  }
+  #screen-kr-us-summary .ds-table tfoot .spine-kpi {
+    background: var(--amber-bg);
+    border-left: 1px solid var(--amber-line);
+    border-right: 1px solid var(--amber-line);
+    border-top: none;
+    padding-top: 22px;
+  }
+  #screen-kr-us-summary .ds-foot-kpi-v {
+    font-family: 'Fraunces', serif;
+    font-size: 34px; font-weight: 400; line-height: 1;
+    letter-spacing: -.02em; color: var(--text);
+  }
+  #screen-kr-us-summary .ds-table tfoot .kr-kpi .ds-foot-kpi-v { color: var(--green); }
+  #screen-kr-us-summary .ds-table tfoot .us-kpi .ds-foot-kpi-v { color: var(--blue); }
+  #screen-kr-us-summary .ds-table tfoot .spine-kpi .ds-foot-kpi-v { color: var(--gold); }
+  #screen-kr-us-summary .ds-foot-kpi-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-dim); margin-top: 8px;
+  }
+  #screen-kr-us-summary .ds-table {
+    width: 100%; border-collapse: collapse; margin-top: 6px; table-layout: fixed;
+  }
+  #screen-kr-us-summary .ds-table thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase;
+    text-align: left; padding: 9px 10px 7px;
+    border-bottom: 1px solid var(--line); color: var(--text-dim);
+  }
+  #screen-kr-us-summary .ds-table thead th.kr { color: var(--green); }
+  #screen-kr-us-summary .ds-table thead th.us { color: var(--blue); }
+  #screen-kr-us-summary .ds-table td {
+    padding: 7px 10px; vertical-align: top;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 11.5px; line-height: 1.42; color: var(--text);
+  }
+  #screen-kr-us-summary .ds-table .cat {
+    font-family: 'DM Sans', system-ui, sans-serif; font-size: 11.5px;
+    color: var(--text); white-space: nowrap;
+  }
+  #screen-kr-us-summary .ds-table .cat span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px; color: var(--text-dim); margin-right: 6px;
+  }
+  #screen-kr-us-summary .ds-table .col-cat { width: 16%; }
+  #screen-kr-us-summary .ds-table .col-kr { width: 36%; }
+  #screen-kr-us-summary .ds-table .col-spine { width: 140px; }
+  #screen-kr-us-summary .ds-table .col-us { width: auto; }
+  #screen-kr-us-summary .ds-table tr:hover td { background: var(--amber-bg); }
+  #screen-kr-us-summary .ds-table .star { color: var(--green); font-size: 9px; }
+  #screen-kr-us-summary .ds-table .dash { color: var(--text-dim); font-style: italic; }
+  #screen-kr-us-summary .ds-table .spine {
+    padding: 14px 10px; border-bottom: none; background: var(--amber-bg);
+    border-left: 1px solid var(--amber-line);
+    border-right: 1px solid var(--amber-line);
+    text-align: center; vertical-align: middle;
+  }
+  #screen-kr-us-summary .ds-table .spine-inner {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 14px;
+  }
+  #screen-kr-us-summary .ds-table .spine-arrows {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 4px;
+  }
+  #screen-kr-us-summary .ds-table .spine-arrows .arr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; line-height: 1; font-weight: 500;
+  }
+  #screen-kr-us-summary .ds-table .spine-arrows .kr-arr { color: var(--green); }
+  #screen-kr-us-summary .ds-table .spine-arrows .us-arr { color: var(--blue); }
+  #screen-kr-us-summary .ds-table .spine-text {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 12.5px; line-height: 1.35; letter-spacing: -.005em;
+    color: var(--gold); font-weight: 500; text-align: center;
+  }
+  #screen-kr-us-summary .ds-table thead th.spine-head {
+    background: var(--amber-bg);
+    border-left: 1px solid var(--amber-line);
+    border-right: 1px solid var(--amber-line);
+    text-align: center; color: var(--gold);
+  }
+
+  /* ═════════════════ LAUNCH PACK MVP SUMMARY ═════════════════ */
+  #screen-launch-pack-summary .lps-page {
+    max-width: 1200px; margin: 0 auto; padding: 30px 34px 26px;
+    background: var(--bg-card); color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    border: 1px solid var(--line); border-radius: 4px;
+  }
+  #screen-launch-pack-summary .lps-top {
+    position: relative;
+    border-bottom: 1px solid var(--line); padding-bottom: 18px;
+    padding-right: 64px;
+    margin-bottom: 24px;
+  }
+  #screen-launch-pack-summary .lps-top .page-logo {
+    position: absolute; top: 0; right: 0;
+  }
+  #screen-launch-pack-summary .lps-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 7px;
+  }
+  #screen-launch-pack-summary .lps-h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; font-weight: 400; letter-spacing: -.015em; line-height: 1.1;
+    color: var(--text);
+  }
+  #screen-launch-pack-summary .lps-h1 em {
+    font-style: italic; font-weight: 300; color: var(--gold);
+  }
+  #screen-launch-pack-summary .lps-sub {
+    margin-top: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 13.5px; line-height: 1.5; font-style: italic;
+    color: var(--text-soft); max-width: 920px;
+  }
+  #screen-launch-pack-summary .lps-sub strong {
+    font-style: normal; font-weight: 500; color: var(--text);
+  }
+  #screen-launch-pack-summary .lps-workflow {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1fr;
+    gap: 8px;
+    align-items: stretch;
+  }
+  #screen-launch-pack-summary .lps-col {
+    padding: 14px 16px 16px;
+    background: var(--bg-card-hover);
+    border-left: 3px solid var(--line);
+    border-radius: 2px;
+    display: flex; flex-direction: column;
+  }
+  #screen-launch-pack-summary .lps-col-landscape { border-left-color: var(--green); }
+  #screen-launch-pack-summary .lps-col-cohort    { border-left-color: var(--gold); }
+  #screen-launch-pack-summary .lps-col-forecast  { border-left-color: var(--blue); }
+  #screen-launch-pack-summary .lps-col-header {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    padding-bottom: 9px; margin-bottom: 11px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  #screen-launch-pack-summary .lps-col-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: .14em; color: var(--text-dim);
+  }
+  #screen-launch-pack-summary .lps-col-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px; font-weight: 500; flex-grow: 1;
+  }
+  #screen-launch-pack-summary .lps-col-landscape .lps-col-name { color: var(--green); }
+  #screen-launch-pack-summary .lps-col-cohort    .lps-col-name { color: var(--gold); }
+  #screen-launch-pack-summary .lps-col-forecast  .lps-col-name { color: var(--blue); }
+  #screen-launch-pack-summary .lps-col-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  #screen-launch-pack-summary .lps-col-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 12px; line-height: 1.45; font-style: italic;
+    color: var(--text-soft); margin-bottom: 12px;
+  }
+  #screen-launch-pack-summary .lps-col-desc strong {
+    font-style: normal; font-weight: 500; color: var(--text);
+  }
+  #screen-launch-pack-summary .lps-col-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  #screen-launch-pack-summary .lps-col-list li {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 11px; line-height: 1.4;
+    color: var(--text); padding-left: 11px; position: relative;
+  }
+  #screen-launch-pack-summary .lps-col-list li::before {
+    content: '◆'; position: absolute; left: 0; top: 2px;
+    font-size: 5.5px; color: var(--text-dim);
+  }
+  #screen-launch-pack-summary .lps-col-list li strong {
+    font-weight: 500; color: var(--text);
+  }
+  #screen-launch-pack-summary .lps-col-list li span {
+    color: var(--text-dim); display: block; font-size: 10px;
+    margin-top: 1px; font-style: italic;
+  }
+  #screen-launch-pack-summary .lps-arrow {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 400; color: var(--gold);
+  }
+  #screen-launch-pack-summary .lps-kpis {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px; margin-top: 26px;
+    padding-top: 0;
+  }
+  #screen-launch-pack-summary .lps-kpi {
+    text-align: center; padding: 18px 0 8px;
+    border-top: 2px solid var(--line);
+  }
+  #screen-launch-pack-summary .lps-kpi.green { border-top-color: var(--green); }
+  #screen-launch-pack-summary .lps-kpi.gold  { border-top-color: var(--gold);  }
+  #screen-launch-pack-summary .lps-kpi.blue  { border-top-color: var(--blue);  }
+  #screen-launch-pack-summary .lps-kpi-v {
+    font-family: 'Fraunces', serif;
+    font-size: 34px; font-weight: 400; line-height: 1; letter-spacing: -.02em;
+    color: var(--text);
+  }
+  #screen-launch-pack-summary .lps-kpi.green .lps-kpi-v { color: var(--green); }
+  #screen-launch-pack-summary .lps-kpi.gold  .lps-kpi-v { color: var(--gold);  }
+  #screen-launch-pack-summary .lps-kpi.blue  .lps-kpi-v { color: var(--blue);  }
+  #screen-launch-pack-summary .lps-kpi-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-dim); margin-top: 8px;
+  }
 </style>
 </head>
 <body>
@@ -3973,15 +4286,71 @@
   <aside class="sidebar">
 
     <div class="brand">
-      <div class="brand-mark">P L U T O</div>
+      <div class="brand-row">
+        <div class="brand-logo">
+          <!-- Pluto logo · inline SVG recreation of the uploaded mark.
+               To swap for the raster PNG: save it to ./pluto-logo.png and replace
+               this entire <svg>...</svg> block with: <img src="pluto-logo.png" alt="Pluto"> -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Pluto logo">
+            <defs>
+              <radialGradient id="plutoSphere" cx="38%" cy="32%" r="68%">
+                <stop offset="0%" stop-color="#f7eacc"/>
+                <stop offset="55%" stop-color="#d4a574"/>
+                <stop offset="100%" stop-color="#7a5a32"/>
+              </radialGradient>
+            </defs>
+            <!-- Large outer orbit, tilted -->
+            <ellipse cx="50" cy="50" rx="40" ry="40"
+                     fill="none" stroke="#e8b87a" stroke-width="1.2"
+                     transform="rotate(-22 50 50)"/>
+            <!-- Inner foreshortened orbit -->
+            <ellipse cx="50" cy="58" rx="36" ry="11"
+                     fill="none" stroke="#e8b87a" stroke-width="1"
+                     opacity="0.75"/>
+            <!-- Planet sphere -->
+            <circle cx="48" cy="46" r="20" fill="url(#plutoSphere)"/>
+            <!-- Subtle surface texture -->
+            <circle cx="42" cy="42" r="3" fill="#7a5a32" opacity="0.18"/>
+            <circle cx="53" cy="50" r="2.5" fill="#7a5a32" opacity="0.22"/>
+            <circle cx="46" cy="54" r="1.5" fill="#7a5a32" opacity="0.18"/>
+            <!-- Trailing particles -->
+            <circle cx="75" cy="48" r="1.6" fill="#e8b87a"/>
+            <circle cx="80" cy="52" r="1.1" fill="#e8b87a" opacity="0.85"/>
+            <circle cx="84" cy="46" r="1.4" fill="#e8b87a" opacity="0.9"/>
+            <circle cx="78" cy="58" r="0.9" fill="#e8b87a" opacity="0.65"/>
+            <circle cx="86" cy="56" r="1.1" fill="#e8b87a" opacity="0.75"/>
+            <circle cx="73" cy="55" r="0.8" fill="#e8b87a" opacity="0.6"/>
+            <!-- Keyhole / lock at the bottom -->
+            <g transform="translate(50, 80)">
+              <circle cx="0" cy="-1" r="2.5" fill="none" stroke="#e8b87a" stroke-width="1.4"/>
+              <path d="M -2 1 L -2 5 L 2 5 L 2 1 Z" fill="none" stroke="#e8b87a" stroke-width="1.4" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="brand-mark">P L U T O</div>
+      </div>
       <div class="brand-tag">Pack Line · Preview</div>
+      <div class="brand-disclaimer">
+        <div class="brand-disclaimer-tag">Notice</div>
+        <div class="brand-disclaimer-text">Illustrative concept for demonstration purposes. Interface, structure, and data values shown are representative only and do not reflect production data or live system outputs.</div>
+      </div>
     </div>
 
     <div class="nav-section overview">
       <div class="nav-section-label">Product Overview</div>
       <div class="nav-item active" data-tool="product-overview">
         <span class="nav-dot"></span>
-        <span class="nav-item-label">Platform</span>
+        <span class="nav-item-label">Platform Overview</span>
+        <span class="nav-status-dot live"></span>
+      </div>
+      <div class="nav-item" data-tool="kr-us-summary">
+        <span class="nav-dot"></span>
+        <span class="nav-item-label">Data Layer MVP (Korea)</span>
+        <span class="nav-status-dot live"></span>
+      </div>
+      <div class="nav-item" data-tool="launch-pack-summary">
+        <span class="nav-dot"></span>
+        <span class="nav-item-label">Action Layer MVP (Launch)</span>
         <span class="nav-status-dot live"></span>
       </div>
     </div>
@@ -4106,6 +4475,35 @@
   <!-- ═════════════════ MAIN ═════════════════ -->
   <main class="main">
 
+    <!-- ─── Shared Pluto logo symbol · referenced via <use> on each screen ─── -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="plutoSphereLogo" cx="38%" cy="32%" r="68%">
+          <stop offset="0%" stop-color="#f7eacc"/>
+          <stop offset="55%" stop-color="#d4a574"/>
+          <stop offset="100%" stop-color="#7a5a32"/>
+        </radialGradient>
+        <symbol id="pluto-logo" viewBox="0 0 100 100">
+          <ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="#e8b87a" stroke-width="1.2" transform="rotate(-22 50 50)"/>
+          <ellipse cx="50" cy="58" rx="36" ry="11" fill="none" stroke="#e8b87a" stroke-width="1" opacity="0.75"/>
+          <circle cx="48" cy="46" r="20" fill="url(#plutoSphereLogo)"/>
+          <circle cx="42" cy="42" r="3" fill="#7a5a32" opacity="0.18"/>
+          <circle cx="53" cy="50" r="2.5" fill="#7a5a32" opacity="0.22"/>
+          <circle cx="46" cy="54" r="1.5" fill="#7a5a32" opacity="0.18"/>
+          <circle cx="75" cy="48" r="1.6" fill="#e8b87a"/>
+          <circle cx="80" cy="52" r="1.1" fill="#e8b87a" opacity="0.85"/>
+          <circle cx="84" cy="46" r="1.4" fill="#e8b87a" opacity="0.9"/>
+          <circle cx="78" cy="58" r="0.9" fill="#e8b87a" opacity="0.65"/>
+          <circle cx="86" cy="56" r="1.1" fill="#e8b87a" opacity="0.75"/>
+          <circle cx="73" cy="55" r="0.8" fill="#e8b87a" opacity="0.6"/>
+          <g transform="translate(50, 80)">
+            <circle cx="0" cy="-1" r="2.5" fill="none" stroke="#e8b87a" stroke-width="1.4"/>
+            <path d="M -2 1 L -2 5 L 2 5 L 2 1 Z" fill="none" stroke="#e8b87a" stroke-width="1.4" stroke-linejoin="round"/>
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
 
     <!-- ───────────────────────────────────────────────── -->
     <!-- LIVE: LAUNCH ANALOGUE -->
@@ -4149,7 +4547,7 @@
               <div class="layer-tiles">
                 <div class="tile">
                   <span class="tile-status mvp">🇰🇷 MVP Demo</span>
-                  <div class="tile-name">Launch Pack MVP Concept</div>
+                  <div class="tile-name">Launch Pack MVP</div>
                   <div class="tile-desc">End-to-end APAC launch plan, from analogues to playbook</div>
                 </div>
                 <div class="tile">
@@ -4204,11 +4602,11 @@
                   <div class="tile-desc">Adjustable, transparent analogue scoring</div>
                 </div>
                 <div class="tile">
-                  <div class="tile-name">Landscape Mapping</div>
+                  <div class="tile-name">Structured Knowledge Graph</div>
                   <div class="tile-desc">Regulatory pathway, payer environment, standard of care</div>
                 </div>
                 <div class="tile">
-                  <div class="tile-name">Interactive Visualisations</div>
+                  <div class="tile-name">Confidence &amp; Uncertainty Quantification</div>
                   <div class="tile-desc">Move parameters, see the model react in real time</div>
                 </div>
                 <div class="tile">
@@ -4392,6 +4790,12 @@
                   <span class="m-innov">50%</span>
                 </div>
                 <div class="market-stat">
+                  <!-- MX · $19.8B IMARC 2024 (LATAM #2 / global #12 · retail + hospital + OTC) · innov ~60% (CaliBaja 2024 patented share, adjusted to IQVIA originator framing) -->
+                  <span class="m-flag" title="Mexico · $19.8B (IMARC 2024 · LATAM #2 / global #12) · 60% innovative (CaliBaja 2024 · originator share, IQVIA-adjusted)">🇲🇽</span>
+                  <span class="m-size">$20B</span>
+                  <span class="m-innov">60%</span>
+                </div>
+                <div class="market-stat">
                   <!-- TR · $11.5B IEIS 2024 Turkish Pharma Report (USD) · innov ~60% (IEIS originator 203.3B TRY / 324B TRY total = 63%) -->
                   <span class="m-flag" title="Türkiye · $11.5B (IEIS 2024) · 60% innovative (IEIS originator share by value)">🇹🇷</span>
                   <span class="m-size">$12B</span>
@@ -4410,9 +4814,231 @@
 
     </section>
 
+    <!-- ═════════════════ DATA SUMMARY · KR ↔ US ONE-PAGE ═════════════════ -->
+    <section class="tool-screen" id="screen-kr-us-summary">
+
+      <div class="ds-page">
+
+        <div class="ds-top">
+          <div>
+            <div class="ds-eyebrow">Korea MVP · Data Foundation</div>
+            <h1 class="ds-h1">MVP <em>(Korea)</em> Data Summary</h1>
+          </div>
+          <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
+        </div>
+
+        <table class="ds-table">
+          <thead>
+            <tr>
+              <th class="col-cat">Category</th>
+              <th class="kr col-kr">Korea — MFDS / HIRA</th>
+              <th class="spine-head col-spine">◆</th>
+              <th class="us col-us">United States — Federal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat"><span>01</span>Identity &amp; coding</td>
+              <td class="kr">item_seq ID, HIRA insurance codes, GS1 barcodes</td>
+              <td class="spine" rowspan="14">
+                <div class="spine-inner">
+                  <div class="spine-arrows"><span class="arr kr-arr">→</span><span class="arr us-arr">←</span></div>
+                  <div class="spine-text">Datasets standardized &amp; normalized</div>
+                  <div class="spine-arrows"><span class="arr kr-arr">→</span><span class="arr us-arr">←</span></div>
+                </div>
+              </td>
+              <td class="us">NDC, RxNorm (RxCUI), UNII, SPL Set ID, NUI</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>02</span>Classification</td>
+              <td class="kr">4-digit therapeutic class, herbal flag</td>
+              <td class="us">Pharm class ×4 axes (incl. MoA), ICD-O-3</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>03</span>Approval &amp; registration</td>
+              <td class="kr">Permit-vs-notification, amendment history, originator↔licensee bundle</td>
+              <td class="us">FDA appl no/type, review priority, BLA reference, marketing dates</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>04</span>Pathways &amp; designations</td>
+              <td class="kr">Orphan designation</td>
+              <td class="us">505(b)(2), biosimilar, breakthrough, fast-track, accelerated, pediatric</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>05</span>Bioeq &amp; generics</td>
+              <td class="kr">Bioeq date / notification no, generic ingredient</td>
+              <td class="us">TE code, authorized-generic, first-generic flags</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>06</span>Patents &amp; exclusivity</td>
+              <td class="kr">Number, holder, expiry, type</td>
+              <td class="us">+ Use Code, claim type, NCE/ODE exclusivity, 351(k) biologics</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>07</span>Clinical trials</td>
+              <td class="kr">Site institution + investigator detail, review committee <span class="star">★</span></td>
+              <td class="us">ClinicalTrials.gov (NCT, status, enrollment), IND no</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>08</span>Manufacturing</td>
+              <td class="kr">Name, contract mfr, lot &amp; date</td>
+              <td class="us">DUNS, FEI, GMP certification</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>09</span>Labeling &amp; product info</td>
+              <td class="kr">Dose form, ingredient detail, insert PDF, storage</td>
+              <td class="us">SPL version + revision date, excipients, AHFS PMI</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>10</span>Pricing &amp; reimbursement</td>
+              <td class="kr">Max reimbursement price, billing code + rename history</td>
+              <td class="us">ASP/HCPCS, NADAC acquisition cost, 340B, DRG</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>11</span>Utilization &amp; claims</td>
+              <td class="kr">HIRA spend &amp; volume by diagnosis / region / institution <span class="star">★</span></td>
+              <td class="us"><span class="dash">No open-data equivalent</span></td>
+            </tr>
+            <tr>
+              <td class="cat"><span>12</span>Safety &amp; PV</td>
+              <td class="kr">DUR engine (pairs, rules), recall detail, PMS period</td>
+              <td class="us">FAERS, recall class I–III, shortages, REMS/RMP, DSC</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>13</span>Controlled substances</td>
+              <td class="kr">Narcotic class</td>
+              <td class="us">DEA schedule I–V, CSCN, narcotic flag</td>
+            </tr>
+            <tr>
+              <td class="cat"><span>14</span>Consumer information</td>
+              <td class="kr">e약은요 full patient-facing texts</td>
+              <td class="us">MedlinePlus URL, AHFS lay-language</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="ds-kpi-row">
+              <td class="cat-kpi"></td>
+              <td class="kr-kpi">
+                <div class="ds-foot-kpi-v">135</div>
+                <div class="ds-foot-kpi-l">KR variables · 15 APIs</div>
+              </td>
+              <td class="spine-kpi">
+                <div class="ds-foot-kpi-v">1</div>
+                <div class="ds-foot-kpi-l">Unified Dataset</div>
+              </td>
+              <td class="us-kpi">
+                <div class="ds-foot-kpi-v">209</div>
+                <div class="ds-foot-kpi-l">US variables · 26 sources</div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+      </div>
+
+    </section>
+
+    <!-- ═════════════════ LAUNCH PACK MVP SUMMARY ═════════════════ -->
+    <section class="tool-screen" id="screen-launch-pack-summary">
+
+      <div class="lps-page">
+
+        <div class="lps-top">
+          <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
+          <div class="lps-eyebrow">Pack 02 · Launch Pack MVP Concept</div>
+          <h1 class="lps-h1">Launch Pack MVP <em>Summary</em></h1>
+          <p class="lps-sub">
+            A defensible, cohort-driven forecast of a US→Korea launch — anchor the <strong>molecule, market, and indication</strong>, pull the most similar past US→KR launches as a <strong>weighted analogue cohort</strong>, then project <strong>HIRA listing timing, NHIS price, and revenue ramp</strong> off that cohort. Fourteen tools, three clusters, one integrated forecast.
+          </p>
+        </div>
+
+        <div class="lps-workflow">
+
+          <!-- ─── 01 · THE LANDSCAPE ─── -->
+          <div class="lps-col lps-col-landscape">
+            <div class="lps-col-header">
+              <div class="lps-col-num">01</div>
+              <div class="lps-col-name">The Landscape</div>
+              <div class="lps-col-tag">Context · Inputs</div>
+            </div>
+            <div class="lps-col-desc">
+              Anchors the launch on three primary inputs — <strong>molecule, market, indication</strong> — and surrounds them with the clinical, regulatory, payer, KOL, and pipeline context every downstream tool inherits.
+            </div>
+            <ul class="lps-col-list">
+              <li><strong>Launch Landscape</strong><span>molecule + indication + market — anchor inputs</span></li>
+              <li><strong>Standard of Care</strong><span>guidelines, marketed therapies, market size</span></li>
+              <li><strong>Patient Baseline</strong><span>HIRA-claims demand funnel by line of therapy</span></li>
+              <li><strong>Regulatory Pathway</strong><span>MFDS → HIRA → NHIS institutional flow</span></li>
+              <li><strong>Payer Environment</strong><span>NHIS budget envelope + co-pay structure</span></li>
+              <li><strong>KOL &amp; Institution Map</strong><span>ranked advocacy targets — trial × HIRA join</span></li>
+              <li><strong>Pipeline Pressure</strong><span>competitors landing in the launch window</span></li>
+            </ul>
+          </div>
+
+          <div class="lps-arrow">→</div>
+
+          <!-- ─── 02 · THE COHORT ─── -->
+          <div class="lps-col lps-col-cohort">
+            <div class="lps-col-header">
+              <div class="lps-col-num">02</div>
+              <div class="lps-col-name">The Cohort</div>
+              <div class="lps-col-tag">Analogue Precedents</div>
+            </div>
+            <div class="lps-col-desc">
+              Pulls a <strong>weighted cohort of past US→Korea launches</strong> most similar to the subject — then mines their MFDS-to-HIRA timing, NHIS listing prices, and RSA structures as the empirical basis for the forecast.
+            </div>
+            <ul class="lps-col-list">
+              <li><strong>Launch Analogues &amp; Forecast</strong><span>cohort + predictions hub</span></li>
+              <li><strong>Cohort Composition</strong><span>weighted analogues + similarity scores</span></li>
+              <li><strong>Time-to-Listing</strong><span>MFDS filing → HIRA listing observations</span></li>
+              <li><strong>Price &amp; RSA Precedents</strong><span>KRW/DDD + RSA structures from the cohort</span></li>
+            </ul>
+          </div>
+
+          <div class="lps-arrow">→</div>
+
+          <!-- ─── 03 · THE FORECAST ─── -->
+          <div class="lps-col lps-col-forecast">
+            <div class="lps-col-header">
+              <div class="lps-col-num">03</div>
+              <div class="lps-col-name">The Forecast</div>
+              <div class="lps-col-tag">Quantitative Outputs</div>
+            </div>
+            <div class="lps-col-desc">
+              The cohort drives <strong>three quantitative outputs</strong> — when reimbursement lands, what price NHIS will accept, and what demand × price × share revenue trajectory follows.
+            </div>
+            <ul class="lps-col-list">
+              <li><strong>Timing Forecast</strong><span>Kaplan-Meier listing-date probability distribution</span></li>
+              <li><strong>Price Forecast</strong><span>cohort regression, anchored to US ASP — KRW/DDD band</span></li>
+              <li><strong>Demand &amp; Revenue Forecast</strong><span>integrated financial output with confidence bands</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="lps-kpis">
+          <div class="lps-kpi green">
+            <div class="lps-kpi-v">7</div>
+            <div class="lps-kpi-l">Landscape Tabs · Context Inputs</div>
+          </div>
+          <div class="lps-kpi gold">
+            <div class="lps-kpi-v">4</div>
+            <div class="lps-kpi-l">Cohort Tabs · Analogue Precedents</div>
+          </div>
+          <div class="lps-kpi blue">
+            <div class="lps-kpi-v">3</div>
+            <div class="lps-kpi-l">Forecast Tabs · Quantitative Outputs</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
     <section class="tool-screen" id="screen-launch-context">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01</div>
           <h1 class="tool-h1">Launch <em>Landscape</em></h1>
@@ -4531,6 +5157,7 @@
     <section class="tool-screen" id="screen-standard-of-care">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Standard of <em>Care</em></h1>
@@ -4645,6 +5272,7 @@
     <section class="tool-screen" id="screen-patient-baseline">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Patient <em>Baseline</em></h1>
@@ -4882,6 +5510,7 @@
     <section class="tool-screen" id="screen-kol-map">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>KOL &amp; Institution <em>Map</em></h1>
@@ -5054,6 +5683,7 @@
     <section class="tool-screen" id="screen-regulatory-pathway">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Regulatory <em>Pathway</em></h1>
@@ -5418,6 +6048,7 @@
     <section class="tool-screen" id="screen-payer-environment">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Payer <em>Environment</em></h1>
@@ -5956,6 +6587,7 @@
     <section class="tool-screen" id="screen-pipeline-pressure">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>Pipeline <em>Pressure</em></h1>
@@ -6254,6 +6886,7 @@
     <section class="tool-screen" id="screen-cohort-composition">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub</div>
           <h1 class="tool-h1">Cohort <em>Composition</em></h1>
@@ -6434,6 +7067,7 @@
     <section class="tool-screen" id="screen-launch-analogues-forecast">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02</div>
           <h1 class="tool-h1">Launch Analogues &amp; <em>Forecast</em></h1>
@@ -6503,6 +7137,7 @@
     <section class="tool-screen" id="screen-time-to-listing">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Cohort</div>
           <h1 class="tool-h1">Time-to-<em>Listing</em></h1>
@@ -6606,6 +7241,7 @@
     <section class="tool-screen" id="screen-price-rsa-precedents">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Cohort</div>
           <h1 class="tool-h1">Price &amp; RSA <em>Precedents</em></h1>
@@ -6709,6 +7345,7 @@
     <section class="tool-screen" id="screen-timing-forecast">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">The Timing <em>Forecast</em></h1>
@@ -6966,6 +7603,7 @@
     <section class="tool-screen" id="screen-price-forecast">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">The Price <em>Forecast</em></h1>
@@ -7376,6 +8014,7 @@
     <section class="tool-screen" id="screen-demand-revenue-forecast">
 
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 02 · Sub · Forecast</div>
           <h1 class="tool-h1">Demand &amp; Revenue <em>Forecast</em></h1>
@@ -7649,6 +8288,7 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-the-strategy">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · To Come</div>
           <h1 class="tool-h1">The <em>Strategy</em></h1>
@@ -7670,16 +8310,15 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-indication-sequencing">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Indication Sequencing <em>Plan</em></h1>
-          <p class="tool-sub">Which indication to file first, and the label-expansion roadmap. Sequencing decisions framed against cohort precedents (e.g., omalizumab CSU-first vs asthma-first) and the Demand &amp; Revenue trajectory of each indication path.</p>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 20px; color: var(--text); line-height: 1.4; max-width: 640px; margin: 0 auto;">Will map the indication-expansion decision tree: <em>which label first</em>, what evidence package per indication, when to trigger each follow-on filing, and the cumulative revenue trajectory per sequence option.</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;">— To Come —</div>
       </div>
     </section>
 
@@ -7688,16 +8327,15 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-stakeholder-channel">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Stakeholder &amp; Channel <em>Plan</em></h1>
-          <p class="tool-sub">How to mobilise KOLs, payers, prescribers, and patients. MSL coverage, sales force sizing, KAM model, patient-services design. Built off the KOL &amp; Institution Map's Tier 1/2/3 engagement structure.</p>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 20px; color: var(--text); line-height: 1.4; max-width: 640px; margin: 0 auto;">Will translate the KOL Tier 1/2/3 plan into <em>concrete headcount, channel mix, and 18-month engagement calendar</em>: sales reps per region, MSL coverage by tier, KAM model for tertiary hospitals, patient-support program design.</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;">— To Come —</div>
       </div>
     </section>
 
@@ -7706,16 +8344,15 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-pre-listing-readiness">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Pre-Listing Readiness <em>Checklist</em></h1>
-          <p class="tool-sub">What needs to be in place before HIRA listing. Evidence-package readiness, advisory boards, manufacturing capacity, supply chain, regulatory submissions — all tied to the Timing Forecast milestones.</p>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 20px; color: var(--text); line-height: 1.4; max-width: 640px; margin: 0 auto;">Will surface a <em>gated readiness matrix</em>: evidence dossier (PE / clinical), advisory board cadence, supply-chain capacity vs forecast demand, regulatory submission packets, KOL endorsement, KAM training — each with a target completion date keyed to the MFDS Stage 2 → HIRA filing milestones.</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;">— To Come —</div>
       </div>
     </section>
 
@@ -7724,16 +8361,15 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-franchise-protection">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">Franchise Protection <em>Plan</em></h1>
-          <p class="tool-sub">How to defend share against the Pipeline Pressure entrants. Lifecycle management, indication expansion, IP strategy, real-world-evidence build, formulation extensions — sequenced against the projected entry dates of each competitor.</p>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 20px; color: var(--text); line-height: 1.4; max-width: 640px; margin: 0 auto;">Will overlay <em>defence-play timing</em> onto the Pipeline Pressure entrant calendar: when to file label extensions, when to launch a new formulation, when to publish RWE, when to engage HIRA on indication-cap renegotiation — each move timed against the projected competitor listing dates.</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;">— To Come —</div>
       </div>
     </section>
 
@@ -7742,16 +8378,15 @@
     <!-- ───────────────────────────────────────────────── -->
     <section class="tool-screen" id="screen-hira-negotiation-playbook">
       <div class="tool-head">
+        <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 03 · Sub · To Come</div>
           <h1 class="tool-h1">HIRA Negotiation <em>Playbook</em></h1>
-          <p class="tool-sub">Tactical guide to the HIRA price-negotiation rounds. Comparator selection, evidence positioning, RSA structuring (drawn from Price &amp; RSA Precedents), fallback positions by round. The actual play-by-play, not a generic process diagram.</p>
         </div>
       </div>
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 20px; color: var(--text); line-height: 1.4; max-width: 640px; margin: 0 auto;">Will sequence the 60-day R1 / 60-day R2 negotiation rounds: <em>opening price</em>, <em>comparator basket</em> (drawn from Cohort Composition), <em>RSA proposal structure</em> (drawn from Price &amp; RSA Precedents), <em>concession ladder</em>, and <em>walk-away threshold</em> — each move keyed to NHIS precedent in similar negotiations.</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;">— To Come —</div>
       </div>
     </section>
 
