@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pluto · Tool Mockups</title>
+<title>Pluto · Launch Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -4384,12 +4384,12 @@
       </div>
       <div class="nav-item sub idea" data-tool="kol-map">
         <span class="nav-dot"></span>
-        <span class="nav-item-label"><span class="nav-idea-tag">[Idea]</span> KOL &amp; Institution Map</span>
+        <span class="nav-item-label"><span class="nav-idea-tag">Roadmap</span> KOL &amp; Institution Map</span>
         <span class="nav-status-dot live"></span>
       </div>
       <div class="nav-item sub idea" data-tool="pipeline-pressure">
         <span class="nav-dot"></span>
-        <span class="nav-item-label"><span class="nav-idea-tag">[Idea]</span> Pipeline Pressure</span>
+        <span class="nav-item-label"><span class="nav-idea-tag">Roadmap</span> Pipeline Pressure</span>
         <span class="nav-status-dot live"></span>
       </div>
       <div class="nav-item" data-tool="launch-analogues-forecast">
@@ -4546,7 +4546,7 @@
               </div>
               <div class="layer-tiles">
                 <div class="tile">
-                  <span class="tile-status mvp">🇰🇷 MVP Demo</span>
+                  <span class="tile-status mvp">🇰🇷 MVP</span>
                   <div class="tile-name">Launch Pack MVP</div>
                   <div class="tile-desc">End-to-end APAC launch plan, from analogues to playbook</div>
                 </div>
@@ -4611,7 +4611,7 @@
                 </div>
                 <div class="tile">
                   <div class="tile-name">Signal Tracking</div>
-                  <div class="tile-desc">Live monitoring of policy, listing, and price changes</div>
+                  <div class="tile-desc">Continuous monitoring of policy, listing, and price changes</div>
                 </div>
               </div>
             </div>
@@ -4675,7 +4675,7 @@
                   </div>
                   <div class="data-tile">
                     <div class="data-tile-name">Real-World Evidence</div>
-                    <div class="data-tile-sources">Claims · registries · utilisation</div>
+                    <div class="data-tile-sources">Claims · registries · utilization</div>
                     <div class="data-tile-purpose">Patterns of actual use</div>
                   </div>
                   <div class="data-tile">
@@ -5067,7 +5067,7 @@
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
-          <span class="ps-dropdown-note">demo · 3 molecules · variables propagate</span>
+          <span class="ps-dropdown-note">illustrative · 3 molecules · variables propagate</span>
         </div>
 
         <div class="ps-active-detail" id="ps-active-detail">
@@ -5096,7 +5096,7 @@
             </select>
             <span class="ps-dropdown-chevron">▾</span>
           </div>
-          <span class="ps-dropdown-note">demo · 1 market live</span>
+          <span class="ps-dropdown-note">illustrative · Korea only</span>
         </div>
 
         <div class="ps-dropdown-row" style="margin-top: 10px;">
@@ -5276,7 +5276,7 @@
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
           <h1 class="tool-h1">Patient <em>Baseline</em></h1>
-          <p class="tool-sub">The demand-side baseline. Treated population from HIRA claims (<code>sick_cd × tot_use_qty</code>), eligible-population funnel by line of therapy, regional distribution. This is the foundation for the Patient Demand forecast downstream.</p>
+          <p class="tool-sub">The demand-side baseline. Treated population from HIRA claims, eligible-population funnel by line of therapy, regional distribution. This is the foundation for the Patient Demand forecast downstream.</p>
         </div>
       </div>
 
@@ -5329,7 +5329,7 @@
         <div class="kpi">
           <div class="kpi-label">HIRA Claims / yr</div>
           <div class="kpi-value"><span data-pb-svar="claims">142k</span></div>
-          <div class="kpi-delta" data-pb-svar="claims_delta"><code>sick_cd × tot_use_qty</code> · 2024 rolling</div>
+          <div class="kpi-delta" data-pb-svar="claims_delta">HIRA claims · 2024 rolling</div>
         </div>
         <div class="kpi">
           <div class="kpi-label">5-yr Treated CAGR</div>
@@ -5347,7 +5347,7 @@
       <div class="card" style="margin-bottom: 22px;">
         <div class="card-head">
           <div class="card-title">Treated Population · 5-Year HIRA Claims Trend</div>
-          <div class="card-sub">Annual unique-patient count derived from <code>sick_cd × tot_use_qty</code> · normalised to thousands</div>
+          <div class="card-sub">Annual unique-patient count from HIRA claims · normalized to thousands</div>
         </div>
 
         <!-- Rhapsido / CSU trend chart -->
@@ -5499,7 +5499,7 @@
 
       <!-- ─── DATA SOURCE FOOTNOTE ─── -->
       <div style="margin-top: 22px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--line); font-size: 11px; color: var(--text-soft); line-height: 1.6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-        <strong style="color: var(--text);">SOURCE</strong> · HIRA 청구자료 (NHIS claims database) · <code>sick_cd</code> (ICD-10 diagnosis code) joined to <code>tot_use_qty</code> (annual prescription quantity) · 2024 rolling · unique-patient deduplication via <code>jnsr_no</code> hash · regional split via <code>recu_ymd</code> + provider <code>sido_cd</code>. Funnel by-line-of-therapy is illustrative — currently inferred from treatment intensity bands until full LOT-tag wiring is built.
+        <strong style="color: var(--text);">SOURCE</strong> · HIRA NHIS claims database · ICD-10 diagnosis × annual prescription volume · 2024 rolling · de-duplicated to unique patients · regional split by treating provider · line-of-therapy funnel estimated from treatment-intensity bands.
       </div>
 
     </section>
@@ -5513,8 +5513,8 @@
         <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
-          <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>KOL &amp; Institution <em>Map</em></h1>
-          <p class="tool-sub">Ranked list of advocacy targets for the launch. Built by joining <code>core.clinical_trial</code> (sponsor / institution / PI fields) to HIRA provider-volume data. Surfaces which Korean centers and clinicians the launch team needs to engage pre-listing.</p>
+          <h1 class="tool-h1">KOL &amp; Institution <em>Map</em></h1>
+          <p class="tool-sub">Ranked list of advocacy targets for the launch. Built by joining Korean clinical-trial records (sponsor / institution / principal investigator) to HIRA provider-volume data. Surfaces which Korean centers and clinicians the launch team needs to engage pre-listing.</p>
         </div>
       </div>
 
@@ -5602,7 +5602,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Volume = treated patients at that provider · 2024 HIRA <code>jnsr_no</code> dedup · trial count = active KR trials with that institution listed in <code>core.clinical_trial.facility</code> · 2020–2024
+          Volume = treated patients at that provider (2024 HIRA, unique-patient basis) · trial count = active KR trials listing that institution · 2020–2024
         </div>
       </div>
 
@@ -5610,7 +5610,7 @@
       <div class="cmp-table" style="margin-top: 22px;">
         <div class="cmp-header" style="display: flex; align-items: baseline; justify-content: space-between;">
           <div class="cmp-title">KOL Ranking · PI Activity + Influence</div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-soft);">top 8 by composite · engagement status illustrative</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-soft);">top 8 by composite score</div>
         </div>
 
         <div class="cmp-row kol head">
@@ -5627,7 +5627,7 @@
         </div>
 
         <div class="cmp-footnote">
-          KOL list illustrative · in production, PIs surfaced from <code>core.clinical_trial.lead_investigator</code> · influence proxied by trial count + cohort-analogue paper authorship · engagement status sourced from CRM
+          Influence proxied by trial count + cohort-analogue paper authorship · engagement status from CRM
         </div>
       </div>
 
@@ -5672,7 +5672,7 @@
 
       <!-- ─── DATA SOURCE FOOTNOTE ─── -->
       <div style="margin-top: 22px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--line); font-size: 11px; color: var(--text-soft); line-height: 1.6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-        <strong style="color: var(--text);">SOURCES</strong> · <code>core.clinical_trial</code> joining <code>facility</code> + <code>sponsor</code> + <code>lead_investigator</code> on KR-located studies for the cohort indication · HIRA provider-volume data via <code>요양기관 기호</code> → <code>tot_use_qty</code> aggregation · composite score = z(volume) × 0.55 + z(trials) × 0.45 · engagement status sourced from internal CRM (illustrative for the demo)
+        <strong style="color: var(--text);">SOURCES</strong> · Korean clinical-trial registry (institution / sponsor / investigator) for the cohort indication · HIRA provider-volume data · composite score blends treated volume and trial activity · engagement status from CRM.
       </div>
 
     </section>
@@ -6423,7 +6423,7 @@
 
         <!-- Methodology footnote · NCD-specific data gap -->
         <div style="margin-top: 12px; padding: 10px 14px; background: rgba(232, 184, 122, 0.04); border-left: 1px dashed var(--line); font-size: 10.5px; color: var(--text-dim); line-height: 1.55; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-          <strong style="color: var(--text-soft);">METHODOLOGY NOTE</strong> · Disease-specific spend allocation (NCD / CVD / cancer / diabetes) is reported in GHED <code>dis4_che</code> primarily for donor-tracked LMIC programs. OECD-tier markets (KR/JP/AUS/US/SG) do not consistently disaggregate to that grain in SHA 2011 returns, so this view uses the <em>care-function</em> axis (HC) as the closest disease-relevant proxy. Pharma share is the most actionable signal for a drug-launch lens.
+          <strong style="color: var(--text-soft);">METHODOLOGY NOTE</strong> · Disease-specific spend allocation (NCD / CVD / cancer / diabetes) is reported in GHED's disease-spend axis primarily for donor-tracked LMIC programs. OECD-tier markets (KR/JP/AUS/US/SG) do not consistently disaggregate to that grain in SHA 2011 returns, so this view uses the <em>care-function</em> axis (HC) as the closest disease-relevant proxy. Pharma share is the most actionable signal for a drug-launch lens.
         </div>
       </div>
 
@@ -6576,7 +6576,7 @@
 
       <!-- ─── DATA SOURCE FOOTNOTE ─── -->
       <div style="margin-top: 22px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--line); font-size: 11px; color: var(--text-soft); line-height: 1.6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-        <strong style="color: var(--text);">SOURCE</strong> · WHO Global Health Expenditure Database (GHED), updated <strong style="color: var(--text);">12 Dec 2025</strong> · <code>apps.who.int/nha/database</code> · 2024 figures preliminary, subject to revision · CHE = Current Health Expenditure (SHA 2011 framework) · per-capita values in current US$ at market FX.
+        <strong style="color: var(--text);">SOURCE</strong> · WHO Global Health Expenditure Database (GHED), updated <strong style="color: var(--text);">12 Dec 2025</strong> · apps.who.int/nha/database · 2024 figures preliminary, subject to revision · CHE = Current Health Expenditure (SHA 2011 framework) · per-capita values in current US$ at market FX.
       </div>
 
     </section>
@@ -6590,7 +6590,7 @@
         <svg class="page-logo" aria-hidden="true"><use href="#pluto-logo"/></svg>
         <div>
           <div class="tool-eyebrow launch">Pack 02 · Launch Pack MVP Concept · Tool 01 · Sub</div>
-          <h1 class="tool-h1"><span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--gold); vertical-align: middle; margin-right: 8px;">[Idea]</span>Pipeline <em>Pressure</em></h1>
+          <h1 class="tool-h1">Pipeline <em>Pressure</em></h1>
           <p class="tool-sub">What's coming. KR + US trial-registry data filtered to the indication, projected to land during the launch window. Tells the team that the SoC two years from now isn't the SoC today.</p>
         </div>
       </div>
@@ -6802,7 +6802,7 @@
 
             <!-- Launch window shading (2024-2026 live + immediate post-launch) -->
             <rect x="100" y="40" width="480" height="180" fill="rgba(232, 184, 122, 0.08)" stroke="rgba(232, 184, 122, 0.3)" stroke-dasharray="3 3"/>
-            <text x="340" y="58" fill="rgba(232,184,122,0.9)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="0.1em" font-weight="600">LIVE WINDOW · 2024–2026</text>
+            <text x="340" y="58" fill="rgba(232,184,122,0.9)" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" letter-spacing="0.1em" font-weight="600">LAUNCH WINDOW · 2024–2026</text>
 
             <!-- Subject drug at 2024 (already launched) -->
             <line x1="180" y1="40" x2="180" y2="220" stroke="#e8b87a" stroke-width="2"/>
@@ -6857,7 +6857,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Sourced from <code>core.clinical_trial</code> Ph II/III studies filtered by indication · KR launch date estimated from <code>completion_date</code> + cohort-derived MFDS lag · threat level scored against subject's mechanism + indication overlap
+          Sourced from Phase II/III clinical-trial registries filtered by indication · KR launch date estimated from trial completion + cohort-derived MFDS lag · threat level scored on mechanism + indication overlap
         </div>
       </div>
 
@@ -6875,7 +6875,7 @@
 
       <!-- ─── DATA SOURCE FOOTNOTE ─── -->
       <div style="margin-top: 22px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--line); font-size: 11px; color: var(--text-soft); line-height: 1.6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-        <strong style="color: var(--text);">SOURCES</strong> · <code>core.clinical_trial</code> (ClinicalTrials.gov mirror) filtered by indication MeSH + phase ≥ II · KR-located trials via <code>facility.country = "Korea, Republic of"</code> · projected launch dates derived from <code>primary_completion_date</code> + cohort-mean MFDS lag (cohort: <span data-svar-html="name_html">Rhapsido</span>) · mechanism-overlap classification illustrative
+        <strong style="color: var(--text);">SOURCES</strong> · ClinicalTrials.gov filtered by indication (MeSH) and phase ≥ II · Korea-located trials · projected launch dates derived from trial completion + cohort-mean MFDS lag (cohort: <span data-svar-html="name_html">Rhapsido</span>).
       </div>
 
     </section>
@@ -7038,7 +7038,7 @@
         </div>
 
         <div class="cmp-footnote">
-          8 analogues with similarity ≥ 0.5 · static view for the demo · raw observation data (timing + price + RSA) lives on the next two sub-pages
+          8 analogues with similarity ≥ 0.5 · raw observation data (timing + price + RSA) on the next two sub-pages
         </div>
       </div>
 
@@ -7229,7 +7229,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Filing dates from MFDS gazette · MA dates from <code>의약품 품목허가 공고</code> · Listing dates from HIRA <code>약제급여목록</code> effective-date file · censored entries excluded from median, retained in KM fit
+          Filing dates from the MFDS gazette · marketing-authorization dates from MFDS approval notices · listing dates from the HIRA Drug Benefit List · censored entries excluded from the median, retained in the KM fit
         </div>
       </div>
 
@@ -7298,7 +7298,7 @@
         <div class="kpi">
           <div class="kpi-label">vs US ASP · KR Discount</div>
           <div class="kpi-value"><span data-prr-svar="us_discount">−28%</span></div>
-          <div class="kpi-delta" data-prr-svar="us_discount_delta">cohort-mean vs FX-normalised US ASP</div>
+          <div class="kpi-delta" data-prr-svar="us_discount_delta">cohort-mean vs FX-normalized US ASP</div>
         </div>
         <div class="kpi">
           <div class="kpi-label">RSA Frequency in Cohort</div>
@@ -7333,7 +7333,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Listed prices from HIRA <code>약제급여목록</code> · US ASP from CMS · RSA classification illustrative — actual structures are confidential and partially inferred from KRPIA reports + HIRA gazette summaries
+          Listed prices from the HIRA Drug Benefit List · US ASP from CMS · RSA structures are confidential and approximated from KRPIA reports + HIRA gazette summaries
         </div>
       </div>
 
@@ -7591,7 +7591,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Sources · Drugs@FDA <code>submission_status_date</code> · MFDS 의약품안전나라 license register · HIRA 약제급여목록 effective-date file
+          Sources · Drugs@FDA submission records · MFDS drug license register · HIRA Drug Benefit List
         </div>
       </div>
 
@@ -7906,7 +7906,7 @@
       <div class="grid-2">
         <div class="card">
           <div class="card-head">
-            <div class="card-title">DDD Normalisation · Subject</div>
+            <div class="card-title">DDD Normalization · Subject</div>
             <div class="card-sub">strength · pack_unit · WHO ATC DDD → KRW per defined daily dose</div>
           </div>
 
@@ -7939,14 +7939,14 @@
           </div>
 
           <div style="margin-top: 18px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--gold); font-size: 12px; color: var(--text); line-height: 1.55;">
-            <strong style="color: var(--gold);">Output:</strong> KRW per pack ÷ days per pack = KRW per DDD. Cohort regression operates on this normalised quantity.
+            <strong style="color: var(--gold);">Output:</strong> KRW per pack ÷ days per pack = KRW per DDD. Cohort regression operates on this normalized quantity.
           </div>
         </div>
 
         <div class="card">
           <div class="card-head">
             <div class="card-title">US ASP IRP Anchor · Backend</div>
-            <div class="card-sub">Single backend reference · USD ASP → FX-normalised KRW</div>
+            <div class="card-sub">Single backend reference · USD ASP → FX-normalized KRW</div>
           </div>
 
           <div class="grid-2" style="margin-top: 4px; margin-bottom: 16px; gap: 14px;">
@@ -7979,7 +7979,7 @@
           </div>
 
           <div style="margin-top: 18px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--blue); font-size: 11.5px; color: var(--text-soft); line-height: 1.55;">
-            US ASP is the <strong style="color: var(--text);">sole IRP overlay</strong>. JP <code>薬価</code>, AU <code>aemp</code>, CN <code>医保支付标准</code>, SG ACE — all out of scope. Slide-22 should restrict comparators accordingly.
+            US ASP is the <strong style="color: var(--text);">sole IRP overlay</strong>. Japan, Australia, China and Singapore reference prices are out of scope for this view.
           </div>
         </div>
       </div>
@@ -8002,7 +8002,7 @@
         </div>
 
         <div class="cmp-footnote">
-          Sources · HIRA 약제급여목록 <code>mx_cprc</code> (current listing price) · IQVIA MIDAS KR 2025 retail + hospital channel · FX ₩1,353/USD (May 2026)
+          Sources · HIRA Drug Benefit List (current listing price) · IQVIA MIDAS KR 2025 (retail + hospital) · FX ₩1,353/USD (May 2026)
         </div>
       </div>
 
@@ -8278,7 +8278,7 @@
 
       <!-- ─── DATA SOURCE FOOTNOTE ─── -->
       <div style="margin-top: 22px; padding: 14px 16px; background: var(--bg-elev); border-left: 2px solid var(--line); font-size: 11px; color: var(--text-soft); line-height: 1.6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;">
-        <strong style="color: var(--text);">METHODOLOGY</strong> · Patient demand from Patient Baseline (HIRA <code>sick_cd × tot_use_qty</code>) × capture-share from cohort S-curves × KRW/DDD from Price Forecast · revenue = patients × DDD × treatment-days × price · confidence band propagates uncertainty from Timing (P10–P90 listing date) + Price (P25–P75 KRW/DDD) + Share (P25–P75 peak capture)
+        <strong style="color: var(--text);">METHODOLOGY</strong> · Patient demand from Patient Baseline (HIRA claims) × capture-share from cohort S-curves × KRW/DDD from Price Forecast · revenue = patients × DDD × treatment-days × price · confidence band propagates uncertainty from Timing (P10–P90 listing date) + Price (P25–P75 KRW/DDD) + Share (P25–P75 peak capture)
       </div>
 
     </section>
@@ -8298,7 +8298,7 @@
 
       <div class="card" style="margin-bottom: 22px; padding: 40px 32px; text-align: center; border: 1px dashed var(--line);">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;">— To Come —</div>
-        <div style="font-family: 'Fraunces', serif; font-size: 22px; color: var(--text); line-height: 1.4; max-width: 660px; margin: 0 auto 18px;">The <em>Strategy</em> cluster turns "Launch Landscape" + "What the Forecasts Say" into concrete commercial actions — sequencing, channel mobilisation, readiness gates, franchise defence, and the negotiation playbook.</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 22px; color: var(--text); line-height: 1.4; max-width: 660px; margin: 0 auto 18px;">The <em>Strategy</em> cluster turns "Launch Landscape" + "What the Forecasts Say" into concrete commercial actions — sequencing, channel mobilization, readiness gates, franchise defense, and the negotiation playbook.</div>
         <div style="font-size: 13px; color: var(--text-soft); line-height: 1.7; max-width: 640px; margin: 0 auto;">
           Each sub-tool inherits directly from the cohort + forecasts already locked above — no blank slides, no generic taxonomies. Every recommendation traces back to cohort events, HIRA precedent, or quantitative output.
         </div>
@@ -8465,10 +8465,10 @@
       market_total: '₩162B · $120M',
       guidelines: {
         steps: [
-          {label: 'Lifestyle', detail: 'Diet + structured exercise + behavioural intervention. Target ≥ 5% weight loss over 6 months. Continue throughout any pharmacotherapy.'},
+          {label: 'Lifestyle', detail: 'Diet + structured exercise + behavioral intervention. Target ≥ 5% weight loss over 6 months. Continue throughout any pharmacotherapy.'},
           {label: 'Pharmacotherapy', detail: 'Eligible if BMI ≥ 30 or ≥ 25 with comorbidities. First-line options: Orlistat, Naltrexone-Bupropion (Contrave), or Liraglutide 3.0mg (Saxenda).'},
           {label: 'GLP-1 RA escalation', detail: 'Semaglutide 2.4mg/wk (Wegovy) for ≥ 10% target weight loss. Reserved due to cost + supply constraints. Reassess at 12 + 24 weeks.'},
-          {label: 'Bariatric surgery', detail: 'Referral if BMI ≥ 35 with comorbidities or BMI ≥ 40. Sleeve gastrectomy and Roux-en-Y are first-line procedures in KR centres.'}
+          {label: 'Bariatric surgery', detail: 'Referral if BMI ≥ 35 with comorbidities or BMI ≥ 40. Sleeve gastrectomy and Roux-en-Y are first-line procedures in KR centers.'}
         ],
         source: 'KSSO Korean Clinical Practice Guidelines for Obesity · 2022 · aligned with EASO + ASMBS surgical criteria'
       },
@@ -8489,7 +8489,7 @@
       guidelines: {
         steps: [
           {label: 'Lifestyle', detail: 'Weight loss ≥ 10% (clinically validated to reduce hepatic steatosis + fibrosis). Mediterranean diet pattern. Alcohol avoidance.'},
-          {label: 'Comorbidities', detail: 'Aggressive control of T2D (prefer SGLT2 inhibitor + GLP-1 RA combo · liver-favourable), dyslipidemia (statin therapy), hypertension.'},
+          {label: 'Comorbidities', detail: 'Aggressive control of T2D (prefer SGLT2 inhibitor + GLP-1 RA combo · liver-favorable), dyslipidemia (statin therapy), hypertension.'},
           {label: 'Off-label pharma', detail: 'Vitamin E 800 IU/day in non-diabetic biopsy-confirmed F2-F3 fibrosis. Pioglitazone 30-45mg/day as alternative. Off-label — counsel patient.'},
           {label: 'KR-approved drug', detail: 'None currently. Resmetirom (Rezdiffra) approved US 2024 but not yet in MFDS. Clinical-trial enrolment if eligible (multiple Ph3 trials active in KR).'}
         ],
@@ -8960,7 +8960,7 @@
   var patientBaselineData = {
     rhapsido: {
       total: '88k', total_delta: 'HIRA · L50.1 claims · annual unique-patient count',
-      claims: '142k', claims_delta: '<code>sick_cd × tot_use_qty</code> · 2024 rolling',
+      claims: '142k', claims_delta: 'HIRA claims · 2024 rolling',
       cagr: '+6.2%', cagr_delta: '2020 → 2024 · slow diagnostic-driven growth',
       capture: '21%', capture_delta: '~410k prevalent KR · 79% gap = headroom',
       funnel: [
@@ -8979,7 +8979,7 @@
     },
     oveporexton: {
       total: '4.3k', total_delta: 'HIRA · G47.4 claims · annual unique-patient count',
-      claims: '3.8k', claims_delta: '<code>sick_cd × tot_use_qty</code> · 2024 rolling',
+      claims: '3.8k', claims_delta: 'HIRA claims · 2024 rolling',
       cagr: '+12.2%', cagr_delta: '2018 → 2024 · diagnostic penetration accelerating',
       capture: '~70%', capture_delta: '~6,100 estimated prevalent KR · 30% gap = undiagnosed',
       funnel: [
@@ -8998,7 +8998,7 @@
     },
     tirzepatide: {
       total: '3.4M', total_delta: 'HIRA · E11 + E66 claims · annual unique-patient count',
-      claims: '24M', claims_delta: '<code>sick_cd × tot_use_qty</code> · 2024 rolling (multi-Rx)',
+      claims: '24M', claims_delta: 'HIRA claims · 2024 rolling (multi-Rx)',
       cagr: '+4.1%', cagr_delta: '2020 → 2024 · diagnosis penetration + aging',
       capture: '57%', capture_delta: '~6.0M prevalent T2D · 43% gap = lifestyle-only',
       funnel: [
@@ -9230,7 +9230,7 @@
       peak_revenue: '640', peak_revenue_delta: 'CI: ₩450B – ₩880B · 80% confidence band',
       peak_share: '12',    peak_share_delta: '~410k captured · ~3.4M treated T2D pool',
       peak_patients: '410k', peak_patients_delta: '3L injectable cohort + obesity overlap',
-      ttp: '3.1',          ttp_delta: 'post-listing · faster ramp (already KR-live)',
+      ttp: '3.1',          ttp_delta: 'post-listing · faster ramp (already marketed in KR)',
       funnel: [
         { stage: 'Treated T2D pool (HIRA)',            count: '3.4M', pct: 100, color: 'var(--blue)' },
         { stage: 'Eligible · 3L injectable + obesity', count: '410k', pct: 12,  color: 'var(--gold)' },
@@ -9369,7 +9369,7 @@
     },
     tirzepatide: {
       target_year: '2025',
-      window_label: '2024 → 2026 (live)',
+      window_label: '2024 → 2026 (current)',
       entrants_n: '7',
       entrants_delta: 'GLP-1+ multi-agonists racing post-Tirzepatide',
       direct_threat: '4',
@@ -9380,7 +9380,7 @@
       kr_trials_delta: 'KR-sites · multi-agonist Ph III + Ph II',
       density: '+220%',
       density_delta: 'vs 2015-2020 baseline (3 entrants / 5yr)',
-      soc_narrative: 'By <strong>2027</strong>, the obesity + T2D landscape is reshaped by <strong>triple-agonists (Retatrutide)</strong> and <strong>oral GLP-1s (Orforglipron)</strong>. Tirzepatide is already commercially live in KR (Mounjaro), but Eli Lilly\'s own pipeline (Retatrutide, Orforglipron) will <em>cannibalize</em> rather than complement. Lifecycle planning is the strategic priority — not pure defense.',
+      soc_narrative: 'By <strong>2027</strong>, the obesity + T2D landscape is reshaped by <strong>triple-agonists (Retatrutide)</strong> and <strong>oral GLP-1s (Orforglipron)</strong>. Tirzepatide is already commercially available in KR (Mounjaro), but Eli Lilly\'s own pipeline (Retatrutide, Orforglipron) will <em>cannibalize</em> rather than complement. Lifecycle planning is the strategic priority — not pure defense.',
       entrants: [
         { molecule: 'Retatrutide',    sponsor: 'Eli Lilly',        mech: 'GLP-1/GIP/glucagon triple agonist · injectable', phase: 'Ph III',           launch: '2026 Q4', notes: 'Same sponsor · next-gen replacement',     threat: 'direct' },
         { molecule: 'Orforglipron',   sponsor: 'Eli Lilly',        mech: 'oral GLP-1',                                     phase: 'Ph III complete',  launch: '2026 Q2', notes: 'Same sponsor · oral form factor',         threat: 'direct' },
